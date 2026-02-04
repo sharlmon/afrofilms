@@ -1,0 +1,71 @@
+
+---Downloaded files---
+The import files for: Demo Import were successfully downloaded!
+Initial max execution time = 30
+Files info:
+Site URL = http://127.0.0.1
+Data file = /Applications/AMPPS/www/wp-content/themes/bezel-wp/core/admin/data/demo-content.xml
+Widget file = /Applications/AMPPS/www/wp-content/themes/bezel-wp/core/admin/data/widgets.json
+Customizer file = not defined!
+Redux files:
+not defined!
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+---Importing widgets---
+Blog Sidebar : 
+
+Search - Search Blog - Imported
+Tag Cloud - Popular Tags - Imported
+Recent Posts - No Title - Widget already exists
+
+First Footer Column : 
+
+Text - No Title - Imported
+
+Second Footer Column : 
+
+Navigation Menu - The Company - Imported
+
+Third Footer Column : 
+
+Navigation Menu - Recent Posts - Imported
+
+Fourth Footer Column : 
+
+Tag Cloud - Popular Tags - Imported
+
+
+
+---pt-ocdi/after_import---
+

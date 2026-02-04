@@ -1,0 +1,138 @@
+.form-group{
+  margin-bottom: 25px;
+  label{
+    color: @black;
+    font-family: @heading_font, sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .checkbox, .radio, .checkbox-inline, .radio-inline{
+    input[type=checkbox], input[type=radio]{
+      margin-top: 0;
+    }
+  }
+  textarea{
+    min-height: 100px;
+  }
+}
+
+.form-control{
+  height: 50px;
+  padding: 0 15px;
+  font-size: 15px;
+  line-height: 50px;
+  border: 2px solid #eee;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  .has-error &, &.wpcf7-not-valid{
+    border-color: #ff4656;
+    -webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.02);
+    box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.02);
+  }
+  .has-success &{
+    border-color: #2ecc71;
+    -webkit-box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.02);
+    box-shadow: inset 0 2px 1px rgba(0, 0, 0, 0.02);
+  }
+  &:hover, &:focus{
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  &:focus{
+    border-color: @black_bg;
+  }
+  &.input-sm{
+    height: 40px;
+    line-height: 40px;
+  }
+  &::-webkit-input-placeholder {
+    font-size: .9em;
+    opacity: .8;
+    font-family: @heading_font, sans-serif;
+    font-weight: 400;
+  }
+  &::-moz-placeholder {
+    font-size: .9em;
+    opacity: .8;
+    font-family: @heading_font, sans-serif;
+    font-weight: 400;
+  }
+  &:-ms-input-placeholder {
+    font-size: .9em;
+    opacity: .8;
+    font-family: @heading_font, sans-serif;
+    font-weight: 400;
+  }
+  &::placeholder {
+    font-size: .9em;
+    opacity: .8;
+    font-family: @heading_font, sans-serif;
+    font-weight: 400;
+  }
+}
+
+textarea.form-control{
+  resize: none;
+  min-height: 110px;
+  line-height: inherit;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  max-width: 100%;
+  &.wpcf7-form-control{
+    min-height: 130px;
+  }
+}
+
+.form-select{
+  border: 2px solid #eee;
+  background-color: #fff;
+  position: relative;
+  &:after{
+    content: "\e131";
+    font-family: 'hody-icons';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    margin-top: -10px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+  }
+  select{
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border: 0;
+  }
+}
+
+.wpcf7-form-control-wrap{
+  .wpcf7-not-valid-tip{
+    display: none;
+  }
+}
+
+div.wpcf7-response-output{
+  margin-left: 0;
+  margin-right: 0;
+  border: 1px solid transparent;
+  .alert();
+  padding: 25px;
+  &.wpcf7-validation-errors{
+    background-color: #f1c40f;
+    color: #fff;
+    a{
+      font-weight: 500;
+    }
+  }
+  &.wpcf7-mail-sent-ok{
+    background-color: #2ecc71;
+    color: #fff;
+    a{
+      font-weight: 500;
+    }
+  }
+}

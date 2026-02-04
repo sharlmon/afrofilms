@@ -1,0 +1,1546 @@
+# Copyright (C) 2017 bezel-addons
+# This file is distributed under the same license as the bezel-addons package.
+msgid ""
+msgstr ""
+"Project-Id-Version: bezel-addons\n"
+"Report-Msgid-Bugs-To: http://hody.co\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: HodyLab <support@hody.co>\n"
+"Language-Team: Hody <support@hody.co>\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/config.php:103
+msgid "Section via hook"
+msgstr ""
+
+#: admin/config.php:104
+msgid "<p class=\"description\">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>"
+msgstr ""
+
+#: admin/config.php:151
+msgid "Theme Information 1"
+msgstr ""
+
+#: admin/config.php:152, admin/config.php:158
+msgid "<p>This is the tab content, HTML is allowed.</p>"
+msgstr ""
+
+#: admin/config.php:157
+msgid "Theme Information 2"
+msgstr ""
+
+#: admin/config.php:162
+msgid "<p>This is the sidebar content, HTML is allowed.</p>"
+msgstr ""
+
+#: admin/config.php:180, admin/config.php:181, bezel-addons.php:469, bezel-addons.php:481, bezel-addons.php:494, bezel-addons.php:502, bezel-addons.php:510, bezel-addons.php:519, bezel-addons.php:527, bezel-addons.php:539, bezel-addons.php:550, bezel-addons.php:560, bezel-addons.php:585, bezel-addons.php:615, bezel-addons.php:626, bezel-addons.php:638, bezel-addons.php:650
+msgid "Bezel Options"
+msgstr ""
+
+#: admin/sections.php:8
+msgid "General"
+msgstr ""
+
+#: admin/sections.php:12
+msgid "Light Logo"
+msgstr ""
+
+#: admin/sections.php:13, admin/sections.php:22
+msgid "Upload your .png or .jpg logo"
+msgstr ""
+
+#: admin/sections.php:21
+msgid "Logo"
+msgstr ""
+
+#: admin/sections.php:31
+msgid "Navbar Scrolling Animation"
+msgstr ""
+
+#: admin/sections.php:32
+msgid "Enable navbar transparent-to-color animation."
+msgstr ""
+
+#: admin/sections.php:38
+msgid "Smooth Scroll"
+msgstr ""
+
+#: admin/sections.php:39
+msgid "Enable Smooth Scrolling, it's on!"
+msgstr ""
+
+#: admin/sections.php:45
+msgid "Preloader"
+msgstr ""
+
+#: admin/sections.php:46
+msgid "Look, it's on!"
+msgstr ""
+
+#: admin/sections.php:52
+msgid "Header Search Form"
+msgstr ""
+
+#: admin/sections.php:53, admin/sections.php:60, admin/sections.php:230
+msgid "Warning: if set to off, individual default page settings will be overridden."
+msgstr ""
+
+#: admin/sections.php:59
+msgid "Header Shopping Cart"
+msgstr ""
+
+#: admin/sections.php:67
+msgid "Please note: changing the Portfolio Slug will change all your portfolio posts URL. Proceed with caution."
+msgstr ""
+
+#: admin/sections.php:71
+msgid "Portfolio Slug"
+msgstr ""
+
+#: admin/sections.php:72
+msgid "The URL slug for portfolio posts."
+msgstr ""
+
+#: admin/sections.php:73
+msgid "Remember to update the <a href=\".admin_urloptions-permalink.php.\">permalinks</a> when you change this value"
+msgstr ""
+
+#: admin/sections.php:75
+msgid "Default is \"portfolio\""
+msgstr ""
+
+#: admin/sections.php:90
+msgid "Styling"
+msgstr ""
+
+#: admin/sections.php:95
+msgid "Primary Color"
+msgstr ""
+
+#: admin/sections.php:96
+msgid "Pick the primary color for the theme"
+msgstr ""
+
+#: admin/sections.php:103
+msgid "Dark Color"
+msgstr ""
+
+#: admin/sections.php:104
+msgid "Pick the dark color for the theme"
+msgstr ""
+
+#: admin/sections.php:105
+msgid "It's used for dark sections, buttons, headings and navbars."
+msgstr ""
+
+#: admin/sections.php:112
+msgid "Text Color"
+msgstr ""
+
+#: admin/sections.php:113
+msgid "Pick the text color for the theme"
+msgstr ""
+
+#: admin/sections.php:119
+msgid "Navbar Position"
+msgstr ""
+
+#: admin/sections.php:131
+msgid "Navbar Color"
+msgstr ""
+
+#: admin/sections.php:142
+msgid "Primary Font"
+msgstr ""
+
+#: admin/sections.php:143
+msgid "Select the primary font for the theme"
+msgstr ""
+
+#: admin/sections.php:144, admin/sections.php:161, admin/sections.php:179, admin/sections.php:196
+msgid "Leave blank to use default theme fonts."
+msgstr ""
+
+#: admin/sections.php:159
+msgid "Heading Font"
+msgstr ""
+
+#: admin/sections.php:160
+msgid "Select the font for the heading tags (H1, H2, H1, H4, H5, H6)"
+msgstr ""
+
+#: admin/sections.php:177
+msgid "Serif Font"
+msgstr ""
+
+#: admin/sections.php:178
+msgid "Select the serif font family."
+msgstr ""
+
+#: admin/sections.php:194
+msgid "Cursive Font"
+msgstr ""
+
+#: admin/sections.php:195
+msgid "Select the cursive font family."
+msgstr ""
+
+#: admin/sections.php:211
+msgid "Custom CSS"
+msgstr ""
+
+#: admin/sections.php:212
+msgid "Paste your CSS code here."
+msgstr ""
+
+#: admin/sections.php:223, vc/shortcodes/social-icons.php:35, vc/shortcodes/team-member.php:72
+msgid "Social Links"
+msgstr ""
+
+#: admin/sections.php:229
+msgid "Show Social Icons on Navbar"
+msgstr ""
+
+#: admin/sections.php:237
+msgid "Socials on top navbar"
+msgstr ""
+
+#: admin/sections.php:238
+msgid "Select the socials that you want to show in the top navbar"
+msgstr ""
+
+#: admin/sections.php:240, admin/sections.php:256
+msgid "Facebook"
+msgstr ""
+
+#: admin/sections.php:241, admin/sections.php:262
+msgid "Twitter"
+msgstr ""
+
+#: admin/sections.php:242, admin/sections.php:322
+msgid "Google Plus"
+msgstr ""
+
+#: admin/sections.php:243, admin/sections.php:268
+msgid "Instagram"
+msgstr ""
+
+#: admin/sections.php:244, admin/sections.php:274
+msgid "Linkedin"
+msgstr ""
+
+#: admin/sections.php:245, admin/sections.php:280
+msgid "Youtube"
+msgstr ""
+
+#: admin/sections.php:246, admin/sections.php:286
+msgid "Pinterest"
+msgstr ""
+
+#: admin/sections.php:247, admin/sections.php:292
+msgid "Dribbble"
+msgstr ""
+
+#: admin/sections.php:248, admin/sections.php:298
+msgid "Tumblr"
+msgstr ""
+
+#: admin/sections.php:249
+msgid "VK"
+msgstr ""
+
+#: admin/sections.php:304
+msgid "Flickr"
+msgstr ""
+
+#: admin/sections.php:310
+msgid "Github"
+msgstr ""
+
+#: admin/sections.php:316
+msgid "VK.com"
+msgstr ""
+
+#: admin/sections.php:328
+msgid "Vimeo"
+msgstr ""
+
+#: admin/sections.php:337
+msgid "Shop"
+msgstr ""
+
+#: admin/sections.php:341
+msgid "Show Sidebar on Shop Page"
+msgstr ""
+
+#: admin/sections.php:347
+msgid "Number of Columns"
+msgstr ""
+
+#: admin/sections.php:362
+msgid "404 Page"
+msgstr ""
+
+#: admin/sections.php:366, vc/shortcodes/home-slider.php:117
+msgid "Background Image"
+msgstr ""
+
+#: admin/sections.php:371
+msgid "Error Page Title"
+msgstr ""
+
+#: admin/sections.php:373
+msgid "Oh no! There was an error."
+msgstr ""
+
+#: admin/sections.php:377
+msgid "Error Page Text"
+msgstr ""
+
+#: admin/sections.php:379
+msgid "We couldn’t find the page you were looking for."
+msgstr ""
+
+#: admin/sections.php:387, bezel-addons.php:421
+msgid "Footer"
+msgstr ""
+
+#: admin/sections.php:391
+msgid "Copyright Text"
+msgstr ""
+
+#: admin/sections.php:408
+msgid "Theme Support"
+msgstr ""
+
+#: admin/sections.php:414
+msgid "Here you can read the theme documentation and watch video tutorials. If you do not find an answer to your problem, submit a ticket."
+msgstr ""
+
+#: bezel-addons.php:179
+msgid "Browse Videos"
+msgstr ""
+
+#: bezel-addons.php:249, vc/shortcodes/button.php:195, vc/shortcodes/icon-box.php:43, vc/shortcodes/page-title.php:52, vc/shortcodes/pricing-table.php:24
+msgid "Icon"
+msgstr ""
+
+#: bezel-addons.php:296, vc/shortcodes/menu.php:18
+msgid "Font Style"
+msgstr ""
+
+#: bezel-addons.php:309, vc/shortcodes/page-title.php:225
+msgid "Font Weight"
+msgstr ""
+
+#: bezel-addons.php:318
+msgid "Use video background?"
+msgstr ""
+
+#: bezel-addons.php:320
+msgid "If checked, video will be used as row background."
+msgstr ""
+
+#: bezel-addons.php:329
+msgid "YouTube link"
+msgstr ""
+
+#: bezel-addons.php:332
+msgid "Add YouTube link."
+msgstr ""
+
+#: bezel-addons.php:350
+msgid "Self Hosted Video"
+msgstr ""
+
+#: bezel-addons.php:353, vc/shortcodes/home-slider.php:129
+msgid "Select or upload a video."
+msgstr ""
+
+#: bezel-addons.php:361
+msgid "Parallax"
+msgstr ""
+
+#: bezel-addons.php:364
+msgid "No"
+msgstr ""
+
+#: bezel-addons.php:365, bezel-addons.php:429
+msgid "Yes"
+msgstr ""
+
+#: bezel-addons.php:367
+msgid "Add parallax type background for row (Note: If no image is specified, parallax will use background image from Design Options)."
+msgstr ""
+
+#: bezel-addons.php:384, vc/shortcodes/home-slider.php:87
+msgid "Overlay Style"
+msgstr ""
+
+#: bezel-addons.php:394, vc/shortcodes/home-slider.php:93, vc/shortcodes/image-box.php:32, vc/shortcodes/team-member.php:24
+msgid "Overlay Color"
+msgstr ""
+
+#: bezel-addons.php:405, vc/shortcodes/home-slider.php:104
+msgid "Second Overlay Color"
+msgstr ""
+
+#: bezel-addons.php:417
+msgid "Section Type"
+msgstr ""
+
+#: bezel-addons.php:420, bezel-addons.php:436
+msgid "Default"
+msgstr ""
+
+#: bezel-addons.php:426
+msgid "Full height row?"
+msgstr ""
+
+#: bezel-addons.php:428
+msgid "If checked row will be set to full height."
+msgstr ""
+
+#: bezel-addons.php:433
+msgid "Content position"
+msgstr ""
+
+#: bezel-addons.php:437
+msgid "Middle"
+msgstr ""
+
+#: bezel-addons.php:439
+msgid "Select content position within columns."
+msgstr ""
+
+#: bezel-addons.php:443
+msgid "Row ID"
+msgstr ""
+
+#: bezel-addons.php:445
+msgid "Enter row ID (Note: make sure it is unique and valid according to <a href=\"%s\" target=\"_blank\">w3c specification</a>)."
+msgstr ""
+
+#: bezel-addons.php:449
+msgid "Extra class name"
+msgstr ""
+
+#: bezel-addons.php:451
+msgid "Style particular content element differently - add a class name and refer to it in custom CSS."
+msgstr ""
+
+#: bezel-addons.php:455
+msgid "Row Background Color"
+msgstr ""
+
+#: bezel-addons.php:474
+msgid "Background Color"
+msgstr ""
+
+#: bezel-addons.php:486
+msgid "Second Background Color"
+msgstr ""
+
+#: bezel-addons.php:499
+msgid "Skewed Section"
+msgstr ""
+
+#: bezel-addons.php:507
+msgid "Bordered Section"
+msgstr ""
+
+#: bezel-addons.php:515
+msgid "Split Section"
+msgstr ""
+
+#: bezel-addons.php:524
+msgid "Split Section Background"
+msgstr ""
+
+#: bezel-addons.php:537
+msgid "Split Row Background Image"
+msgstr ""
+
+#: bezel-addons.php:547
+msgid "Background Image Position"
+msgstr ""
+
+#: bezel-addons.php:558
+msgid "Split Row Width"
+msgstr ""
+
+#: bezel-addons.php:583
+msgid "Split Row Width (Tablet)"
+msgstr ""
+
+#: bezel-addons.php:608
+msgid "Map Style"
+msgstr ""
+
+#: bezel-addons.php:624, vc/shortcodes/common.php:15
+msgid "Map Latitude"
+msgstr ""
+
+#: bezel-addons.php:627, bezel-addons.php:639, vc/shortcodes/common.php:18
+msgid "Find your Latitude and Longitude <a target=\"blank\" href=\"http://www.latlong.net/\">here</a>"
+msgstr ""
+
+#: bezel-addons.php:636, vc/shortcodes/common.php:23
+msgid "Map Longitude"
+msgstr ""
+
+#: bezel-addons.php:648, vc/shortcodes/common.php:46
+msgid "Map Zoom"
+msgstr ""
+
+#: bezel-addons.php:661
+msgid "On click action"
+msgstr ""
+
+#: bezel-addons.php:664, vc/vc_animation.php:9, vc/vc_animation.php:31
+msgid "None"
+msgstr ""
+
+#: bezel-addons.php:665
+msgid "Link to large image"
+msgstr ""
+
+#: bezel-addons.php:666
+msgid "Open prettyPhoto"
+msgstr ""
+
+#: bezel-addons.php:667
+msgid "Open custom link"
+msgstr ""
+
+#: bezel-addons.php:668
+msgid "Modal Zoom"
+msgstr ""
+
+#: bezel-addons.php:669
+msgid "Zoom"
+msgstr ""
+
+#: bezel-addons.php:671
+msgid "Select action for click action."
+msgstr ""
+
+#: vc/shortcodes/accordion.php:7
+msgid "Accordion"
+msgstr ""
+
+#: vc/shortcodes/accordion.php:10
+msgid "Collapsible panels."
+msgstr ""
+
+#: vc/shortcodes/accordion.php:11, vc/shortcodes/blog-summary.php:9, vc/shortcodes/button.php:10, vc/shortcodes/carousel.php:10, vc/shortcodes/clients.php:10, vc/shortcodes/common.php:10, vc/shortcodes/common.php:73, vc/shortcodes/home-slider.php:10, vc/shortcodes/icon-box.php:8, vc/shortcodes/image-box.php:10, vc/shortcodes/image-slider.php:10, vc/shortcodes/job-offer.php:9, vc/shortcodes/menu.php:10, vc/shortcodes/modal.php:9, vc/shortcodes/page-title.php:10, vc/shortcodes/photo-gallery.php:9, vc/shortcodes/portfolio.php:15, vc/shortcodes/portfolio.php:36, vc/shortcodes/pricing-table.php:10, vc/shortcodes/progress-bars.php:10, vc/shortcodes/social-icons.php:10, vc/shortcodes/tabs.php:15, vc/shortcodes/team-member.php:10, vc/shortcodes/testimonials.php:10, vc/shortcodes/timeline.php:10
+msgid "Bezel"
+msgstr ""
+
+#: vc/shortcodes/accordion.php:20
+msgid "Behavior"
+msgstr ""
+
+#: vc/shortcodes/accordion.php:30
+msgid "Open First Item Automatically?"
+msgstr ""
+
+#: vc/shortcodes/accordion.php:40, vc/shortcodes/tabs.php:59
+msgid "Color Skin"
+msgstr ""
+
+#: vc/shortcodes/accordion.php:51, vc/shortcodes/tabs.php:67
+msgid "Css"
+msgstr ""
+
+#: vc/shortcodes/accordion.php:53, vc/shortcodes/tabs.php:69
+msgid "Design options"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:6
+msgid "Blog Summary"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:10
+msgid "A section with your latest posts."
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:14, vc/shortcodes/button.php:38, vc/shortcodes/button.php:134, vc/shortcodes/button.php:150, vc/shortcodes/button.php:161, vc/shortcodes/button.php:176, vc/shortcodes/button.php:191, vc/shortcodes/button.php:202, vc/shortcodes/button.php:217, vc/shortcodes/common.php:35, vc/shortcodes/icon-box.php:15, vc/shortcodes/icon-box.php:108, vc/shortcodes/icon-box.php:123, vc/shortcodes/icon-box.php:134, vc/shortcodes/icon-box.php:147, vc/shortcodes/icon-box.php:153, vc/shortcodes/icon-box.php:163, vc/shortcodes/icon-box.php:177, vc/shortcodes/icon-box.php:191, vc/shortcodes/icon-box.php:206, vc/shortcodes/icon-box.php:222, vc/shortcodes/icon-box.php:233, vc/shortcodes/icon-box.php:246, vc/shortcodes/icon-box.php:257, vc/shortcodes/page-title.php:48, vc/shortcodes/page-title.php:63, vc/shortcodes/page-title.php:74, vc/shortcodes/page-title.php:85, vc/shortcodes/page-title.php:98, vc/shortcodes/page-title.php:112, vc/shortcodes/page-title.php:161, vc/shortcodes/page-title.php:178, vc/shortcodes/page-title.php:190, vc/shortcodes/page-title.php:202, vc/shortcodes/page-title.php:214, vc/shortcodes/page-title.php:227, vc/shortcodes/page-title.php:236, vc/shortcodes/page-title.php:244, vc/shortcodes/portfolio.php:21, vc/shortcodes/portfolio.php:73, vc/shortcodes/pricing-table.php:56, vc/shortcodes/tabs.php:26, vc/shortcodes/team-member.php:14
+msgid "Style"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:25
+msgid "Number of posts to show"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:34
+msgid "Show \"View All Posts\" link?"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:48, vc/shortcodes/portfolio.php:97
+msgid "Enable entrance animation?"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:64, vc/shortcodes/icon-box.php:243, vc/shortcodes/page-title.php:95
+msgid "Title Font Style"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:70
+msgid "Column Width"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:72, vc/shortcodes/blog-summary.php:97, vc/shortcodes/blog-summary.php:122
+msgid "Design Options"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:95
+msgid "Column Width (Tablet)"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:120
+msgid "Column Width (Smartphone)"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:146, vc/shortcodes/carousel.php:25, vc/shortcodes/timeline.php:15
+msgid "Items"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:147, vc/shortcodes/carousel.php:26
+msgid "Set the maximum amount of items displayed at a time."
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:149, vc/shortcodes/blog-summary.php:161, vc/shortcodes/blog-summary.php:173, vc/shortcodes/blog-summary.php:185
+msgid "Carousel Options"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:158, vc/shortcodes/carousel.php:83
+msgid "Items (medium devices)"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:159, vc/shortcodes/carousel.php:84
+msgid "Set the maximum amount of items displayed at a time on medium devices."
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:170, vc/shortcodes/carousel.php:90
+msgid "Items (small devices)"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:171, vc/shortcodes/carousel.php:91
+msgid "Set the maximum amount of items displayed at a time on small devices."
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:182, vc/shortcodes/carousel.php:97
+msgid "Items (extra small devices)"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:183, vc/shortcodes/carousel.php:98
+msgid "Set the maximum amount of items displayed at a time on extra small devices."
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:262
+msgid "on"
+msgstr ""
+
+#: vc/shortcodes/blog-summary.php:283
+msgid "View All Posts"
+msgstr ""
+
+#: vc/shortcodes/button.php:6, vc/shortcodes/pricing-table.php:100
+msgid "Button"
+msgstr ""
+
+#: vc/shortcodes/button.php:9
+msgid "Button element."
+msgstr ""
+
+#: vc/shortcodes/button.php:15
+msgid "Type"
+msgstr ""
+
+#: vc/shortcodes/button.php:25
+msgid "URL (Link)"
+msgstr ""
+
+#: vc/shortcodes/button.php:31, vc/shortcodes/common.php:90, vc/shortcodes/home-slider.php:171, vc/shortcodes/menu.php:65, vc/shortcodes/pricing-table.php:91, vc/shortcodes/timeline.php:27
+msgid "Text"
+msgstr ""
+
+#: vc/shortcodes/button.php:54
+msgid "Button Image"
+msgstr ""
+
+#: vc/shortcodes/button.php:64
+msgid "Custom Button Color"
+msgstr ""
+
+#: vc/shortcodes/button.php:75, vc/shortcodes/home-slider.php:142, vc/shortcodes/icon-box.php:215, vc/shortcodes/tabs.php:47, vc/shortcodes/testimonials.php:19
+msgid "Alignment"
+msgstr ""
+
+#: vc/shortcodes/button.php:91
+msgid "Full Width?"
+msgstr ""
+
+#: vc/shortcodes/button.php:105
+msgid "Open Modal on click?"
+msgstr ""
+
+#: vc/shortcodes/button.php:106
+msgid "Specify the modal ID in the URL field. For example: \"#my-modal\""
+msgstr ""
+
+#: vc/shortcodes/button.php:115
+msgid "Open Modal Video on click?"
+msgstr ""
+
+#: vc/shortcodes/button.php:127
+msgid "Shape"
+msgstr ""
+
+#: vc/shortcodes/button.php:143, vc/shortcodes/social-icons.php:14
+msgid "Size"
+msgstr ""
+
+#: vc/shortcodes/button.php:158
+msgid "Text Transform"
+msgstr ""
+
+#: vc/shortcodes/button.php:173
+msgid "Shadow"
+msgstr ""
+
+#: vc/shortcodes/button.php:188, vc/shortcodes/page-title.php:45, vc/shortcodes/pricing-table.php:18
+msgid "Add Icon?"
+msgstr ""
+
+#: vc/shortcodes/button.php:211, vc/shortcodes/icon-box.php:168
+msgid "Icon Position"
+msgstr ""
+
+#: vc/shortcodes/carousel.php:6
+msgid "Carousel"
+msgstr ""
+
+#: vc/shortcodes/carousel.php:9
+msgid "Animated carousel."
+msgstr ""
+
+#: vc/shortcodes/carousel.php:15
+msgid "Carousel Type"
+msgstr ""
+
+#: vc/shortcodes/carousel.php:31
+msgid "Direction"
+msgstr ""
+
+#: vc/shortcodes/carousel.php:41
+msgid "Loop"
+msgstr ""
+
+#: vc/shortcodes/carousel.php:50
+msgid "Autoplay"
+msgstr ""
+
+#: vc/shortcodes/carousel.php:59
+msgid "Controls"
+msgstr ""
+
+#: vc/shortcodes/carousel.php:68
+msgid "Controls Color"
+msgstr ""
+
+#: vc/shortcodes/clients.php:6
+msgid "Clients"
+msgstr ""
+
+#: vc/shortcodes/clients.php:9
+msgid "Clients logos."
+msgstr ""
+
+#: vc/shortcodes/clients.php:15
+msgid "Columns Width"
+msgstr ""
+
+#: vc/shortcodes/clients.php:26
+msgid "Client Logos"
+msgstr ""
+
+#: vc/shortcodes/common.php:6
+msgid "Google Maps"
+msgstr ""
+
+#: vc/shortcodes/common.php:9
+msgid "Map block."
+msgstr ""
+
+#: vc/shortcodes/common.php:30, vc/shortcodes/icon-box.php:82, vc/shortcodes/menu.php:52, vc/shortcodes/page-title.php:15, vc/shortcodes/pricing-table.php:39, vc/shortcodes/timeline.php:20
+msgid "Title"
+msgstr ""
+
+#: vc/shortcodes/common.php:69
+msgid "Alert"
+msgstr ""
+
+#: vc/shortcodes/common.php:72
+msgid "Notification element."
+msgstr ""
+
+#: vc/shortcodes/common.php:78
+msgid "Color"
+msgstr ""
+
+#: vc/shortcodes/common.php:130
+msgid "Email"
+msgstr ""
+
+#: vc/shortcodes/common.php:132
+msgid "Sign Up"
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:6
+msgid "Home Slider"
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:9
+msgid "Slideshow with images and texts."
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:20, vc/shortcodes/image-slider.php:45, vc/vc_animation.php:6, vc/vc_animation.php:18, vc/vc_animation.php:53
+msgid "Animation"
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:30, vc/shortcodes/image-slider.php:21
+msgid "Autoplay Speed"
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:31
+msgid "Default: 7 seconds"
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:58
+msgid "Single Slide"
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:61
+msgid "Slide with images and text."
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:69
+msgid "Background"
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:126
+msgid "Video"
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:153, vc/shortcodes/image-box.php:26
+msgid "Vertical Align"
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:163
+msgid "Heading"
+msgstr ""
+
+#: vc/shortcodes/home-slider.php:166
+msgid "Slide heading."
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:6
+msgid "Feature Box"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:10
+msgid "Styled icon with text."
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:26
+msgid "Select icon box style."
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:31
+msgid "Icon Type"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:57
+msgid "Animated Icon"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:72
+msgid "Number"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:88
+msgid "Content"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:98
+msgid "Icon Size"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:114
+msgid "Icon Color Style"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:127
+msgid "Icon Color"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:139
+msgid "Second Icon Color"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:182
+msgid "Boxed Style"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:199
+msgid "Enable icon background?"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:230
+msgid "Title text transform"
+msgstr ""
+
+#: vc/shortcodes/icon-box.php:254
+msgid "Add counter border?"
+msgstr ""
+
+#: vc/shortcodes/image-box.php:6
+msgid "Image Box"
+msgstr ""
+
+#: vc/shortcodes/image-box.php:9
+msgid "A cointainer for elements."
+msgstr ""
+
+#: vc/shortcodes/image-box.php:15, vc/shortcodes/menu.php:40, vc/shortcodes/team-member.php:48
+msgid "Image"
+msgstr ""
+
+#: vc/shortcodes/image-slider.php:6
+msgid "Image Slider"
+msgstr ""
+
+#: vc/shortcodes/image-slider.php:9
+msgid "Image Slider."
+msgstr ""
+
+#: vc/shortcodes/image-slider.php:15, vc/shortcodes/photo-gallery.php:24
+msgid "Images"
+msgstr ""
+
+#: vc/shortcodes/image-slider.php:22
+msgid "Default: 3 seconds"
+msgstr ""
+
+#: vc/shortcodes/image-slider.php:55
+msgid "Control Nav"
+msgstr ""
+
+#: vc/shortcodes/image-slider.php:64
+msgid "Direction Nav"
+msgstr ""
+
+#: vc/shortcodes/job-offer.php:5
+msgid "Job Offer"
+msgstr ""
+
+#: vc/shortcodes/job-offer.php:8
+msgid "Simple job offer."
+msgstr ""
+
+#: vc/shortcodes/job-offer.php:14
+msgid "Job Title"
+msgstr ""
+
+#: vc/shortcodes/job-offer.php:20
+msgid "Location"
+msgstr ""
+
+#: vc/shortcodes/job-offer.php:26, vc/shortcodes/team-member.php:67
+msgid "Description"
+msgstr ""
+
+#: vc/shortcodes/job-offer.php:32
+msgid "Link"
+msgstr ""
+
+#: vc/shortcodes/menu.php:6
+msgid "Menu"
+msgstr ""
+
+#: vc/shortcodes/menu.php:9
+msgid "Menu with prices or info."
+msgstr ""
+
+#: vc/shortcodes/menu.php:24
+msgid "Menu Items"
+msgstr ""
+
+#: vc/shortcodes/menu.php:29
+msgid "Add Image?"
+msgstr ""
+
+#: vc/shortcodes/menu.php:58
+msgid "Infoline"
+msgstr ""
+
+#: vc/shortcodes/menu.php:59
+msgid "I.E: $7.99"
+msgstr ""
+
+#: vc/shortcodes/modal.php:5
+msgid "Modal Popup"
+msgstr ""
+
+#: vc/shortcodes/modal.php:8
+msgid "Simple modal popup box."
+msgstr ""
+
+#: vc/shortcodes/modal.php:14
+msgid "Modal Title"
+msgstr ""
+
+#: vc/shortcodes/modal.php:21
+msgid "Modal Content"
+msgstr ""
+
+#: vc/shortcodes/modal.php:26
+msgid "Modal ID"
+msgstr ""
+
+#: vc/shortcodes/modal.php:28
+msgid "Enter modal ID. You need to use it in the href of a button element to trigger the modal."
+msgstr ""
+
+#: vc/shortcodes/page-title.php:9
+msgid "Styled heading."
+msgstr ""
+
+#: vc/shortcodes/page-title.php:22
+msgid "Subtitle"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:35
+msgid "Title Tag"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:71
+msgid "Add Letter Shadow?"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:82
+msgid "Subtitle Position"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:109
+msgid "Subtitle Font Style"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:122
+msgid "Text Align"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:135
+msgid "Text Align (Tablet)"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:148
+msgid "Text Align (Smartphone)"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:159
+msgid "Show Horizontal Rule?"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:166
+msgid "Horizontal Rule Style"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:187
+msgid "Title Text Transform"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:199
+msgid "Subtitle Text Transform"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:212
+msgid "Font Size"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:232
+msgid "Title Color"
+msgstr ""
+
+#: vc/shortcodes/page-title.php:240
+msgid "Subtitle Color"
+msgstr ""
+
+#: vc/shortcodes/photo-gallery.php:5
+msgid "Photo Gallery"
+msgstr ""
+
+#: vc/shortcodes/photo-gallery.php:8
+msgid "Modal photo gallery."
+msgstr ""
+
+#: vc/shortcodes/photo-gallery.php:14
+msgid "Layout"
+msgstr ""
+
+#: vc/shortcodes/portfolio.php:12
+msgid "Portfolio Filters"
+msgstr ""
+
+#: vc/shortcodes/portfolio.php:16
+msgid "Filters for portfolio."
+msgstr ""
+
+#: vc/shortcodes/portfolio.php:33
+msgid "Portfolio Section"
+msgstr ""
+
+#: vc/shortcodes/portfolio.php:37
+msgid "A section with your portfolio items."
+msgstr ""
+
+#: vc/shortcodes/portfolio.php:42
+msgid "Items to show"
+msgstr ""
+
+#: vc/shortcodes/portfolio.php:51
+msgid "Number of items to show"
+msgstr ""
+
+#: vc/shortcodes/portfolio.php:62
+msgid "Select Items"
+msgstr ""
+
+#: vc/shortcodes/portfolio.php:63
+msgid "Ctrl+click or Cmd+click to select multiple items."
+msgstr ""
+
+#: vc/shortcodes/portfolio.php:83
+msgid "How many columns?"
+msgstr ""
+
+#: vc/shortcodes/portfolio.php:107
+msgid "Enable spacing"
+msgstr ""
+
+#: vc/shortcodes/portfolio.php:128
+msgid "All"
+msgstr ""
+
+#: vc/shortcodes/pricing-table.php:6
+msgid "Pricing Table"
+msgstr ""
+
+#: vc/shortcodes/pricing-table.php:9
+msgid "Pricing Table."
+msgstr ""
+
+#: vc/shortcodes/pricing-table.php:45
+msgid "Price"
+msgstr ""
+
+#: vc/shortcodes/pricing-table.php:51
+msgid "Currency"
+msgstr ""
+
+#: vc/shortcodes/pricing-table.php:67
+msgid "Featured Label Text"
+msgstr ""
+
+#: vc/shortcodes/pricing-table.php:77
+msgid "Featured Color"
+msgstr ""
+
+#: vc/shortcodes/pricing-table.php:86
+msgid "Features"
+msgstr ""
+
+#: vc/shortcodes/pricing-table.php:105
+msgid "Button Color"
+msgstr ""
+
+#: vc/shortcodes/progress-bars.php:6
+msgid "Progress Bar"
+msgstr ""
+
+#: vc/shortcodes/progress-bars.php:9
+msgid "Animated Progress Bar."
+msgstr ""
+
+#: vc/shortcodes/progress-bars.php:15
+msgid "Progress Bar Color"
+msgstr ""
+
+#: vc/shortcodes/progress-bars.php:25, vc/shortcodes/team-member.php:54
+msgid "Name"
+msgstr ""
+
+#: vc/shortcodes/progress-bars.php:32
+msgid "Percentage"
+msgstr ""
+
+#: vc/shortcodes/social-icons.php:6
+msgid "Social Icons"
+msgstr ""
+
+#: vc/shortcodes/social-icons.php:9
+msgid "Social media icons."
+msgstr ""
+
+#: vc/shortcodes/social-icons.php:29
+msgid "Align"
+msgstr ""
+
+#: vc/shortcodes/social-icons.php:40, vc/shortcodes/team-member.php:77
+msgid "Social"
+msgstr ""
+
+#: vc/shortcodes/social-icons.php:85, vc/shortcodes/team-member.php:96
+msgid "URL"
+msgstr ""
+
+#: vc/shortcodes/tabs.php:6
+msgid "Tabs"
+msgstr ""
+
+#: vc/shortcodes/tabs.php:14
+msgid "Tabbed contents."
+msgstr ""
+
+#: vc/shortcodes/tabs.php:16
+msgid "Tabbed content"
+msgstr ""
+
+#: vc/shortcodes/tabs.php:22
+msgid "Boxed"
+msgstr ""
+
+#: vc/shortcodes/tabs.php:23
+msgid "Minimal"
+msgstr ""
+
+#: vc/shortcodes/tabs.php:24
+msgid "With Icon"
+msgstr ""
+
+#: vc/shortcodes/tabs.php:27
+msgid "Select tabs display style."
+msgstr ""
+
+#: vc/shortcodes/tabs.php:31
+msgid "Active Icon Color"
+msgstr ""
+
+#: vc/shortcodes/tabs.php:43
+msgid "Left"
+msgstr ""
+
+#: vc/shortcodes/tabs.php:44
+msgid "Center"
+msgstr ""
+
+#: vc/shortcodes/tabs.php:45
+msgid "Right"
+msgstr ""
+
+#: vc/shortcodes/tabs.php:48
+msgid "Select tabs section title alignment."
+msgstr ""
+
+#: vc/shortcodes/team-member.php:6
+msgid "Team Member"
+msgstr ""
+
+#: vc/shortcodes/team-member.php:9
+msgid "Add a team member."
+msgstr ""
+
+#: vc/shortcodes/team-member.php:34
+msgid "Thumb Size"
+msgstr ""
+
+#: vc/shortcodes/team-member.php:61
+msgid "Role"
+msgstr ""
+
+#: vc/shortcodes/testimonials.php:6, vc/shortcodes/testimonials.php:27
+msgid "Testimonials"
+msgstr ""
+
+#: vc/shortcodes/testimonials.php:9
+msgid "Testimonials slider."
+msgstr ""
+
+#: vc/shortcodes/testimonials.php:32
+msgid "Testimonial Image"
+msgstr ""
+
+#: vc/shortcodes/testimonials.php:38
+msgid "Testimonial name"
+msgstr ""
+
+#: vc/shortcodes/testimonials.php:45
+msgid "Testimonial info"
+msgstr ""
+
+#: vc/shortcodes/testimonials.php:51
+msgid "Comment"
+msgstr ""
+
+#: vc/shortcodes/timeline.php:6
+msgid "Timeline"
+msgstr ""
+
+#: vc/shortcodes/timeline.php:9
+msgid "Timeline with your resume details."
+msgstr ""
+
+#: vc/shortcodes/timeline.php:33
+msgid "Job Place/University"
+msgstr ""
+
+#: vc/shortcodes/timeline.php:39
+msgid "Date"
+msgstr ""
+
+#: vc/shortcodes/timeline.php:40
+msgid "I.E: February 2010 - April 2012"
+msgstr ""
+
+#: vc/vc_animation.php:10
+msgid "Opacity"
+msgstr ""
+
+#: vc/vc_animation.php:11
+msgid "Top to bottom"
+msgstr ""
+
+#: vc/vc_animation.php:12
+msgid "Left to right"
+msgstr ""
+
+#: vc/vc_animation.php:13
+msgid "Right to left"
+msgstr ""
+
+#: vc/vc_animation.php:14
+msgid "Bottom to top"
+msgstr ""
+
+#: vc/vc_animation.php:15
+msgid "Zoom In"
+msgstr ""
+
+#: vc/vc_animation.php:16
+msgid "Zoom Out"
+msgstr ""
+
+#: vc/vc_animation.php:19
+msgid "Select type of animation for element to be animated when it \"enters\" the browsers viewport (Note: works only in modern browsers)."
+msgstr ""
+
+#: vc/vc_animation.php:28
+msgid "Animation delay"
+msgstr ""
+
+#: vc/vc_animation.php:32
+msgid "100"
+msgstr ""
+
+#: vc/vc_animation.php:33
+msgid "200"
+msgstr ""
+
+#: vc/vc_animation.php:34
+msgid "300"
+msgstr ""
+
+#: vc/vc_animation.php:35
+msgid "400"
+msgstr ""
+
+#: vc/vc_animation.php:36
+msgid "500"
+msgstr ""
+
+#: vc/vc_animation.php:37
+msgid "600"
+msgstr ""
+
+#: vc/vc_animation.php:38
+msgid "700"
+msgstr ""
+
+#: vc/vc_animation.php:39
+msgid "800"
+msgstr ""
+
+#: vc/vc_animation.php:40
+msgid "900"
+msgstr ""
+
+#: vc/vc_animation.php:41
+msgid "1000"
+msgstr ""
+
+#: vc/vc_animation.php:42
+msgid "1100"
+msgstr ""
+
+#: vc/vc_animation.php:43
+msgid "1200"
+msgstr ""
+
+#: vc/vc_animation.php:44
+msgid "1300"
+msgstr ""
+
+#: vc/vc_animation.php:45
+msgid "1400"
+msgstr ""
+
+#: vc/vc_animation.php:46
+msgid "1500"
+msgstr ""
+
+#: vc/vc_animation.php:47
+msgid "1600"
+msgstr ""
+
+#: vc/vc_animation.php:48
+msgid "1700"
+msgstr ""
+
+#: vc/vc_animation.php:49
+msgid "1800"
+msgstr ""
+
+#: vc/vc_animation.php:50
+msgid "1900"
+msgstr ""
+
+#: vc/vc_animation.php:51
+msgid "2000"
+msgstr ""
+
+#: vc/vc_animation.php:54
+msgid "Specify the entrance animation delay in milliseconds."
+msgstr ""
+
+#: vc/vc_defaults.php:14
+msgid "- Split Section - Image Left"
+msgstr ""
+
+#: vc/vc_defaults.php:27
+msgid "- Split Section - Image Right"
+msgstr ""
+
+#: vc/vc_defaults.php:40
+msgid "- Page Title"
+msgstr ""
+
+#: vc/vc_defaults.php:53
+msgid "Home - Default"
+msgstr ""
+
+#: vc/vc_defaults.php:93
+msgid "Home - Digital Agency"
+msgstr ""
+
+#: vc/vc_defaults.php:143
+msgid "Home - Creative Agency"
+msgstr ""
+
+#: vc/vc_defaults.php:172
+msgid "Home - Minimal"
+msgstr ""
+
+#: vc/vc_defaults.php:210
+msgid "Home - Business"
+msgstr ""
+
+#: vc/vc_defaults.php:229
+msgid "Home - Landing Page"
+msgstr ""
+
+#: vc/vc_defaults.php:247
+msgid "Home - Architecture"
+msgstr ""
+
+#: vc/vc_defaults.php:292
+msgid "Home - Photography"
+msgstr ""
+
+#: vc/vc_defaults.php:307
+msgid "Home - Resume"
+msgstr ""
+
+#: vc/vc_defaults.php:328
+msgid "Home - Fitness"
+msgstr ""
+
+#: vc/vc_defaults.php:368
+msgid "Home - Agency Portfolio"
+msgstr ""
+
+#: vc/vc_defaults.php:386
+msgid "Home - Fashion"
+msgstr ""
+
+#: vc/vc_defaults.php:403
+msgid "Home - One Page"
+msgstr ""
+
+#: vc/vc_defaults.php:449
+msgid "Home - Restaurant"
+msgstr ""
+
+#: vc/vc_defaults.php:467
+msgid "Home - Startup"
+msgstr ""
+
+#: vc/vc_defaults.php:506
+msgid "Page - About"
+msgstr ""
+
+#: vc/vc_defaults.php:528
+msgid "Page - About Creative"
+msgstr ""
+
+#: vc/vc_defaults.php:547
+msgid "Page - Services"
+msgstr ""
+
+#: vc/vc_defaults.php:575
+msgid "Page - Contact"
+msgstr ""
+
+#: vc/vc_defaults.php:597
+msgid "Page - Careers"
+msgstr ""
+
+#: vc/vc_defaults.php:616
+msgid "Portfolio - Single Project 1"
+msgstr ""
+
+#: vc/vc_defaults.php:636
+msgid "Portfolio - Single Project 2"
+msgstr ""
+
+#: vc/vc_defaults.php:656
+msgid "Portfolio - Single Project 3"
+msgstr ""
