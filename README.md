@@ -1,16 +1,26 @@
-# React + Vite
+# AfroFilms Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium "Cinematic Dark" cinematography website built with **Vite + React**.
 
-Currently, two official plugins are available:
+## Features
+-   **Modern Tech Stack**: React, Vite, Tailwind-like utility classes (Vanilla CSS).
+-   **Responsive Design**: Mobile-friendly layout with glassmorphism effects.
+-   **Premium Theme**: Deep black and gold aesthetic.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Local Development
+1.  Clone the repo.
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+3.  Run the dev server:
+    ```bash
+    npm run dev
+    ```
 
-## React Compiler
+## Deployment
+This project is configured to auto-deploy to **GitHub Pages** via GitHub Actions.
+-   **Trigger**: Push to `master` branch.
+-   **URL**: [https://sharlmon.github.io/afrofilms/](https://sharlmon.github.io/afrofilms/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Ensure **Settings > Pages > Source** is set to **GitHub Actions** in the repository settings.
