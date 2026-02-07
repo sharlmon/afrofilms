@@ -1,123 +1,195 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { formatDate, extractFirstImage, cleanContent } from '../lib/utils';
-import imageMap from '../lib/image_map.json';
 import SEO from '../components/SEO';
 
-// Shared fallback images
-const FALLBACK_IMAGES = [
-    "/uploads/2022/11/ARTS-RESIDENCY-MASTER-PLAN.jpg",
-    "/uploads/2022/11/Main-Banner.jpg",
-    "/uploads/2022/11/TTR-10.jpg",
-    "/uploads/2022/11/river-album.jpg",
-    "/uploads/2022/11/music-saved-my-life.jpg"
-];
-
 export default function Press() {
-    const [pressItems, setPressItems] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const featuredPress = [
+        {
+            date: "17 June 2024",
+            publication: "Cineuropa",
+            type: "Review",
+            title: "Review: Our Land, Our Freedom",
+            link: "https://cineuropa.org/en/newsdetail/463666/",
+            desc: "A review of the documentary following its premiere at Sheffield DocFest."
+        },
+        {
+            date: "14 June 2024",
+            publication: "The Continent",
+            type: "Review",
+            title: "A Kenyan story told by Kenyans",
+            link: "https://www.thecontinent.org",
+            desc: "Featured review in The Continent newspaper."
+        },
+        {
+            date: "13 June 2024",
+            publication: "Film Carnage",
+            type: "Review",
+            title: "Review: Our Land, Our Freedom",
+            link: "https://filmcarnage.com/2024/06/13/review-our-land-our-freedom/",
+            desc: "An in-depth look at the documentary's portrayal of the Mau Mau struggle."
+        },
+        {
+            date: "13 June 2024",
+            publication: "Camden New Journal",
+            type: "Review",
+            title: "Film Review",
+            link: "https://www.camdennewjournal.co.uk",
+            desc: "Coverage of the UK premiere."
+        },
+        {
+            date: "13 June 2024",
+            publication: "Westminster Extra",
+            type: "Review",
+            title: "Exposing Colonial Atrocities",
+            link: "https://westminsterextra.co.uk",
+            desc: "Review discussing the film's historical impact."
+        },
+        {
+            date: "13 June 2024",
+            publication: "Events London",
+            type: "Review",
+            title: "Must-See Documentary",
+            link: "https://eventslondon.co.uk",
+            desc: "Highlighting the film as a key event in London."
+        },
+        {
+            date: "9 June 2024",
+            publication: "BBC Sheffield",
+            type: "Interview",
+            title: "Interview with Meena and Zippy",
+            link: "https://www.bbc.co.uk/sounds/play/live:bbc_radio_sheffield",
+            desc: "Live interview with the directors discussing the film's journey."
+        },
+        {
+            date: "31 May 2024",
+            publication: "Eastern Eye",
+            type: "News Story",
+            title: "Film Premiere Announcement",
+            link: "https://www.easterneye.biz",
+            desc: "News coverage announcing the film's UK premiere."
+        },
+        {
+            date: "17 June 2024",
+            publication: "Colourful Radio",
+            type: "Interview",
+            title: "Kenyan Society Interview",
+            link: "https://www.colourfulradio.com",
+            desc: "Interview with directors Meena Nanji and Zippy Kimundu."
+        }
+    ];
 
-    useEffect(() => {
-        fetch('/content_manifest.json')
-            .then(res => res.json())
-            .then(async (manifest) => {
-                const posts = manifest
-                    .filter(item => item.type === 'post')
-                    .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                const itemsWithContent = await Promise.all(posts.map(async (item, index) => {
-                    let image = null;
-                    let excerpt = '';
-                    try {
-                        const res = await fetch(item.path);
-                        const text = await res.text();
-                        const parts = text.split('---');
-                        const body = parts.slice(2).join('---');
-
-                        const extracted = extractFirstImage(body);
-                        // Fallback logic
-                        if (!extracted || extracted.includes('Main-Banner')) {
-                            image = FALLBACK_IMAGES[index % FALLBACK_IMAGES.length];
-                        } else {
-                            image = extracted;
-                        }
-
-                        // Extract Excerpt
-                        const cleanedBody = cleanContent(body).replace(/<[^>]+>/g, '');
-                        excerpt = cleanedBody.substring(0, 240) + '...';
-
-                    } catch (e) {
-                        image = FALLBACK_IMAGES[index % FALLBACK_IMAGES.length];
-                    }
-
-                    return { ...item, image, excerpt };
-                }));
-
-                setPressItems(itemsWithContent);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error(err);
-                setLoading(false);
-            });
-    }, []);
-
-    if (loading) return (
-        <div className="center-loading">
-            <div className="loader"></div>
-            <style>{`
-                .center-loading { min-height: 100vh; display: flex; justify-content: center; align-items: center; background: #050505; }
-                .loader { width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.1); border-top-color: var(--color-primary); border-radius: 50%; animation: spin 1s infinite linear; }
-                @keyframes spin { to { transform: rotate(360deg); } }
-            `}</style>
-        </div>
-    );
+    const archivePress = [
+        {
+            year: "2020",
+            publication: "Good Pitch",
+            title: "Good Pitch Kenya 2020 Selected Projects",
+            link: "https://goodpitch.org/events/gp2020ke?fbclid=IwAR0PDfjo-Xp3_xqHSCgDRNyDdy5C3R5RQVzaFdkjIPW9KQyId4clf5ybVfk",
+            desc: "Selection for the prestigious Good Pitch impact documentary forum."
+        },
+        {
+            year: "2019",
+            publication: "Africa in Dialogue",
+            title: "Filmmaking as a Healing Mechanism: Dialogue with Zippy Kimundu",
+            link: "https://africaindialogue.com/2019/09/10/filmmaking-as-a-healing-and-problem-solving-mechanism-a-dialogue-with-zippy-kimundu/",
+            desc: "In-depth conversation about storytelling and impact."
+        },
+        {
+            year: "2018",
+            publication: "Sheffield DocFest",
+            title: "MeetMarket Selected Projects",
+            link: "https://sheffdocfest.com/articles/572-selected-meetmarket-and-alternate-realities-market-projects-2018",
+            desc: "Project selection for the specialized marketplace."
+        },
+        {
+            year: "2016",
+            publication: "Variety",
+            title: "Durban FilmMart Announces Pic Prizes",
+            link: "https://variety.com/2016/film/festivals/durban-film-mart-announces-pic-prizes-1201799908/",
+            desc: "Coverage of awards and pivotal moments at DFM."
+        },
+        {
+            year: "Archive",
+            publication: "Documentary.org",
+            title: "Testament (Working Title) Project",
+            link: "https://www.documentary.org/project/testament-working-title",
+            desc: "Feature on the documentary project development."
+        },
+        {
+            year: "Archive",
+            publication: "Durban FilmMart",
+            title: "Press Office Article",
+            link: "http://www.durbanfilmmart.co.za/press-office/article?news=202",
+            desc: "Official press release from the Durban FilmMart."
+        }
+    ];
 
     return (
         <div className="press-page">
-            <SEO title="Journal & News" description="Latest insights, updates, and press releases from AfroFilms International." />
+            <SEO title="Press & Reviews" description="Media coverage, reviews, and interviews featuring Afrofilms International projects." />
+
             <div className="container relative z-10 pt-32 pb-20">
-                <header className="page-header animate-fade-in">
-                    <span className="section-subtitle">Insights & Updates</span>
-                    <h1 className="page-title">The <span className="text-gold">Journal</span></h1>
+                <header className="page-header animate-fade-in text-center mb-20">
+                    <span className="section-subtitle">Media Coverage</span>
+                    <h1 className="page-title">Press & <span className="text-gold">Reviews</span></h1>
                 </header>
 
-                <div className="press-list">
-                    {pressItems.map((item, index) => (
-                        <article key={index} className="press-item group">
-                            <Link to={`/${item.slug}`} className="press-link">
-                                <div className="press-image-container">
-                                    <div className="press-image-wrapper">
-                                        <img
-                                            src={item.image}
-                                            alt={item.title}
-                                            className="press-image"
-                                            loading="lazy"
-                                            onError={(e) => {
-                                                if (!e.target.src.includes('Main-Banner.jpg')) {
-                                                    e.target.src = '/uploads/2022/11/Main-Banner.jpg';
-                                                } else {
-                                                    e.target.style.display = 'none';
-                                                    e.target.parentNode.style.backgroundColor = '#1a1a1a';
-                                                }
-                                            }}
-                                        />
+                {/* Featured Section */}
+                <section className="mb-24">
+                    <div className="section-header mb-12 border-b border-white/10 pb-4">
+                        <h2 className="text-3xl font-heading text-white">Our Land, Our Freedom <span className="text-gold text-xl ml-2 font-sans tracking-widest uppercase">Sheffield 2024</span></h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {featuredPress.map((item, index) => (
+                            <a
+                                key={index}
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="press-card group"
+                            >
+                                <div className="press-card-content">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <span className="press-date">{item.date}</span>
+                                        <span className="press-type">{item.type}</span>
+                                    </div>
+                                    <h3 className="text-2xl font-heading mb-2 group-hover:text-gold transition-colors">{item.publication}</h3>
+                                    <h4 className="text-white/80 font-medium mb-4">{item.title}</h4>
+                                    <p className="text-gray-400 text-sm mb-6 line-clamp-3">{item.desc}</p>
+
+                                    <div className="mt-auto">
+                                        <span className="text-xs uppercase tracking-widest border-b border-white/20 pb-1 group-hover:border-gold group-hover:text-gold transition-all">Read Article</span>
                                     </div>
                                 </div>
-                                <div className="press-content">
-                                    <div className="press-meta">
-                                        <span className="press-date">{formatDate(item.date)}</span>
-                                        <span className="press-separator">•</span>
-                                        <span className="press-type">News</span>
-                                    </div>
-                                    <h2 className="press-title group-hover:text-gold">{item.title}</h2>
-                                    <p className="press-excerpt">{item.excerpt}</p>
-                                    <span className="read-more">Read Full Story &rarr;</span>
+                            </a>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Archive Section */}
+                <section>
+                    <div className="section-header mb-12 border-b border-white/10 pb-4">
+                        <h2 className="text-3xl font-heading text-white">Archive & <span className="text-gold">Industry News</span></h2>
+                    </div>
+
+                    <div className="space-y-4">
+                        {archivePress.map((item, index) => (
+                            <a
+                                key={index}
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="archive-item group"
+                            >
+                                <div className="archive-year">{item.year}</div>
+                                <div className="archive-content">
+                                    <h3 className="text-xl font-heading text-white group-hover:text-gold transition-colors">{item.publication}</h3>
+                                    <p className="text-gray-400">{item.title}</p>
                                 </div>
-                            </Link>
-                        </article>
-                    ))}
-                </div>
+                                <div className="archive-arrow">→</div>
+                            </a>
+                        ))}
+                    </div>
+                </section>
             </div>
 
             <style>{`
@@ -126,12 +198,8 @@ export default function Press() {
                     background: #050505;
                     color: #fff;
                 }
-                .page-header {
-                    text-align: center;
-                    margin-bottom: 6rem;
-                }
                 .page-title {
-                    font-size: clamp(4rem, 8vw, 7rem);
+                    font-size: clamp(3rem, 6vw, 5rem);
                     font-family: var(--font-heading);
                     line-height: 1;
                     text-transform: uppercase;
@@ -146,133 +214,93 @@ export default function Press() {
                     font-weight: 600;
                 }
 
-                .press-list {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 6rem;
-                    max-width: 1000px;
-                    margin: 0 auto;
-                }
-
-                .press-link {
-                    display: grid;
-                    grid-template-columns: 1.2fr 1fr; /* Image larger */
-                    gap: 4rem;
-                    align-items: center;
-                    text-decoration: none;
-                    color: inherit;
-                }
-
-                /* Alternating Layout */
-                .press-item:nth-child(even) .press-link {
-                    grid-template-columns: 1fr 1.2fr;
-                    direction: rtl; /* simple swap */
-                }
-                .press-item:nth-child(even) .press-content {
-                    direction: ltr; /* reset text */
-                    text-align: right;
-                    align-items: flex-end; /* align items to right */
-                } 
-                /* But wait, text-align right might look weird for paragraphs. Let's keep text-align left but swap columns? */
-                .press-item:nth-child(even) .press-content {
-                    text-align: left; /* Keep left aligned text for readability */
-                    align-items: flex-start;
-                    direction: ltr; 
-                    /* We used direction rtl just to swap grid columns visual order, 
-                       so grid col 1 becomes right, col 2 becomes left. */
-                }
-
-
-                .press-image-container {
-                    position: relative;
-                }
-                .press-image-wrapper {
+                /* Cards */
+                .press-card {
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid rgba(255, 255, 255, 0.05);
+                    padding: 2rem;
                     border-radius: 4px;
-                    overflow: hidden;
-                    aspect-ratio: 16/9;
-                    background: #111;
-                    border: 1px solid rgba(255,255,255,0.1);
-                    /* Image Glitch/Reveal Effect Container */
-                }
-                .press-image {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
-                    filter: saturate(0.8);
-                }
-                .press-item:hover .press-image {
-                    transform: scale(1.05);
-                    filter: saturate(1.1);
-                }
-
-                .press-content {
+                    transition: all 0.3s ease;
                     display: flex;
                     flex-direction: column;
-                    justify-content: center;
+                }
+                .press-card:hover {
+                    background: rgba(255, 255, 255, 0.06);
+                    transform: translateY(-5px);
+                    border-color: var(--color-primary);
+                }
+                
+                .press-date {
+                    font-size: 0.8rem;
+                    color: var(--color-primary);
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                }
+                .press-type {
+                    font-size: 0.7rem;
+                    background: rgba(255,255,255,0.1);
+                    padding: 2px 8px;
+                    border-radius: 100px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
                 }
 
-                .press-meta {
+                /* Archive List */
+                .archive-item {
                     display: flex;
                     align-items: center;
-                    gap: 0.8rem;
-                    font-size: 0.85rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.1em;
-                    color: var(--color-primary);
-                    margin-bottom: 1.5rem;
-                }
-                .press-separator { color: rgba(255,255,255,0.2); }
-                .press-type { color: rgba(255,255,255,0.5); }
-
-                .press-title {
-                    font-size: 2.5rem;
-                    line-height: 1.1;
-                    margin-bottom: 1.5rem;
-                    font-family: var(--font-heading);
-                    color: #fff;
-                    transition: color 0.3s;
-                }
-
-                .press-excerpt {
-                    color: #aaa;
-                    line-height: 1.7;
-                    margin-bottom: 2rem;
-                    font-size: 1.05rem;
-                    display: -webkit-box;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                }
-
-                .read-more {
-                    color: #fff;
-                    text-transform: uppercase;
-                    font-size: 0.85rem;
-                    letter-spacing: 0.2em;
-                    font-weight: 600;
-                    border-bottom: 1px solid rgba(255,255,255,0.3);
-                    padding-bottom: 0.3rem;
-                    align-self: flex-start;
+                    padding: 1.5rem;
+                    background: rgba(255, 255, 255, 0.02);
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
                     transition: all 0.3s ease;
                 }
-                .press-item:hover .read-more {
+                .archive-item:hover {
+                    background: rgba(255, 255, 255, 0.05);
+                    padding-left: 2rem;
+                }
+                .archive-year {
+                    font-family: var(--font-heading);
+                    font-size: 1.5rem;
+                    color: rgba(255,255,255,0.2);
+                    width: 100px;
+                    flex-shrink: 0;
+                }
+                .archive-content {
+                    flex-grow: 1;
+                }
+                .archive-arrow {
                     color: var(--color-primary);
-                    border-bottom-color: var(--color-primary);
+                    opacity: 0;
+                    transform: translateX(-10px);
+                    transition: all 0.3s ease;
+                }
+                .archive-item:hover .archive-arrow {
+                    opacity: 1;
+                    transform: translateX(0);
                 }
 
-                @media (max-width: 900px) {
-                    .press-link, .press-item:nth-child(even) .press-link {
-                        grid-template-columns: 1fr;
-                        direction: ltr;
-                        gap: 2rem;
-                    }
-                    .press-item:nth-child(even) .press-content {
-                         text-align: left;
-                         align-items: flex-start;
-                    }
+                @media (max-width: 768px) {
                     .page-title {
-                        font-size: 3.5rem;
+                        font-size: clamp(2.5rem, 8vw, 4rem);
+                    }
+                    .section-header h2 {
+                        font-size: 1.5rem;
+                    }
+                    .press-card {
+                        padding: 1.5rem;
+                    }
+                    .archive-item {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 1rem;
+                        padding: 1rem;
+                    }
+                    .archive-year {
+                        width: auto;
+                        font-size: 1rem;
+                    }
+                    .archive-arrow {
+                        display: none;
                     }
                 }
             `}</style>

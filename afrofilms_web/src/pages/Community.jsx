@@ -3,43 +3,61 @@ import SEO from '../components/SEO';
 
 const TRAINING_IMAGE = "/uploads/2021/05/24-05-2021-at-16.57.32Training-Arts-Residence.jpg";
 
-export default function Training() {
+export default function Community() {
     const initiatives = [
         {
             id: "01",
-            title: "Empowering Refugee Girls",
-            desc: "As partners of 'I'll Tell You My Story', we focus on training refugee girls through Writing, Film & Photography. Giving them the tools to tell their own stories with dignity and power.",
-            link: "https://www.illtellyoumystory.com",
-            linkText: "Visit 501(c)3 Org",
-            image: "/uploads/2022/11/music-saved-my-life.jpg"
+            title: "The Terrace Kilifi",
+            desc: "An artist-led Community Art Space and Residency along the Kilifi Creek. We provided a space for artists to create, collaborate, and showcase their work in a serene environment.",
+            link: "https://www.terracekilifi.com",
+            linkText: "Visit The Terrace",
+            image: "/uploads/terrace.jpg"
         },
         {
             id: "02",
-            title: "Prison Film Clubs",
-            desc: "A Pilot Project at the Nairobi West Prison in partnership with the Kenyan Prisons Services. We provide Creative and Technical Training for inmates with a dream of creating pioneer ‘Film Clubs’ across all Kenyan prisons.",
-            image: "/uploads/2022/11/TTR-46.jpg"
+            title: "The Kilifi Creek Festival",
+            desc: "A Film and Arts festival across 7 venues along the Kilifi Creek. Celebrating African storytelling and culture through cinema, music, and art.",
+            link: "https://www.kilificreekfestival.com",
+            linkText: "Visit Festival",
+            image: "/uploads/festival.jpg",
+            hoverImage: "/uploads/festival1.jpg"
         },
         {
             id: "03",
-            title: "Arts Residency",
-            desc: "We facilitate workshops and residences that master the art of storytelling, camera operation, and editing. Our goal is to cultivate the business of art in East Africa.",
-            image: TRAINING_IMAGE
+            title: "Refugee Girls Training",
+            desc: "A storytelling Workshop for teenage refugee girls. As partners of 'I'll Tell You My Story', we focus on giving them the tools to tell their own stories with dignity and power.",
+            link: "https://www.illtellyoumystory.com",
+            linkText: "Visit Initiative",
+            image: "/uploads/mystory.jpg"
+        },
+        {
+            id: "04",
+            title: "Prison Film Clubs",
+            desc: "A Pilot Project at the Nairobi West Prison in partnership with the Kenyan Prisons Services. Providing Creative and Technical Training for inmates to create pioneer ‘Film Clubs’.",
+            image: "/uploads/prison.jpg"
         }
     ];
 
     return (
         <div className="training-page">
-            <SEO title="Training & CSR" description="Giving back through film. Our initiatives include empowering refugee girls and prison film clubs." />
+            <SEO title="Community & Industrial Building" description="Giving back through film. Our initiatives include empowering refugee girls and prison film clubs." />
             <div className="page-bg" style={{ backgroundImage: `url(${TRAINING_IMAGE})` }}></div>
             <div className="page-overlay"></div>
 
             <div className="content-container relative z-10 pt-32 pb-32">
-                <header className="header text-center mb-32 animate-fade-in">
-                    <span className="text-gold tracking-[0.3em] uppercase font-bold text-xs mb-6 block">CSR Initiatives</span>
-                    <h1 className="text-6xl md:text-8xl font-heading text-white mb-8 leading-none">
-                        Cinema for <br /><span className="text-stroke">Change.</span>
+                <header className="header text-center mb-32 animate-fade-in relative pt-20">
+                    <h1 className="text-6xl md:text-8xl font-heading text-white mb-6 leading-tight relative z-10">
+                        Community & <br />
+                        <span className="text-gold">Industrial Building</span>
                     </h1>
-                    <div className="w-24 h-1 bg-gold mx-auto"></div>
+                    <h2 className="text-4xl md:text-6xl font-heading text-stroke mb-12 relative z-10 opacity-70">
+                        Cinema for Change.
+                    </h2>
+                    <div className="glass-desc p-8 max-w-2xl mx-auto relative z-10 border-b-4 border-gold">
+                        <p className="text-gray-300 text-lg leading-relaxed">
+                            Afrofilms engages in various community and industry projects including an Arts Space and Residency, a Film Festival and a refugee girls training program.
+                        </p>
+                    </div>
                 </header>
 
                 <div className="timeline-container">
@@ -62,6 +80,9 @@ export default function Training() {
 
                             <div className="timeline-image-wrapper">
                                 <div className="timeline-image" style={{ backgroundImage: `url(${item.image})` }}></div>
+                                {item.hoverImage && (
+                                    <div className="timeline-image hover-image" style={{ backgroundImage: `url(${item.hoverImage})` }}></div>
+                                )}
                                 <div className="image-overlay"></div>
                             </div>
                         </div>
@@ -106,8 +127,14 @@ export default function Training() {
                 }
 
                 .text-stroke {
-                    -webkit-text-stroke: 1px #fff;
+                    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
                     color: transparent;
+                    font-weight: 700;
+                }
+                .glass-desc {
+                    background: rgba(255, 255, 255, 0.03);
+                    backdrop-filter: blur(10px);
+                    border-radius: 1rem;
                 }
 
                 .timeline-container {
@@ -185,10 +212,21 @@ export default function Training() {
                     background-position: center;
                     transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
                     filter: grayscale(20%);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                .hover-image {
+                    opacity: 0;
+                    z-index: 1;
+                    transition: opacity 0.5s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
                 }
                 .timeline-item:hover .timeline-image {
                     transform: scale(1.1);
                     filter: grayscale(0%);
+                }
+                .timeline-item:hover .hover-image {
+                    opacity: 1;
                 }
                 .image-overlay {
                     position: absolute;

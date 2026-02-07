@@ -10,10 +10,11 @@ const Home = lazy(() => import('./pages/Home'));
 const Works = lazy(() => import('./pages/Works'));
 const Press = lazy(() => import('./pages/Press'));
 const Team = lazy(() => import('./pages/Team'));
-const Training = lazy(() => import('./pages/Training'));
+const Community = lazy(() => import('./pages/Community'));
 const Content = lazy(() => import('./pages/Content'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
+const TeamMember = lazy(() => import('./pages/TeamMember'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Loading Fallback
@@ -40,7 +41,8 @@ export default function App() {
               <Route path="works" element={<Works />} />
               <Route path="press" element={<Press />} />
               <Route path="team" element={<Team />} />
-              <Route path="training" element={<Training />} />
+              <Route path="team/:id" element={<TeamMember />} />
+              <Route path="community" element={<Community />} />
               <Route path="about" element={<About />} />
               <Route path="contact" element={<Contact />} />
               <Route path="404" element={<NotFound />} />

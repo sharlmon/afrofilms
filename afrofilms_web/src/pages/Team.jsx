@@ -1,48 +1,41 @@
-import imageMap from '../lib/image_map.json';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { team } from '../data/team';
 import SEO from '../components/SEO';
 
 export default function Team() {
-    // Team Data derived from image map names/IDs
-    // Team Data extracted from content/page-15301-team.md
-    const team = [
-        { id: "15460", name: "Zippy Kimundu", role: "Producer / Director", image: imageMap["15460"] },
-        { id: "15459", name: "Wanjiru Kimundu", role: "Head of Production", image: imageMap["15459"] },
-        { id: "15458", name: "Betty Nabangala", role: "Residency Curator", image: imageMap["15458"] },
-        { id: "15468", name: "Steve Ruiyi", role: "DOP / Technical Lead", image: imageMap["15468"] },
-        { id: "15469", name: "Anthony Thuku", role: "Cinematographer", image: imageMap["15469"] },
-        { id: "15470", name: "JP Gichengo", role: "Sound Recordist", image: imageMap["15470"] },
-        { id: "15488", name: "Jennifer Gatero", role: "Writer", image: imageMap["15488"] },
-        { id: "15489", name: "Franki Ashiruka", role: "Head of Post-Production", image: imageMap["15489"] },
-        { id: "15491", name: "Willis Abuto", role: "Director of Photography", image: imageMap["15491"] },
-        { id: "15484", name: "Dru Mungai", role: "Sound Recordist", image: imageMap["15484"] }
-    ];
-
     return (
         <div className="team-page">
             <SEO title="Our Team" description="Meet the creative visionaries behind AfroFilms International." />
             <div className="container pt-24 pb-20">
                 <div className="section-header center mb-16 text-center">
                     <h1 className="page-title text-5xl md:text-7xl font-heading mb-4 text-white">The Creative <span className="text-gold">Team</span></h1>
-                    <p className="section-desc text-xl text-gray-400">The visionaries behind the lens.</p>
+                    <p className="section-desc text-xl text-gray-400">Click on a member to view their portfolio.</p>
                 </div>
 
                 <div className="team-grid">
                     {team.map(member => (
-                        <div key={member.id} className="team-card glass group">
-                            <div className="member-image-wrapper">
-                                <div className="member-image">
-                                    {member.image ? (
-                                        <img src={`/uploads/${member.image}`} alt={member.name} />
-                                    ) : (
-                                        <div className="placeholder-avatar"></div>
-                                    )}
+                        <Link to={`/team/${member.id}`} key={member.id}>
+                            <motion.div
+                                className="team-card glass group"
+                                layoutId={`card-${member.id}`}
+                                whileHover={{ y: -10 }}
+                            >
+                                <div className="member-image-wrapper">
+                                    <motion.div className="member-image" layoutId={`image-${member.id}`}>
+                                        {member.image ? (
+                                            <img src={`/uploads/${member.image}`} alt={member.name} />
+                                        ) : (
+                                            <div className="placeholder-avatar"></div>
+                                        )}
+                                    </motion.div>
                                 </div>
-                            </div>
-                            <div className="member-info mt-6">
-                                <h3 className="text-2xl text-white font-medium mb-2">{member.name}</h3>
-                                <span className="member-role text-gold tracking-widest text-sm uppercase font-bold">{member.role}</span>
-                            </div>
-                        </div>
+                                <div className="member-info mt-6">
+                                    <motion.h3 className="text-2xl text-white font-medium mb-2" layoutId={`name-${member.id}`}>{member.name}</motion.h3>
+                                    <motion.span className="member-role text-gold tracking-widest text-sm uppercase font-bold" layoutId={`role-${member.id}`}>{member.role}</motion.span>
+                                </div>
+                            </motion.div>
+                        </Link>
                     ))}
                 </div>
             </div>
@@ -68,13 +61,9 @@ export default function Team() {
                     background: rgba(255,255,255,0.03);
                     border: 1px solid rgba(255,255,255,0.1);
                     border-radius: 8px;
-                    transition: all 0.4s ease;
-                }
-                
-                .team-card:hover {
-                    transform: translateY(-10px);
-                    background: rgba(255,255,255,0.06);
-                    border-color: var(--color-primary);
+                    cursor: pointer;
+                    height: 100%;
+                    transition: all 0.3s ease;
                 }
                 
                 .member-image-wrapper {
@@ -90,9 +79,8 @@ export default function Team() {
                     border-radius: 50%;
                     overflow: hidden;
                     border: 3px solid var(--color-primary);
-                    padding: 4px; /* Space between border and image */
+                    padding: 4px;
                     background: transparent;
-                    transition: all 0.4s ease;
                 }
                 
                 .member-image img {
@@ -107,6 +95,10 @@ export default function Team() {
                 .team-card:hover .member-image img {
                     filter: grayscale(0%);
                 }
+                .team-card:hover {
+                    background: rgba(255,255,255,0.06);
+                    border-color: var(--color-primary);
+                }
                 
                 .member-role {
                     color: var(--color-primary);
@@ -116,6 +108,7 @@ export default function Team() {
                     width: 100%;
                     height: 100%;
                     background: #333;
+                    border-radius: 50%;
                 }
             `}</style>
         </div>

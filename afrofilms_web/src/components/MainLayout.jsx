@@ -32,7 +32,7 @@ export default function MainLayout() {
             <Link to="/about#services">Services</Link>
             <Link to="/works">Portfolio</Link>
             <Link to="/press">Press</Link>
-            <Link to="/training">Training</Link>
+            <Link to="/community">Community</Link>
             <Link to="/contact">Contact</Link>
             <div className="nav-socials">
               <a href="https://www.facebook.com/people/Afro-Films-International-Ltd/100067548437631/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -47,9 +47,7 @@ export default function MainLayout() {
               <a href="https://vimeo.com/user70440057" target="_blank" rel="noopener noreferrer" aria-label="Vimeo">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 13c1.5-2 3-5 5-6 1.5-.5 2.5 1 2.5 2.5 0 4-2 7.5-2 10.5 0 2.5 3 2 4.5 1.5 2.5-1 5.5-3.5 7-9.5 0-2.5-1-4-3-4-2 0-3 3-3.5 3.5-.5.5-1.5 2.5-2 2.5-1.5 0 .5-6-1-7S7 6 6 7.5c-1 1.5-3 5.5-3 5.5z"></path></svg>
               </a>
-              <a href="https://www.youtube.com/@bengatronicskenyandancemus8736" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-              </a>
+
             </div>
           </div>
         </div>
@@ -59,10 +57,13 @@ export default function MainLayout() {
         <motion.main
           key={location.pathname}
           className="main-content"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
+          exit={{ opacity: 0, y: -30 }}
+          transition={{
+            duration: 0.4,
+            ease: [0.25, 0.46, 0.45, 0.94]
+          }}
         >
           <Outlet />
         </motion.main>
@@ -91,7 +92,7 @@ export default function MainLayout() {
               <a href="https://www.instagram.com/afrofilmsinternational/" target="_blank" rel="noopener noreferrer">Instagram</a>
               <a href="https://ke.linkedin.com/company/afrofilms" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <a href="https://vimeo.com/user70440057" target="_blank" rel="noopener noreferrer">Vimeo</a>
-              <a href="https://www.youtube.com/@bengatronicskenyandancemus8736" target="_blank" rel="noopener noreferrer">YouTube</a>
+
             </div>
           </div>
         </div>

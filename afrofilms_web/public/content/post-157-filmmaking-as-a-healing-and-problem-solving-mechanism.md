@@ -162,7 +162,7 @@ Making these films was difficult, very emotional, but deeply rewarding.
 <figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://africaindialogue.com/wp-content/uploads/2019/09/1ab066b6-5cae-4b2b-8e25-566e68d7a1a2.jpg" alt="1ab066b6-5cae-4b2b-8e25-566e68d7a1a2" /></figure>
 </div>
 <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="2">
-<figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://images.nakedblackbabes.pics/p/naked_black_amateurs-myebonygf/9.jpg" alt="Sexy Black Lady Posing Nude - Pussy" /></figure>
+<figure class="swiper-slide-inner"></figure>
 </div>
 </div>
 <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
@@ -186,7 +186,7 @@ Making these films was difficult, very emotional, but deeply rewarding.
 
 <b>Elelwani: This makes me emotional because I can relate to it. I am the kind of filmmaker who is interested in revisiting places and stories that made us who we are. The journey can be harrowing. But like you said, making these films can become a healing process. So when we fully immerse ourselves in the experiences we have blocked out, rebirth is inevitable.</b>
 
-<img class="swiper-slide-image aligncenter" src="https://www.hdebonysex.com/storage/300/22/bi/2258-MjYzMjk.jpg" alt="Black beautiful lady in bathroom panty down butt" width="300" height="408" /><strong>Zippy</strong><b>:</b> I was trying to avoid making sexy movies, but I guess the issue of Africa and intimacy is what I want to challenge. And in Africa, especially in Kenya, there is always something about sex and its sensitive nature you cannot avoid.  I am busy with another project that deals with this on a much deeper level.
+<strong>Zippy</strong><b>:</b> I was trying to avoid making sexy movies, but I guess the issue of Africa and intimacy is what I want to challenge. And in Africa, especially in Kenya, there is always something about sex and its sensitive nature you cannot avoid.  I am busy with another project that deals with this on a much deeper level.
 
 There is no two sentences without land in Kenya, there is always a land issue where someone stole it or someone is trying to steal it. I have been meaning to make a film about the independence movement because that is where the land problems come from; the British came and took the land, when people went to fight, they came back and the land was gone.  So, I have been meaning to make a feature piece about that and now I got someone who wanted to make a documentary instead, so I researched it and I have embarked on the journey on this, it has been four years now. The documentary is titled <i>Testament, </i>funded by IDFA, Hot Dogs and more. It is basically about a woman who is trying to find her father’s remains before her mother dies. We are unbarring the history of Kenya, which is where the land issue with my personal experience has led me right now.
 
@@ -247,7 +247,7 @@ There is no two sentences without land in Kenya, there is always a land issue wh
 
 </div>
 </div>
-<img src="https://www.hdebonysex.com/storage/o/22/bi/2258-MjYzMzE.jpg" />
+
 <div class="elementor-widget-container">
 <div class="elementor-text-editor elementor-clearfix">
 
@@ -256,7 +256,7 @@ I made a film called “<em><strong>A Fork, a Spoon and a Knigh</strong></em>t�
 As of now, we are working with refugee girls whose experiences cannot come close to my story, simply cannot be compared. These are kids who are being wives of soldiers in their teens. Since we are not trained psychologists, we train these girls on how to share their stories, and for me, I find that through my own films I can communicate with them better because it is a whole experience and a journey I walked myself.  It does inspire them to open up and tell any story they want in any form.
 
 </div>
-<img src="https://www.hdebonysex.com/storage/o/22/bi/2258-MjYzMzc.jpg" />
+
 <div class="elementor-text-editor elementor-clearfix">
 
 There is so many ways we can put resources we have to give back, by simply just doing it. I really enjoy teaching as well. There’s a pilot project, a film club in prisons, I have started. We have done first trainings, shot a few things and that is where we are.

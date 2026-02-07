@@ -1,9 +1,44 @@
+import { useState } from 'react';
 import imageMap from '../lib/image_map.json';
 import SEO from '../components/SEO';
 
 export default function Contact() {
-    // Use "benatronics-studio.jpeg" (ID 1236) for a workspace vibe
     const contactImage = imageMap["1236"] ? `/uploads/${imageMap["1236"]}` : null;
+
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [status, setStatus] = useState('');
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('sending');
+
+        // Using FormSubmit.co for serverless form handling
+        try {
+            const res = await fetch('https://formsubmit.co/ajax/admin@afrofilmsinternational.com', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    message: formData.message,
+                    _subject: 'New Contact from AfroFilms Website'
+                })
+            });
+
+            if (res.ok) {
+                setStatus('success');
+                setFormData({ name: '', email: '', message: '' });
+            } else {
+                setStatus('error');
+            }
+        } catch (err) {
+            setStatus('error');
+        }
+    };
 
     return (
         <div className="contact-page">
@@ -58,6 +93,51 @@ export default function Contact() {
                             </a>
                         </div>
                     </div>
+
+                    {/* Contact Form */}
+                    <div className="contact-form-section">
+                        <h2 className="form-heading">Send Us a Message</h2>
+                        <form onSubmit={handleSubmit} className="contact-form">
+                            <div className="form-group">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Your Name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                    className="form-input"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Your Email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                    className="form-input"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <textarea
+                                    name="message"
+                                    placeholder="Your Message"
+                                    rows="5"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    className="form-input"
+                                ></textarea>
+                            </div>
+                            <button type="submit" className="submit-btn" disabled={status === 'sending'}>
+                                {status === 'sending' ? 'Sending...' : 'Send Message'}
+                            </button>
+                            {status === 'success' && <p className="form-status success">Message sent successfully!</p>}
+                            {status === 'error' && <p className="form-status error">Failed to send. Please try again.</p>}
+                        </form>
+                    </div>
                 </div>
             </section>
 
@@ -103,7 +183,7 @@ export default function Contact() {
 
                 .contact-content {
                     position: relative;
-                    margin-top: -80px; /* Overlap hero */
+                    margin-top: -80px;
                     padding-bottom: 8rem;
                 }
 
@@ -156,7 +236,7 @@ export default function Contact() {
                     color: #aaa;
                     font-size: 1.05rem;
                     line-height: 1.6;
-                    flex-grow: 1; /* Push button down */
+                    flex-grow: 1;
                 }
 
                 .highlight-link {
@@ -194,6 +274,77 @@ export default function Contact() {
                     transform: translateX(5px);
                 }
 
+                /* Contact Form */
+                .contact-form-section {
+                    max-width: 700px;
+                    margin: 5rem auto 0;
+                    padding: 3rem;
+                    background: rgba(10, 10, 10, 0.8);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.1);
+                    border-radius: 8px;
+                }
+                .form-heading {
+                    text-align: center;
+                    font-size: 2rem;
+                    color: #fff;
+                    font-family: var(--font-heading);
+                    margin-bottom: 2rem;
+                }
+                .form-group {
+                    margin-bottom: 1.5rem;
+                }
+                .form-input {
+                    width: 100%;
+                    padding: 1rem 1.25rem;
+                    background: rgba(255,255,255,0.05);
+                    border: 1px solid rgba(255,255,255,0.1);
+                    border-radius: 4px;
+                    color: #fff;
+                    font-size: 1rem;
+                    transition: all 0.3s;
+                }
+                .form-input:focus {
+                    outline: none;
+                    border-color: var(--color-primary);
+                    background: rgba(255,255,255,0.08);
+                }
+                .form-input::placeholder {
+                    color: #666;
+                }
+                textarea.form-input {
+                    resize: vertical;
+                    min-height: 120px;
+                }
+                .submit-btn {
+                    width: 100%;
+                    padding: 1rem 2rem;
+                    background: var(--color-primary);
+                    color: #000;
+                    border: none;
+                    border-radius: 4px;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    cursor: pointer;
+                    transition: all 0.3s;
+                }
+                .submit-btn:hover {
+                    background: #fff;
+                }
+                .submit-btn:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                }
+                .form-status {
+                    text-align: center;
+                    margin-top: 1rem;
+                    font-size: 0.95rem;
+                }
+                .form-status.success { color: #4ade80; }
+                .form-status.error { color: #f87171; }
+
                 @media (max-width: 768px) {
                     .contact-content {
                         margin-top: 0;
@@ -204,6 +355,10 @@ export default function Contact() {
                     }
                     .hub-card {
                         padding: 2rem;
+                    }
+                    .contact-form-section {
+                        padding: 2rem;
+                        margin: 3rem 1rem 0;
                     }
                 }
             `}</style>

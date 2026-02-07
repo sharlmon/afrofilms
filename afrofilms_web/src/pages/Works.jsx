@@ -14,6 +14,13 @@ const FALLBACK_IMAGES = [
     "/uploads/2022/11/111.jpg"
 ];
 
+const CATEGORIES = {
+    'featured-documentaries': 'Featured Documentaries',
+    'independent-fiction': 'Independent Fiction',
+    'independent-non-fiction': 'Independent Non-Fiction',
+    'commissioned-projects': 'Commissioned Projects'
+};
+
 export default function Works() {
     const [works, setWorks] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -30,16 +37,20 @@ export default function Works() {
                     let image = null;
                     try {
                         const res = await fetch(item.path);
-                        const text = await res.text();
-                        const parts = text.split('---');
-                        const body = parts.slice(2).join('---');
-                        const extracted = extractFirstImage(body);
+                        const text = await res.text(); // Markdown content
 
-                        if (!extracted || extracted.includes('Main-Banner')) {
-                            image = FALLBACK_IMAGES[index % FALLBACK_IMAGES.length];
+                        // Extract FIRST image from HTML/Markdown content
+                        // Matches <img src="..."> OR ![alt](src)
+                        const imgMatch = text.match(/<img[^>]+src="([^">]+)"/) || text.match(/!\[.*?\]\((.*?)\)/);
+
+                        if (imgMatch) {
+                            image = imgMatch[1];
+                        } else if (imageMap[item.id]) {
+                            image = `/uploads/${imageMap[item.id]}`;
                         } else {
-                            image = extracted;
+                            image = FALLBACK_IMAGES[index % FALLBACK_IMAGES.length];
                         }
+
                     } catch (e) {
                         image = FALLBACK_IMAGES[index % FALLBACK_IMAGES.length];
                     }
@@ -72,6 +83,15 @@ export default function Works() {
         "1439", "1449", "1433", "1423", "1437", "1419", "1427", "1431", "1445"
     ].map(id => imageMap[id] ? `/uploads/${imageMap[id]}` : null).filter(Boolean);
 
+    // Group works by category
+    const groupedWorks = works.reduce((acc, work) => {
+        // Fallback to 'featured-documentaries' if no category is set
+        const category = work.category || 'featured-documentaries';
+        if (!acc[category]) acc[category] = [];
+        acc[category].push(work);
+        return acc;
+    }, {});
+
     return (
         <div className="works-page">
             <SEO title="Portfolio" description="Curated Excellence. Explore our library of feature films, documentaries, and training initiatives." />
@@ -83,13 +103,19 @@ export default function Works() {
             </header>
 
             <div className="container">
-                {/* 
-                   NEW: Strict Grid Layout (More Organized)
-                   Replaces Masonry for consistent alignment.
-                */}
-                <div className="works-grid">
-                    {works.map((post, i) => <WorkCard key={post.id} post={post} index={i} />)}
-                </div>
+                {Object.entries(CATEGORIES).map(([key, label]) => {
+                    const items = groupedWorks[key];
+                    if (!items || items.length === 0) return null;
+
+                    return (
+                        <section key={key} className="category-section animate-on-scroll">
+                            <h2 className="category-title">{label}</h2>
+                            <div className="works-grid">
+                                {items.map((post, i) => <WorkCard key={post.id} post={post} index={i} />)}
+                            </div>
+                        </section>
+                    );
+                })}
             </div>
 
             <section className="partners section-padding">
@@ -136,12 +162,26 @@ export default function Works() {
                     font-weight: 600;
                 }
 
-                /* GRID LAYOUT: Strict & Organized */
+                /* CATEGORIES */
+                .category-section {
+                    margin-bottom: 8rem;
+                }
+                .category-title {
+                    font-size: 2rem;
+                    color: #fff;
+                    font-family: var(--font-heading);
+                    text-transform: uppercase;
+                    border-bottom: 1px solid rgba(255,255,255,0.1);
+                    padding-bottom: 1rem;
+                    margin-bottom: 3rem;
+                    letter-spacing: 0.05em;
+                }
+
+                /* GRID LAYOUT */
                 .works-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-                    gap: 3rem 2rem; /* Row gap, Col gap */
-                    margin-bottom: 8rem;
+                    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                    gap: 3rem 2rem;
                 }
                 @media (max-width: 768px) {
                     .works-grid {
@@ -150,12 +190,11 @@ export default function Works() {
                     }
                 }
 
-                /* Work Card - Organized/Creative Look */
+                /* Work Card */
                 .work-card {
                     display: flex;
                     flex-direction: column;
                     gap: 1.5rem;
-                    group: 1;
                 }
                 .work-card-link {
                     text-decoration: none;
@@ -165,7 +204,7 @@ export default function Works() {
                 .img-wrapper {
                     position: relative;
                     width: 100%;
-                    aspect-ratio: 16/10; /* Strict Aspect Ratio for alignment */
+                    aspect-ratio: 16/9;
                     overflow: hidden;
                     border-radius: 4px;
                     border: 1px solid rgba(255,255,255,0.1);
@@ -257,11 +296,11 @@ export default function Works() {
                 }
                 .center-text { text-align: center; }
                 .partners-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
-                    gap: 3rem;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 2rem 3rem;
                     align-items: center;
-                    justify-items: center;
+                    justify-content: center;
                     padding: 0 2rem;
                 }
                 .partner-logo img {
@@ -307,7 +346,10 @@ function WorkCard({ post }) {
                 </div>
 
                 <div className="card-info">
-                    <span className="work-year">{post.date ? new Date(post.date).getFullYear() : 'PROJECT'}</span>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span className="work-year">{post.date ? new Date(post.date).getFullYear() : 'PROJECT'}</span>
+                        {post.genre && <span className="work-year" style={{ color: 'var(--color-primary)' }}>{post.genre}</span>}
+                    </div>
                     <h2 className="work-title">{post.title}</h2>
                 </div>
             </Link>

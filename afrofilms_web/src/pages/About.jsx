@@ -20,34 +20,35 @@ export default function About() {
                 </div>
             </section>
 
-            {/* Mission Section */}
+            {/* Mission Section - Redesigned */}
             <section className="mission section-padding">
-                <div className="container grid-2">
-                    <div className="mission-content">
-                        <span className="section-subtitle">Our Mission</span>
-                        <h2 className="section-title">Bringing African stories to the <span className="text-gradient">global stage.</span></h2>
-                        <div className="spacer"></div>
-                        <p>
-                            At AfroFilms International, our mission transcends traditional storytelling. We aspire to not only entertain but also be a force for positive change.
-                        </p>
-                        <p>
-                            Through our compelling narratives, we aim to ignite conversations, challenge norms, and contribute to the global dialogue on critical issues.
-                        </p>
-                    </div>
-                    <div className="mission-stat glass">
-                        <div className="stat-item">
-                            <span className="stat-number">15+</span>
-                            <span className="stat-label">Years of Excellence</span>
-                        </div>
-                        <div className="stat-item">
-                            <span className="stat-number">50+</span>
-                            <span className="stat-label">Global Partners</span>
-                        </div>
-                        <div className="stat-item">
-                            <span className="stat-number">100+</span>
-                            <span className="stat-label">Projects Completed</span>
+                <div className="container relative">
+                    <div className="mission-card glass-panel relative z-10 p-8 md:p-16">
+                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                            <div className="mission-content">
+                                <span className="section-subtitle">Who We Are</span>
+                                <h2 className="section-title mb-8">
+                                    Women-Led.<br />
+                                    <span className="text-gold">African Voices.</span><br />
+                                    Global Impact.
+                                </h2>
+                            </div>
+                            <div className="mission-text">
+                                <p className="mb-6 text-lg leading-relaxed text-gray-200">
+                                    Afrofilms International is a women-led film production company and creative collective based in Nairobi, Kenya, working to ignite socio-political consciousness and action across continents.
+                                </p>
+                                <p className="mb-6 text-lg leading-relaxed text-gray-200">
+                                    Founded in 2013 by filmmaker Zippy Kimundu, Afrofilms was created to make powerful films through collaboration—strengthening the industry while supporting women and underrepresented communities through skills training and mentorship, while building community by creating spaces beyond the city for multidisciplinary artists to connect, create, and experiment.
+                                </p>
+                                <p className="text-lg leading-relaxed text-gray-200">
+                                    We produce and co-produce independent documentary films, commissioned broadcast content, and creatively driven commercial work. Our experienced team works across Africa, with films that have screened internationally, guiding each project from concept to screen. Afrofilms also offers fixing and production support for international crews filming across the continent.
+                                </p>
+                            </div>
                         </div>
                     </div>
+                    {/* Decorative element */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary opacity-10 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2"></div>
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-900 opacity-10 rounded-full blur-3xl -z-10 transform -translate-x-1/2 translate-y-1/2"></div>
                 </div>
             </section>
 
@@ -102,29 +103,7 @@ export default function About() {
                         </div>
                     </div>
 
-                    <div className="rental-banner-wrapper mt-20 animate-fade-in">
-                        <div className="rental-banner glass-panel relative overflow-hidden p-10 md:p-14 border-gold group">
-                            <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
-                                <svg width="200" height="200" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"></path></svg>
-                            </div>
 
-                            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-                                <div className="text-left max-w-lg">
-                                    <span className="text-gold uppercase tracking-widest text-sm font-bold mb-2 block">Production Logistics</span>
-                                    <h3 className="text-4xl md:text-5xl font-heading text-white mb-4 leading-tight">
-                                        Need Gear?
-                                    </h3>
-                                    <p className="text-gray-300 text-lg font-light leading-relaxed">
-                                        From high-end cinema cameras to our specialized production vans, we have the tools to fuel your vision.
-                                    </p>
-                                </div>
-
-                                <a href="/contact" className="btn-glow px-8 py-4 bg-white text-black font-bold uppercase tracking-widest text-sm hover:bg-gold transition-colors duration-300 whitespace-nowrap">
-                                    Request Quote
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
