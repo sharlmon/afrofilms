@@ -390,21 +390,6 @@
     "client": ""
   },
   {
-    "id": 3004,
-    "title": "In Shadows",
-    "date": "2013-02-01",
-    "type": "post",
-    "slug": "in-shadows",
-    "fileName": "post-3004-in-shadows.md",
-    "path": "/content/post-3004-in-shadows.md",
-    "category": "independent-fiction",
-    "genre": "Fiction",
-    "director": "",
-    "origin": "Kenya",
-    "duration": "23 mins",
-    "client": ""
-  },
-  {
     "id": 3003,
     "title": "Mother’s Song",
     "date": "2012-01-01",
@@ -420,24 +405,9 @@
     "client": ""
   },
   {
-    "id": 3002,
-    "title": "VOICES from the Inside",
-    "date": "2020-01-01",
-    "type": "post",
-    "slug": "voices-from-the-inside",
-    "fileName": "post-3002-voices-from-the-inside.md",
-    "path": "/content/post-3002-voices-from-the-inside.md",
-    "category": "independent-non-fiction",
-    "genre": "Hybrid Series",
-    "director": "",
-    "origin": "Kenya",
-    "duration": "17 mins",
-    "client": ""
-  },
-  {
     "id": 3001,
     "title": "a fork, a spoon & a KNIGHT",
-    "date": "2014-01-01",
+    "date": "2024-03-01",
     "type": "post",
     "slug": "a-fork-a-spoon-a-knight",
     "fileName": "post-3001-a-fork-a-spoon-a-knight.md",
@@ -478,7 +448,8 @@
     "genre": "Drama Short",
     "director": "Zipporah Kimundu",
     "cast": "Joseph Gachanja, Cindy Kahuha, Nungari Kang'ethe",
-    "origin": "Kenya"
+    "origin": "Kenya",
+    "objectFit": "contain"
   },
   {
     "id": 2001,

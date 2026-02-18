@@ -24,7 +24,7 @@ export default function Team() {
                                 <div className="member-image-wrapper">
                                     <motion.div className="member-image" layoutId={`image-${member.id}`}>
                                         {member.image ? (
-                                            <img src={`/uploads/${member.image}`} alt={member.name} />
+                                            <img src={`/uploads/${member.image}`} alt={member.name} loading="lazy" decoding="async" width="180" height="180" />
                                         ) : (
                                             <div className="placeholder-avatar"></div>
                                         )}

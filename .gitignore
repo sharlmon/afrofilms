@@ -1,0 +1,38 @@
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# WordPress & Legacy
+wp-admin/
+wp-includes/
+wp-content/
+*.php
+xmlrpc.php
+license.txt
+readme.html
+
+# Large Archives & Databases
+*.zip
+*.tar.gz
+*.sql
+*.rar
+*.7z
+content/
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

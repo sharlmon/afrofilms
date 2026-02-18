@@ -33,22 +33,21 @@ export default function Community() {
         {
             id: "04",
             title: "Prison Film Clubs",
-            desc: "A Pilot Project at the Nairobi West Prison in partnership with the Kenyan Prisons Services. Providing Creative and Technical Training for inmates to create pioneer ‘Film Clubs’.",
-            image: "/uploads/prison.jpg"
+            desc: "A Pilot Project at the Nairobi West Prison in partnership with the Kenyan Prisons Services. Providing Creative and Technical Training for inmates to create pioneer ‘Film Clubs’."
         }
     ];
 
     return (
         <div className="training-page">
-            <SEO title="Community & Industrial Building" description="Giving back through film. Our initiatives include empowering refugee girls and prison film clubs." />
+            <SEO title="Community and Industry" description="Giving back through film. Our initiatives include empowering refugee girls and prison film clubs." />
             <div className="page-bg" style={{ backgroundImage: `url(${TRAINING_IMAGE})` }}></div>
             <div className="page-overlay"></div>
 
             <div className="content-container relative z-10 pt-32 pb-32">
                 <header className="header text-center mb-32 animate-fade-in relative pt-20">
                     <h1 className="text-6xl md:text-8xl font-heading text-white mb-6 leading-tight relative z-10">
-                        Community & <br />
-                        <span className="text-gold">Industrial Building</span>
+                        Community and <br />
+                        <span className="text-gold">Industry</span>
                     </h1>
                     <h2 className="text-4xl md:text-6xl font-heading text-stroke mb-12 relative z-10 opacity-70">
                         Cinema for Change.

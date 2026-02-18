@@ -60,9 +60,9 @@ export default function Contact() {
                             <div className="card-icon">📍</div>
                             <h3 className="card-title">Visit Us</h3>
                             <div className="card-body">
-                                <p>142 Raphta Road,<br />Westlands Nairobi, Kenya</p>
+                                <p>Bekim House, Level 1<br />Nairobi, Kenya</p>
                             </div>
-                            <a href="https://maps.google.com/?q=142+Raphta+Road,+Westlands+Nairobi,+Kenya" target="_blank" rel="noopener noreferrer" className="card-link">
+                            <a href="https://maps.app.goo.gl/eTxi7PMegZpt7aPs8" target="_blank" rel="noopener noreferrer" className="card-link">
                                 Get Directions <span className="arrow">→</span>
                             </a>
                         </div>
@@ -80,18 +80,7 @@ export default function Contact() {
                             </a>
                         </div>
 
-                        {/* Call Card */}
-                        <div className="hub-card glass group">
-                            <div className="card-icon">📞</div>
-                            <h3 className="card-title">Call Us</h3>
-                            <div className="card-body">
-                                <p>Mon - Fri, 9am - 5pm EAT</p>
-                                <a href="tel:+254720100167" className="highlight-link">+254 720 100 167</a>
-                            </div>
-                            <a href="tel:+254720100167" className="card-link">
-                                Call Now <span className="arrow">→</span>
-                            </a>
-                        </div>
+
                     </div>
 
                     {/* Contact Form */}

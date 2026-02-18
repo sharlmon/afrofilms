@@ -29,7 +29,7 @@ export default function MainLayout() {
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
             <Link to="/team">Team</Link>
-            <Link to="/about#services">Services</Link>
+            <Link to="/services">Services</Link>
             <Link to="/works">Portfolio</Link>
             <Link to="/press">Press</Link>
             <Link to="/community">Community</Link>
@@ -80,7 +80,7 @@ export default function MainLayout() {
 
           <div className="footer-col">
             <h4>Contact</h4>
-            <p>142 Raphta Road, Westlands, Nairobi, Kenya</p>
+            <p>Bekim House, Level 1, Nairobi Kenya</p>
             <p><a href="mailto:admin@afrofilmsinternational.com">admin@afrofilmsinternational.com</a></p>
             <p><a href="tel:+254720100167">+254 720100167</a></p>
           </div>

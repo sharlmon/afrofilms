@@ -83,7 +83,7 @@ export default function Press() {
             publication: "Good Pitch",
             title: "Good Pitch Kenya 2020 Selected Projects",
             link: "https://goodpitch.org/events/gp2020ke?fbclid=IwAR0PDfjo-Xp3_xqHSCgDRNyDdy5C3R5RQVzaFdkjIPW9KQyId4clf5ybVfk",
-            desc: "Selection for the prestigious Good Pitch impact documentary forum."
+            desc: "Selection of 'Widow Champion' and 'Our Land, Our Freedom' for the prestigious Good Pitch impact documentary forum."
         },
         {
             year: "2019",
@@ -97,28 +97,28 @@ export default function Press() {
             publication: "Sheffield DocFest",
             title: "MeetMarket Selected Projects",
             link: "https://sheffdocfest.com/articles/572-selected-meetmarket-and-alternate-realities-market-projects-2018",
-            desc: "Project selection for the specialized marketplace."
+            desc: "Selection of 'Widow Champion' for the specialized marketplace."
         },
         {
             year: "2016",
             publication: "Variety",
             title: "Durban FilmMart Announces Pic Prizes",
             link: "https://variety.com/2016/film/festivals/durban-film-mart-announces-pic-prizes-1201799908/",
-            desc: "Coverage of awards and pivotal moments at DFM."
+            desc: "Coverage of awards for 'Testament' (early title for 'Our Land, Our Freedom') at DFM."
         },
         {
             year: "Archive",
             publication: "Documentary.org",
             title: "Testament (Working Title) Project",
             link: "https://www.documentary.org/project/testament-working-title",
-            desc: "Feature on the documentary project development."
+            desc: "Feature on 'Testament' (early title for 'Our Land, Our Freedom') project development."
         },
         {
             year: "Archive",
             publication: "Durban FilmMart",
             title: "Press Office Article",
             link: "http://www.durbanfilmmart.co.za/press-office/article?news=202",
-            desc: "Official press release from the Durban FilmMart."
+            desc: "Official press release regarding 'Testament' award at Durban FilmMart."
         }
     ];
 
@@ -134,9 +134,7 @@ export default function Press() {
 
                 {/* Featured Section */}
                 <section className="mb-24">
-                    <div className="section-header mb-12 border-b border-white/10 pb-4">
-                        <h2 className="text-3xl font-heading text-white">Our Land, Our Freedom <span className="text-gold text-xl ml-2 font-sans tracking-widest uppercase">Sheffield 2024</span></h2>
-                    </div>
+
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {featuredPress.map((item, index) => (

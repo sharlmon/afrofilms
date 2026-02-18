@@ -15,15 +15,15 @@ const FALLBACK_IMAGES = [
 ];
 
 const CATEGORIES = {
-    'featured-documentaries': 'Featured Documentaries',
-    'independent-fiction': 'Independent Fiction',
-    'independent-non-fiction': 'Independent Non-Fiction',
+    'featured-documentaries': 'Feature Films',
+    'short-films': 'Short Films',
     'commissioned-projects': 'Commissioned Projects'
 };
 
 export default function Works() {
     const [works, setWorks] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [activeCategory, setActiveCategory] = useState(null);
 
     useEffect(() => {
         fetch('/content_manifest.json')
@@ -85,37 +85,98 @@ export default function Works() {
 
     // Group works by category
     const groupedWorks = works.reduce((acc, work) => {
-        // Fallback to 'featured-documentaries' if no category is set
-        const category = work.category || 'featured-documentaries';
+        let category = work.category || 'featured-documentaries';
+
+        // Map old categories to new 'short-films' category
+        if (category === 'independent-fiction' || category === 'independent-non-fiction') {
+            category = 'short-films';
+        }
+
         if (!acc[category]) acc[category] = [];
         acc[category].push(work);
         return acc;
     }, {});
 
+    const categoriesList = Object.entries(CATEGORIES);
+
+    const handleCategoryClick = (categoryKey) => {
+        setActiveCategory(categoryKey);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
         <div className="works-page">
-            <SEO title="Portfolio" description="Curated Excellence. Explore our library of feature films, documentaries, and training initiatives." />
+            <SEO title="Portfolio" description="Explore our library of feature films, documentaries, and training initiatives." />
+
             <header className="page-header container">
                 <div className="header-content animate-fade-in">
                     <span className="section-subtitle text-gold">Our Portfolio</span>
-                    <h1 className="page-title">Curated <span className="text-stroke">Excellence</span></h1>
+                    <h1 className="page-title">
+                        {activeCategory ? CATEGORIES[activeCategory] : <span className="text-stroke">Select Category</span>}
+                    </h1>
                 </div>
             </header>
 
-            <div className="container">
-                {Object.entries(CATEGORIES).map(([key, label]) => {
-                    const items = groupedWorks[key];
-                    if (!items || items.length === 0) return null;
+            <div className="container min-h-[60vh]">
+                {/* Category Selection View */}
+                {!activeCategory && (
+                    <div className="category-selection-grid">
+                        {categoriesList.map(([key, label]) => {
+                            const items = groupedWorks[key];
+                            // Use the first item's image as the category cover, or a fallback
+                            const coverImage = items && items.length > 0 ? items[0].image : FALLBACK_IMAGES[0];
 
-                    return (
-                        <section key={key} className="category-section animate-on-scroll">
-                            <h2 className="category-title">{label}</h2>
-                            <div className="works-grid">
-                                {items.map((post, i) => <WorkCard key={post.id} post={post} index={i} />)}
-                            </div>
-                        </section>
-                    );
-                })}
+                            if (!items || items.length === 0) return null;
+
+                            return (
+                                <div key={key} className="category-card group" onClick={() => handleCategoryClick(key)}>
+                                    <div className="img-wrapper category-img-wrapper">
+                                        <img src={coverImage} alt={label} className="work-img" />
+                                        <div className="img-overlay category-overlay">
+                                            <span className="view-btn">View</span>
+                                        </div>
+                                    </div>
+                                    <h2 className="category-card-title">{label}</h2>
+                                    <span className="project-count">{items.length} Projects</span>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
+
+                {/* Projects Grid View */}
+                {activeCategory && (
+                    <div className="animate-fade-in">
+                        {/* Navigation Tabs */}
+                        <div className="category-tabs mb-12 flex flex-wrap gap-4 justify-center">
+                            <button
+                                className="back-btn"
+                                onClick={() => setActiveCategory(null)}
+                            >
+                                ← All Categories
+                            </button>
+                            {categoriesList.map(([key, label]) => {
+                                if (!groupedWorks[key]?.length) return null;
+                                return (
+                                    <button
+                                        key={key}
+                                        className={`tab-btn ${activeCategory === key ? 'active' : ''}`}
+                                        onClick={() => setActiveCategory(key)}
+                                    >
+                                        {label}
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {/* Projects Grid */}
+                        <div className="works-grid">
+                            {groupedWorks[activeCategory]?.map((post, i) => (
+                                <WorkCard key={post.id} post={post} index={i} />
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
 
             <section className="partners section-padding">
@@ -138,11 +199,11 @@ export default function Works() {
                     min-height: 100vh;
                 }
                 .page-header {
-                    padding: 8rem 0 6rem;
+                    padding: 8rem 0 4rem;
                     text-align: center;
                 }
                 .page-title {
-                    font-size: clamp(4rem, 8vw, 7rem);
+                    font-size: clamp(3rem, 6vw, 5rem);
                     line-height: 0.9;
                     font-family: var(--font-heading);
                     text-transform: uppercase;
@@ -162,19 +223,85 @@ export default function Works() {
                     font-weight: 600;
                 }
 
-                /* CATEGORIES */
-                .category-section {
-                    margin-bottom: 8rem;
+                /* Category Selection Styles */
+                .category-selection-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 2rem;
+                    margin-bottom: 4rem;
                 }
-                .category-title {
+                .category-card {
+                    cursor: pointer;
+                    text-align: center;
+                }
+                .category-img-wrapper {
+                    aspect-ratio: 4/5; /* Portrait aspect for categories */
+                    margin-bottom: 1.5rem;
+                }
+                .category-card-title {
+                    font-family: var(--font-heading);
                     font-size: 2rem;
                     color: #fff;
-                    font-family: var(--font-heading);
                     text-transform: uppercase;
+                    margin-bottom: 0.5rem;
+                    transition: color 0.3s;
+                }
+                .category-card:hover .category-card-title {
+                    color: var(--color-primary);
+                }
+                .project-count {
+                    color: var(--color-text-muted);
+                    font-size: 0.9rem;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                }
+                .category-overlay {
+                    background: rgba(0,0,0,0.4);
+                }
+                .category-card:hover .category-overlay {
+                    background: rgba(0,0,0,0.2);
+                }
+
+                /* Tabs */
+                .category-tabs {
                     border-bottom: 1px solid rgba(255,255,255,0.1);
-                    padding-bottom: 1rem;
-                    margin-bottom: 3rem;
-                    letter-spacing: 0.05em;
+                    padding-bottom: 2rem;
+                }
+                .tab-btn {
+                    background: transparent;
+                    border: 1px solid rgba(255,255,255,0.2);
+                    color: #fff;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 100px;
+                    text-transform: uppercase;
+                    font-size: 0.8rem;
+                    letter-spacing: 0.1em;
+                    transition: all 0.3s;
+                    cursor: pointer;
+                }
+                .tab-btn:hover {
+                    border-color: var(--color-primary);
+                    color: var(--color-primary);
+                }
+                .tab-btn.active {
+                    background: var(--color-primary);
+                    border-color: var(--color-primary);
+                    color: #000;
+                    font-weight: 600;
+                }
+                .back-btn {
+                    background: transparent;
+                    border: none;
+                    color: var(--color-text-muted);
+                    text-transform: uppercase;
+                    font-size: 0.8rem;
+                    letter-spacing: 0.1em;
+                    padding: 0.75rem 1.5rem;
+                    cursor: pointer;
+                    transition: color 0.3s;
+                }
+                .back-btn:hover {
+                    color: #fff;
                 }
 
                 /* GRID LAYOUT */
@@ -187,6 +314,9 @@ export default function Works() {
                     .works-grid {
                         grid-template-columns: 1fr;
                         gap: 3rem;
+                    }
+                    .page-title {
+                        font-size: 2.5rem;
                     }
                 }
 
@@ -218,7 +348,7 @@ export default function Works() {
                     transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
                     filter: saturate(0.9);
                 }
-                .work-card-link:hover .work-img {
+                .work-card-link:hover .work-img, .category-card:hover .work-img {
                     transform: scale(1.05);
                     filter: saturate(1.1);
                 }
@@ -252,7 +382,7 @@ export default function Works() {
                     transform: scale(0.8);
                     transition: all 0.4s ease;
                 }
-                .work-card-link:hover .view-btn {
+                .work-card-link:hover .view-btn, .category-card:hover .view-btn {
                     opacity: 1;
                     transform: scale(1);
                     background: var(--color-primary);
@@ -328,6 +458,7 @@ function WorkCard({ post }) {
                         src={post.image}
                         alt={post.title}
                         className="work-img"
+                        style={{ objectFit: post.objectFit || 'cover' }}
                         loading="lazy"
                         onError={(e) => {
                             if (!e.target.src.includes('Main-Banner.jpg')) {

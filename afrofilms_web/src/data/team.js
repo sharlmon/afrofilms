@@ -14,7 +14,7 @@ export const team = [
     {
         id: "15459",
         name: "Wanjiru Kimundu",
-        role: "Production Coordinator",
+        role: "Producer",
         image: "wanjiru.jpg",
         bio: [
             "Wanjiru is the in-house Producer and Fixer at Afrofilms International. She has over 10 years experience in the production field working in different capacities including: The AD Department, Production Coordinator, Production Manager and a Live Events Coordinator for the BBC.",
@@ -22,18 +22,12 @@ export const team = [
             "In 2019, she produced a TVC ‘Educare’ for Standard Chartered Bank, a 6-part short Non-fiction Film Series for the British Council and was the production coordinator for both a 6-part series for SCB’s Business Banking Campaign and a 4-part series of SCB’s Progressive Africa Campaign."
         ]
     },
-    {
-        id: "15458",
-        name: "Betty Nabangala",
-        role: "Residency Curator",
-        image: imageMap["15458"],
-        bio: ["Betty curates The Terrace Residency, fostering a space for artists to explore and create. She is passionate about art as a catalyst for community building."]
-    },
+
     {
         id: "15468",
         name: "Steve Ruiyi",
-        role: "Cameraman",
-        image: "steve.jpg",
+        role: "Director of Photography",
+        image: "steve2.jpg.jpeg",
         bio: [
             "Steve has worked for over 10 years as Director of Photography/Cameraman on T.V shows, Documentaries and Features Films. He has shot numerous Documentaries in Kenya, South Africa, Mozambique, Senegal, Zambia, Brazil, Rwanda, Uganda and Swaziland including: UN Free and Equal - 2018- 2019, Permanent Persistent Poison - World Wildlife fund 2018, Wash - BBC media action 2017, The last warriors-produced by Made in Copenhagen – 2016, Train to win by sport brand Australia - 2012, Women of Blue economy- International Committee for the Development Peoples.",
             "Steve has also shot Documentaries for: AWID, USAID, Save the Children, British Council, Safaricom and Standard Chartered Bank. He has been the DOP on numerous T.V shows including, Popo T.V drama, commissioned by Zuku 2015, Parasites T.V drama-Mnet, Dramas of life-NTV, Waridi-Mnet, Seeds of gold-NTV, and Africa Rising-Mnet.",
@@ -57,7 +51,7 @@ export const team = [
     {
         id: "15470",
         name: "John Baptist Gichengo",
-        role: "Sound Recordist / Camera Assistant",
+        role: "Sound Recordist",
         image: imageMap["15470"],
         bio: [
             "John Baptist Gichengo is a Kenyan sound recordist and camera assistant with over four years of experience working across documentary, broadcast, and branded content productions. Active in the industry since 2020, he has contributed to both local and international projects, supporting high-quality storytelling through precise sound capture and dependable camera support.",
@@ -76,10 +70,10 @@ export const team = [
     },
     {
         id: "new-2",
-        name: "Ivy B",
+        name: "Ivy B Nakhadu",
         role: "Production Assistant",
-        image: null,
-        bio: ["Ivy keeps the production running smoothly, handling the essential details that make a shoot successful."]
+        image: "ivy.jpg",
+        bio: ["I’m a versatile production professional with experience across film, television, and live broadcast in East Africa and beyond. From audience handling on BBC Sema Kenya and 77 Percent – Deutsche Welle to behind-the-scenes logistics with Afro Films International and On Screen Productions, I’ve built a reputation for being calm, prepared, and deeply reliable on set. Whether managing crew schedules, wrangling live audiences, or coordinating real-time resources, I bring clear communication, grounded energy, and a genuine love for collaborative storytelling. With a background in both production and hospitality, I thrive where creativity meets chaos—and I always show up ready to deliver."]
     },
     {
         id: "new-3",
