@@ -6,16 +6,9 @@ import ScrollToTop from './components/ScrollToTop';
 import './index.css';
 
 // Lazy Load Pages
-const Home = lazy(() => import('./pages/Home'));
-const Works = lazy(() => import('./pages/Works'));
-const Press = lazy(() => import('./pages/Press'));
-const Team = lazy(() => import('./pages/Team'));
-const Community = lazy(() => import('./pages/Community'));
-const Content = lazy(() => import('./pages/Content'));
-const About = lazy(() => import('./pages/About'));
-const Services = lazy(() => import('./pages/Services'));
-const Contact = lazy(() => import('./pages/Contact'));
+const SinglePage = lazy(() => import('./pages/SinglePage'));
 const TeamMember = lazy(() => import('./pages/TeamMember'));
+const Content = lazy(() => import('./pages/Content'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Loading Fallback
@@ -38,15 +31,8 @@ export default function App() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<MainLayout />}>
-              <Route index element={<Home />} />
-              <Route path="works" element={<Works />} />
-              <Route path="press" element={<Press />} />
-              <Route path="team" element={<Team />} />
+              <Route index element={<SinglePage />} />
               <Route path="team/:id" element={<TeamMember />} />
-              <Route path="community" element={<Community />} />
-              <Route path="about" element={<About />} />
-              <Route path="services" element={<Services />} />
-              <Route path="contact" element={<Contact />} />
               <Route path="404" element={<NotFound />} />
               {/* Default catch-all for dynamic slugs */}
               <Route path=":slug" element={<Content />} />
@@ -59,4 +45,5 @@ export default function App() {
     </HelmetProvider>
   );
 }
+
 

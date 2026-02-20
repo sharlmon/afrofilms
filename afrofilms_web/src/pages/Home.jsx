@@ -12,11 +12,48 @@ export default function Home() {
 
 
 
-    // Partners Data
-    const partners = [
-        "1362", "1415", "1416", "1424", "1443", "1441", "1414", "1418",
-        "1439", "1449", "1433", "1423", "1437", "1419", "1427", "1431", "1445"
+    // Funders / Clients
+    const funders = [
+        { src: "/uploads/2020/08/british-council.png", name: "British Council" },
+        { id: "1415", name: "HIAS" },
+        { id: "1416", name: "Maisha Film Lab" },
+        { id: "1424", name: "Standard Chartered" },
+        { id: "1443", name: "Safaricom" },
+        { id: "1441", name: "TBWA" },
+        { id: "1414", name: "Cocolili" },
+        { id: "1418", name: "mLab" },
+        { id: "1439", name: "Talking Film" },
+        { id: "1449", name: "Radio Film" },
+        { id: "1433", name: "Action Horizons" },
+        { id: "1423", name: "Six Toes" },
+        { id: "1427", name: "TFI" },
+        { id: "1431", name: "USS" },
+        { id: "1445", name: "Tope Mall Africa" },
     ];
+
+    // Film Festival Laurels
+    const festivals = [
+        { src: "/uploads/festivals/2025 HSDFF LAURELS -BLK.png", name: "Hot Springs Documentary Film Festival 2025" },
+        { src: "/uploads/festivals/Athena FilmFest-2018-logo-barnardlogo transparent.png", name: "Athena Film Festival" },
+        { src: "/uploads/festivals/DCDOX-Mini-Laurel-2025-Black.png", name: "DC/DOX Film Festival 2025" },
+        { src: "/uploads/festivals/HD25_OFF_SEL_BLACK.png", name: "Hot Docs 2025" },
+        { src: "/uploads/festivals/Laurel 2025.png", name: "Afrikanisches Filmfestival Hamburg 2025" },
+        { src: "/uploads/festivals/Laurel_AM-FM LAUREL 1.png", name: "African Movie Festival in Manitoba 2025" },
+        { src: "/uploads/festivals/Laurels - Black.png", name: "NBO Film Festival 2025" },
+        { src: "/uploads/festivals/SIFF_2025DocFest_Laurel_OfficialSelection_Black.png", name: "SIFF DocFest 2025" },
+        { src: "/uploads/festivals/ZIFF 2025_OFFICIAL SELECTION LAUREL 1.png", name: "ZIFF Official Selection 2025" },
+    ];
+
+    // Resolve image sources
+    const resolve = (list) => list
+        .map(p => ({
+            name: p.name,
+            src: p.src || (p.id && imageMap[p.id] ? `/uploads/${imageMap[p.id]}` : null),
+        }))
+        .filter(p => p.src);
+
+    const resolvedFunders = resolve(funders);
+    const resolvedFestivals = resolve(festivals);
 
     return (
         <>
@@ -38,12 +75,14 @@ export default function Home() {
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.5, duration: 0.8 }}
                         >
-                            <h1 className="hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', lineHeight: '1.2' }}>
-                                A Global Film Collective and Production Company based in Kenya
+                            <h1 className="hero-title" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', lineHeight: '1.25', textTransform: 'uppercase', letterSpacing: '0.04em', maxWidth: '800px', margin: '0 auto' }}>
+                                A Film / TV Production Company<br />
+                                & Creative Collective<br />
+                                <span style={{ fontSize: '0.75em', fontWeight: '400', letterSpacing: '0.08em', display: 'block', marginTop: '0.4em' }}>Based in Nairobi & Kilifi, Kenya</span>
                             </h1>
+                            <p className="hero-subtitle">Connect. Create. Captivate.</p>
                             <div className="hero-actions">
-                                <Link to="/works" className="btn btn-primary">View Our Work</Link>
-                                <Link to="/about" className="btn btn-outline">Our Story</Link>
+                                <button onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} className="btn btn-primary">ABOUT US</button>
                             </div>
                         </motion.div>
                     </div>
@@ -98,14 +137,26 @@ export default function Home() {
                 {/* Partners Section */}
                 <section className="partners section-padding">
                     <div className="container">
-                        <h2 className="section-title center-text" style={{ color: '#000' }}>Our Clients & Partners</h2>
+                        <span className="partners-label">Trusted By</span>
+                        <h2 className="partners-heading">Our Clients & Partners</h2>
+
+                        {/* Funders Row */}
+                        <h3 className="partners-row-label">Funders</h3>
                         <div className="partners-grid">
-                            {partners.map((id, index) => (
-                                imageMap[id] && (
-                                    <div key={index} className="partner-logo">
-                                        <img src={`/uploads/${imageMap[id]}`} alt="Partner Logo" />
-                                    </div>
-                                )
+                            {resolvedFunders.map(({ src, name }, index) => (
+                                <div key={index} className="partner-card">
+                                    <img src={src} alt={name} />
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Festivals Row */}
+                        <h3 className="partners-row-label" style={{ marginTop: '2rem' }}>Festivals</h3>
+                        <div className="partners-grid">
+                            {resolvedFestivals.map(({ src, name }, index) => (
+                                <div key={index} className="partner-card">
+                                    <img src={src} alt={name} />
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -129,12 +180,13 @@ export default function Home() {
                         }
                         .hero-subtitle {
                             color: var(--color-primary);
-                            letter-spacing: 0.3em;
+                            letter-spacing: 0.35em;
                             text-transform: uppercase;
-                            font-size: 1rem;
+                            font-size: 1.1rem;
                             display: block;
-                            margin-bottom: 1.5rem;
-                            font-weight: 600;
+                            margin-top: 1.25rem;
+                            margin-bottom: 2rem;
+                            font-weight: 500;
                             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
                         }
                         .hero-title {
@@ -258,31 +310,71 @@ export default function Home() {
                         }
 
                         .partners {
-                            background: #fff;
-                            color: #000;
+                            background: #0a0a0a;
                             text-align: center;
+                            padding: clamp(4rem, 8vw, 7rem) 0;
+                        }
+                        .partners-label {
+                            display: block;
+                            text-transform: uppercase;
+                            letter-spacing: 0.2em;
+                            font-size: 0.8rem;
+                            color: var(--color-primary);
+                            font-weight: 600;
+                            margin-bottom: 0.75rem;
+                        }
+                        .partners-heading {
+                            text-align: center;
+                            margin-bottom: 3rem;
+                            font-size: clamp(1.5rem, 3vw, 2.25rem);
+                            color: #fff;
+                        }
+                        .partners-row-label {
+                            text-align: center;
+                            text-transform: uppercase;
+                            letter-spacing: 0.15em;
+                            font-size: 0.85rem;
+                            color: var(--color-primary);
+                            font-weight: 600;
+                            margin-bottom: 1rem;
+                            position: relative;
+                        }
+                        .partners-grid {
+                            display: grid;
+                            grid-template-columns: repeat(8, 1fr);
+                            gap: 0.75rem;
+                            max-width: 1100px;
+                            margin: 0 auto;
+                            padding: 0 0.5rem;
+                        }
+                        .partner-card {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 0.75rem 0.5rem;
+                            background: rgba(255,255,255, 0.95);
+                            border-radius: 6px;
+                            border: 1px solid rgba(255,255,255,0.1);
+                            transition: all 0.35s ease;
+                            aspect-ratio: 1;
+                        }
+                        .partner-card:hover {
+                            transform: translateY(-3px);
+                            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
+                            border-color: rgba(212, 175, 55, 0.3);
+                        }
+                        .partner-card img {
+                            max-width: 90%;
+                            max-height: 90%;
+                            object-fit: contain;
+                            transition: transform 0.3s ease;
+                        }
+                        .partner-card:hover img {
+                            transform: scale(1.08);
                         }
                         .center-text {
                             text-align: center;
                             margin-bottom: 4rem;
-                        }
-                        .partners-grid {
-                            display: grid;
-                            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
-                            gap: 2rem;
-                            align-items: center;
-                            justify-items: center;
-                            padding: 0 2rem;
-                        }
-                        .partner-logo img {
-                            max-width: 100px;
-                            max-height: 60px;
-                            object-fit: contain;
-                            opacity: 1;
-                            transition: transform 0.3s ease;
-                        }
-                        .partner-logo img:hover {
-                            transform: scale(1.1);
                         }
                         
                         .text-stroke {
@@ -331,17 +423,14 @@ export default function Home() {
                                 margin-bottom: 1.5rem;
                             }
                             .partners-grid {
-                                grid-template-columns: repeat(3, 1fr);
-                                gap: 1.5rem;
-                                padding: 0 1rem;
+                                grid-template-columns: repeat(4, 1fr);
+                                gap: 0.6rem;
                             }
-                            .partner-logo img {
-                                max-width: 70px;
-                                max-height: 45px;
+                            .partner-card {
+                                padding: 0.6rem 0.5rem;
                             }
-                            .center-text {
-                                margin-bottom: 2.5rem;
-                                font-size: 1.5rem;
+                            .partners-heading {
+                                margin-bottom: 2rem;
                             }
                         }
 
@@ -353,12 +442,11 @@ export default function Home() {
                                 font-size: 1.75rem !important;
                             }
                             .partners-grid {
-                                grid-template-columns: repeat(2, 1fr);
-                                gap: 1rem;
+                                grid-template-columns: repeat(3, 1fr);
+                                gap: 0.5rem;
                             }
-                            .partner-logo img {
-                                max-width: 60px;
-                                max-height: 40px;
+                            .partner-card {
+                                padding: 0.5rem;
                             }
                         }
                     `}</style>

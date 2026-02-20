@@ -77,11 +77,6 @@ export default function Works() {
         </div>
     );
 
-    // Partners Data
-    const partners = [
-        "1362", "1415", "1416", "1424", "1443", "1441", "1414", "1418",
-        "1439", "1449", "1433", "1423", "1437", "1419", "1427", "1431", "1445"
-    ].map(id => imageMap[id] ? `/uploads/${imageMap[id]}` : null).filter(Boolean);
 
     // Group works by category
     const groupedWorks = works.reduce((acc, work) => {
@@ -179,18 +174,7 @@ export default function Works() {
                 )}
             </div>
 
-            <section className="partners section-padding">
-                <div className="container">
-                    <h2 className="section-subtitle center-text" style={{ color: '#666', marginBottom: '3rem' }}>Trusted By</h2>
-                    <div className="partners-grid">
-                        {partners.map((logo, index) => (
-                            <div key={index} className="partner-logo">
-                                <img src={logo} alt="Partner Logo" loading="lazy" />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+
 
             <style>{`
                 .works-page {
@@ -418,32 +402,7 @@ export default function Works() {
                     color: var(--color-primary);
                 }
 
-                /* Partners */
-                .partners {
-                    border-top: 1px solid rgba(255,255,255,0.05);
-                    padding: 6rem 0;
-                    background: #050505;
-                }
-                .center-text { text-align: center; }
-                .partners-grid {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 2rem 3rem;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 0 2rem;
-                }
-                .partner-logo img {
-                    max-width: 90px;
-                    max-height: 50px;
-                    object-fit: contain;
-                    filter: none;
-                    opacity: 1;
-                    transition: transform 0.4s ease;
-                }
-                .partner-logo img:hover {
-                    transform: scale(1.1);
-                }
+
             `}</style>
         </div>
     );

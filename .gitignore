@@ -27,6 +27,9 @@ readme.html
 *.7z
 content/
 
+# Media
+afrofilms_web/public/uploads/
+
 # Editor
 .vscode/
 .idea/

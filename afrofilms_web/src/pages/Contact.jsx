@@ -5,15 +5,39 @@ import SEO from '../components/SEO';
 export default function Contact() {
     const contactImage = imageMap["1236"] ? `/uploads/${imageMap["1236"]}` : null;
 
+    const MAX_MESSAGE_LENGTH = 500;
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState('');
+    const [emailError, setEmailError] = useState('');
+
+    const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+
+        // Enforce character limit on message
+        if (name === 'message' && value.length > MAX_MESSAGE_LENGTH) return;
+
+        // Validate email on change
+        if (name === 'email') {
+            if (value && !isValidEmail(value)) {
+                setEmailError('Please enter a valid email address');
+            } else {
+                setEmailError('');
+            }
+        }
+
+        setFormData({ ...formData, [name]: value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!isValidEmail(formData.email)) {
+            setEmailError('Please enter a valid email address');
+            return;
+        }
+
         setStatus('sending');
 
         // Using FormSubmit.co for serverless form handling
@@ -106,8 +130,10 @@ export default function Contact() {
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
-                                    className="form-input"
+                                    pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                                    className={`form-input ${emailError ? 'input-error' : ''}`}
                                 />
+                                {emailError && <span className="field-error">{emailError}</span>}
                             </div>
                             <div className="form-group">
                                 <textarea
@@ -117,8 +143,14 @@ export default function Contact() {
                                     value={formData.message}
                                     onChange={handleChange}
                                     required
+                                    maxLength={MAX_MESSAGE_LENGTH}
                                     className="form-input"
                                 ></textarea>
+                                <div className="char-counter">
+                                    <span className={formData.message.length >= MAX_MESSAGE_LENGTH ? 'at-limit' : ''}>
+                                        {formData.message.length}
+                                    </span> / {MAX_MESSAGE_LENGTH}
+                                </div>
                             </div>
                             <button type="submit" className="submit-btn" disabled={status === 'sending'}>
                                 {status === 'sending' ? 'Sending...' : 'Send Message'}
@@ -304,6 +336,27 @@ export default function Contact() {
                 textarea.form-input {
                     resize: vertical;
                     min-height: 120px;
+                }
+                .input-error {
+                    border-color: #f87171 !important;
+                }
+                .field-error {
+                    display: block;
+                    color: #f87171;
+                    font-size: 0.8rem;
+                    margin-top: 0.4rem;
+                    padding-left: 0.25rem;
+                }
+                .char-counter {
+                    text-align: right;
+                    font-size: 0.8rem;
+                    color: #666;
+                    margin-top: 0.4rem;
+                    padding-right: 0.25rem;
+                }
+                .char-counter .at-limit {
+                    color: #f87171;
+                    font-weight: 600;
                 }
                 .submit-btn {
                     width: 100%;
