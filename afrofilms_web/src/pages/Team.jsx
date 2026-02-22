@@ -9,8 +9,7 @@ export default function Team() {
             <SEO title="Our Team" description="Meet the creative visionaries behind AfroFilms International." />
             <div className="container pt-24 pb-20">
                 <div className="section-header center mb-16 text-center">
-                    <h1 className="page-title text-5xl md:text-7xl font-heading mb-4 text-white">The Creative <span className="text-gold">Team</span></h1>
-                    <p className="section-desc text-xl text-gray-400">Click on a member to view their portfolio.</p>
+                    <h1 className="page-title text-5xl md:text-7xl font-heading mb-4 text-white">TEAM</h1>
                 </div>
 
                 <div className="team-grid">
@@ -30,7 +29,7 @@ export default function Team() {
                                         )}
                                     </motion.div>
                                 </div>
-                                <div className="member-info mt-6">
+                                <div className="member-info">
                                     <motion.h3 className="text-2xl text-white font-medium mb-2" layoutId={`name-${member.id}`}>{member.name}</motion.h3>
                                     <motion.span className="member-role text-gold tracking-widest text-sm uppercase font-bold" layoutId={`role-${member.id}`}>{member.role}</motion.span>
                                 </div>
@@ -49,66 +48,77 @@ export default function Team() {
                 
                 .team-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                    gap: 3rem;
+                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                    gap: 2.5rem;
                     max-width: 1200px;
                     margin: 0 auto;
                 }
                 
                 .team-card {
-                    padding: 3rem 2rem;
-                    text-align: center;
-                    background: rgba(255,255,255,0.03);
-                    border: 1px solid rgba(255,255,255,0.1);
+                    padding: 1rem;
+                    text-align: left;
+                    background: rgba(255,255,255,0.02);
+                    border: 1px solid rgba(255,255,255,0.05);
                     border-radius: 8px;
                     cursor: pointer;
                     height: 100%;
-                    transition: all 0.3s ease;
+                    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                    position: relative;
+                    overflow: hidden;
                 }
                 
                 .member-image-wrapper {
                     position: relative;
-                    width: 180px;
-                    height: 180px;
+                    width: 100%;
+                    aspect-ratio: 4 / 5;
                     margin: 0 auto;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    background: #111;
                 }
                 
                 .member-image {
                     width: 100%;
                     height: 100%;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    border: 3px solid var(--color-primary);
-                    padding: 4px;
-                    background: transparent;
+                    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
                 }
                 
                 .member-image img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
-                    border-radius: 50%;
                     filter: grayscale(100%);
-                    transition: all 0.4s ease;
+                    transition: all 0.6s ease;
+                }
+                
+                .team-card:hover .member-image {
+                    transform: scale(1.05);
                 }
                 
                 .team-card:hover .member-image img {
                     filter: grayscale(0%);
                 }
+                
                 .team-card:hover {
-                    background: rgba(255,255,255,0.06);
+                    background: rgba(255,255,255,0.05);
                     border-color: var(--color-primary);
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+                }
+                
+                .member-info {
+                    padding-top: 1rem;
                 }
                 
                 .member-role {
                     color: var(--color-primary);
+                    display: block;
+                    margin-top: 0.5rem;
                 }
                 
                 .placeholder-avatar {
                     width: 100%;
                     height: 100%;
-                    background: #333;
-                    border-radius: 50%;
+                    background: linear-gradient(45deg, #111, #222);
                 }
             `}</style>
         </div>

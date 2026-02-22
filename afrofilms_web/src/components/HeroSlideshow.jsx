@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const slide = '/uploads/slide5.jpg';
+const slide = '/uploads/homepage.jpg';
 
 export default function HeroSlideshow() {
     return (

@@ -157,44 +157,6 @@ export default function About() {
                     font-size: 1.2rem;
                 }
 
-                .team-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                    gap: 2rem;
-                }
-                .team-card {
-                    padding: 1.5rem;
-                    text-align: center;
-                    transition: transform 0.3s ease;
-                }
-                .team-card:hover {
-                    transform: translateY(-5px);
-                }
-                .member-image {
-                    width: 150px;
-                    height: 150px;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    margin: 0 auto 1.5rem;
-                    border: 3px solid var(--color-primary);
-                }
-                .member-image img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-                .member-info h3 {
-                    font-size: 1.2rem;
-                    margin-bottom: 0.5rem;
-                }
-                .member-role {
-                    color: var(--color-primary);
-                    font-size: 0.9rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.1em;
-                }
-
-
 
                 .rental-banner-wrapper {
                     max-width: 1000px;

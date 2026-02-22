@@ -8,7 +8,7 @@ import HeroSlideshow from '../components/HeroSlideshow';
 
 export default function Home() {
 
-    const [expanded, setExpanded] = useState(false);
+
 
 
 
@@ -90,49 +90,7 @@ export default function Home() {
 
 
 
-                {/* About Section */}
-                <section className="about-section section-padding">
-                    <div className="container">
-                        <motion.div
-                            className="about-card glassmorphism"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <h2 className="section-title">About Afrofilms</h2>
-                            <div className="about-text">
-                                <p>
-                                    Afrofilms International Ltd is a production company and Film Collective based in Nairobi, Kenya. Founded by Filmmaker Zippy Kimundu in 2013, we aim to improve the quality of Film/TV production in East Africa through creative collaboration.
-                                </p>
 
-                                <AnimatePresence>
-                                    {expanded && (
-                                        <motion.div
-                                            initial={{ height: 0, opacity: 0 }}
-                                            animate={{ height: 'auto', opacity: 1 }}
-                                            exit={{ height: 0, opacity: 0 }}
-                                            className="expanded-content"
-                                        >
-                                            <p>
-                                                Our team consists of highly skilled professionals from Kenya and South Africa with decades of experience used to execute Film and TV projects through collaborative visual storytelling.
-                                            </p>
-                                            <p>
-                                                Clients include The British Council Kenya, Facebook, Universal Studios, Six Toes, TBWA Singapore, Action Horizons, Radio Film UK, Dentsu/iprospect, Talking Film, Maisha Film Lab and Standard Chartered Bank.
-                                            </p>
-                                            <p>
-                                                We also mentor in Film training programs like <a href="https://www.illtellyoumystory.com" target="_blank" rel="noopener noreferrer">illtellyoumystory.com</a> and initiated Film Training Workshops in Kenyan prisons.
-                                            </p>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-
-                                <button onClick={() => setExpanded(!expanded)} className="read-more-btn">
-                                    {expanded ? 'Read Less' : 'Read More'}
-                                </button>
-                            </div>
-                        </motion.div>
-                    </div>
-                </section>
 
                 {/* Partners Section */}
                 <section className="partners section-padding">
@@ -204,47 +162,7 @@ export default function Home() {
 
 
 
-                        /* About Section */
-                        .about-section {
-                            position: relative;
-                            z-index: 2;
-                            /*margin-top: -50px; /* Reduced overlap */
-                        }
-                        .glassmorphism {
-                            background: rgba(20, 20, 20, 0.7);
-                            backdrop-filter: blur(20px);
-                            -webkit-backdrop-filter: blur(20px);
-                            border: 1px solid rgba(255, 255, 255, 0.1);
-                            border-radius: 16px;
-                            padding: 3rem;
-                            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-                        }
-                        .about-text p {
-                            color: #e0e0e0;
-                            line-height: 1.8;
-                            margin-bottom: 1.5rem;
-                            font-size: 1.1rem;
-                        }
-                        .read-more-btn {
-                            background: none;
-                            border: 1px solid var(--color-primary);
-                            color: var(--color-primary);
-                            padding: 0.5rem 1.5rem;
-                            border-radius: 50px;
-                            cursor: pointer;
-                            font-size: 0.9rem;
-                            text-transform: uppercase;
-                            letter-spacing: 0.1em;
-                            transition: all 0.3s ease;
-                            margin-top: 1rem;
-                        }
-                        .read-more-btn:hover {
-                            background: var(--color-primary);
-                            color: #000;
-                        }
-                        .expanded-content {
-                            overflow: hidden;
-                        }
+
 
                         .btn {
                             padding: 1rem 2.5rem;
