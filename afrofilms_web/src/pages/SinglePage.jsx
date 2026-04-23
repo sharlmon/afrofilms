@@ -5,7 +5,7 @@ import About from './About';
 import Works from './Works';
 import Team from './Team';
 import Collective from './Collective';
-import Press from './Press';
+import Gallery from './Gallery';
 import Contact from './Contact';
 
 /* ─── Animated section wrapper ─── */
@@ -137,8 +137,8 @@ export default function SinglePage() {
 
             <SectionDivider variant="dots" />
 
-            <ScrollSection id="press" direction="up">
-                <Press />
+            <ScrollSection id="gallery" direction="up">
+                <Gallery />
             </ScrollSection>
 
             <SectionDivider variant="fade" />

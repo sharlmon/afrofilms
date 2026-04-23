@@ -1,214 +1,137 @@
-import imageMap from '../lib/image_map.json';
 import SEO from '../components/SEO';
 
 export default function About() {
-    // Images
-    const bannerImage = imageMap["1293"] ? `/uploads/${imageMap["1293"]}` : null; // On Set
-
-
-
     return (
         <div className="about-page">
-            <SEO title="About Us" description="A collective of storytellers committed to the African narrative. Established in 2008." />
-            {/* Hero Section */}
-            <section className="about-hero">
-                <div className="hero-bg" style={{ backgroundImage: bannerImage ? `url(${bannerImage})` : 'none' }}></div>
-                <div className="hero-overlay"></div>
-                <div className="container hero-content">
-                    <h1 className="hero-title">We Are <span className="text-gold">AfroFilms</span></h1>
-                    <p className="hero-lead">A collective of storytellers committed to the African narrative.</p>
-                </div>
-            </section>
+            <SEO title="About Us" description="Bold. Authentic. African. Afrofilms International is a women-led production company and creative collective based in Kenya." />
 
-            {/* Mission Section - Redesigned */}
-            <section className="mission section-padding">
-                <div className="container relative">
-                    <div className="mission-card glass-panel relative z-10 p-8 md:p-16">
-                        <div className="grid md:grid-cols-2 gap-12 items-center">
-                            <div className="mission-content">
-                                <span className="section-subtitle">Who We Are</span>
-                                <h2 className="section-title mb-8">
-                                    Women-Led.<br />
-                                    <span className="text-gold">African Voices.</span><br />
-                                    Global Impact.
-                                </h2>
-                            </div>
-                            <div className="mission-text">
-                                <p className="mb-6 text-lg leading-relaxed text-gray-200">
-                                    Afrofilms International is a women-led film production company and creative collective based in Nairobi, Kenya, working to ignite socio-political consciousness and action across continents.
-                                </p>
-                                <p className="mb-6 text-lg leading-relaxed text-gray-200">
-                                    Founded in 2013 by filmmaker Zippy Kimundu, Afrofilms was created to make powerful films through collaboration—strengthening the industry while supporting women and underrepresented communities through skills training and mentorship, while building community by creating spaces beyond the city for multidisciplinary artists to connect, create, and experiment.
-                                </p>
-                                <p className="text-lg leading-relaxed text-gray-200">
-                                    We produce and co-produce independent documentary films, commissioned broadcast content, and creatively driven commercial work. Our experienced team works across Africa, with films that have screened internationally, guiding each project from concept to screen. Afrofilms also offers fixing and production support for international crews filming across the continent.
-                                </p>
-                            </div>
-                        </div>
+            {/* Background Image */}
+            <div className="about-bg-container">
+                <div className="about-bg-image"></div>
+                <div className="about-bg-overlay"></div>
+            </div>
+
+            {/* Content overlay */}
+            <div className="about-content-wrapper">
+                <div className="about-content-inner">
+                    <span className="about-subtitle">ABOUT US</span>
+                    <h1 className="about-logline">
+                        <span className="about-highlight">Bold.</span> Authentic. African.
+                    </h1>
+
+                    <div className="about-text-block">
+                        <p>
+                            Afrofilms International is a women-led production company and creative collective based in Kenya. The company produces high-quality, globally resonant content that ignites socio-political consciousness and action across continents.
+                        </p>
+                        <p>
+                            Specializing in co-productions with local and international filmmakers, Afrofilms creates creatively driven commercial and commissioned work for organizations, corporations, and broadcasters. Across the continent, our team shapes every project from concept to screen, creating socially impactful films grounded in authenticity and meaningful representation.
+                        </p>
+                        <p>
+                            Afrofilms also offers fixing services and full-service production support for international crews filming on the continent, providing high-end equipment and comprehensive logistical coordination.
+                        </p>
+                        <p>
+                            Founded in 2013 by filmmaker Zippy Kimundu, Afrofilms was built through collaboration — strengthening the industry while supporting women and underrepresented communities through skills training and mentorship. The company nurtures creative community by cultivating spaces beyond the city where multidisciplinary artists can connect, experiment, and create.
+                        </p>
                     </div>
-                    {/* Decorative element */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary opacity-10 rounded-full blur-3xl -z-10 transform translate-x-1/2 -translate-y-1/2"></div>
-                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-900 opacity-10 rounded-full blur-3xl -z-10 transform -translate-x-1/2 translate-y-1/2"></div>
                 </div>
-            </section>
-
-
-
-            {/* Team Section Removed and Moved to Team.jsx */}
+            </div>
 
             <style>{`
-                .about-hero {
+                .about-page {
                     position: relative;
-                    height: 60vh;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
                     background: #000;
                     overflow: hidden;
-                }
-                .hero-bg {
-                    position: absolute;
-                    inset: 0;
-                    background-size: cover;
-                    background-position: center 30%;
-                    opacity: 0.6;
-                    transform: scale(1.05);
-                }
-                .hero-overlay {
-                    position: absolute;
-                    inset: 0;
-                    background: rgba(0,0,0,0.7);
-                }
-                .hero-content {
-                    position: relative;
-                    z-index: 2;
-                }
-                .hero-title {
-                    font-size: clamp(3rem, 6vw, 5rem);
-                    margin-bottom: 1rem;
-                }
-                .hero-lead {
-                    font-size: 1.5rem;
-                    color: rgba(255,255,255,0.9);
-                }
-
-                .grid-2 {
-                    display: grid;
-                    grid-template-columns: 1fr 0.8fr;
-                    gap: 4rem;
+                    min-height: 100vh;
+                    display: flex;
+                    flex-direction: column;
                     align-items: center;
+                    justify-content: center;
                 }
-                @media (max-width: 900px) {
-                    .grid-2 {
-                        grid-template-columns: 1fr;
-                    }
+                .about-bg-container {
+                    position: absolute;
+                    inset: 0;
+                    z-index: 0;
                 }
-                
-                .section-subtitle {
-                    color: var(--color-primary);
-                    text-transform: uppercase;
-                    letter-spacing: 0.15em;
-                    font-size: 0.85rem;
-                    margin-bottom: 1rem;
+                .about-bg-image {
+                    position: absolute;
+                    inset: -20px;
+                    background-image: url('/uploads/about1.jpg');
+                    background-size: cover;
+                    background-position: center;
+                    filter: blur(3px);
+                }
+                .about-bg-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: rgba(0, 0, 0, 0.55);
+                    z-index: 1;
+                }
+                .about-content-wrapper {
+                    position: relative;
+                    z-index: 10;
+                    width: 100%;
+                    max-width: 900px;
+                    margin: 0 auto;
+                    padding: 8rem 1.5rem 4rem;
+                    text-align: center;
+                }
+                .about-content-inner {
+                    margin-top: 3rem;
+                }
+                .about-subtitle {
                     display: block;
+                    margin-bottom: 1rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.2em;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    color: var(--color-primary);
                 }
-                .section-title {
-                    font-size: 2.5rem;
-                    margin-bottom: 2rem;
-                    line-height: 1.2;
+                .about-logline {
+                    font-size: clamp(2.8rem, 6vw, 5rem);
+                    font-family: var(--font-heading);
+                    margin-bottom: 3rem;
+                    color: #fff;
+                    text-transform: uppercase;
+                    line-height: 1.1;
+                    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
                 }
-                .mission-content p {
+                .about-highlight {
+                    color: var(--color-primary);
+                }
+                .about-text-block {
+                    text-align: justify;
                     font-size: 1.1rem;
                     line-height: 1.8;
-                    color: var(--color-text-muted);
+                    color: rgba(255, 255, 255, 0.9);
+                    background: rgba(0, 0, 0, 0.4);
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                    padding: 2.5rem;
+                    border-radius: 12px;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                }
+                .about-text-block p {
                     margin-bottom: 1.5rem;
                 }
-                
-                .mission-stat {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 2rem;
-                    padding: 3rem;
-                    border-radius: 8px;
-                }
-                .stat-number {
-                    display: block;
-                    font-size: 3rem;
-                    font-weight: 700;
-                    color: var(--color-primary);
-                }
-                .stat-label {
-                    color: var(--color-text-muted);
-                    font-size: 0.9rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
+                .about-text-block p:last-child {
+                    margin-bottom: 0;
                 }
 
-                .bg-darker {
-                    background: rgba(255,255,255,0.02);
+                @media (max-width: 768px) {
+                    .about-logline {
+                        font-size: 2.5rem;
+                    }
+                    .about-text-block {
+                        padding: 1.5rem;
+                        font-size: 1rem;
+                    }
+                    .about-content-wrapper {
+                        padding: 6rem 1rem 3rem;
+                    }
                 }
-                .center {
-                    text-align: center;
-                    margin-bottom: 4rem;
-                }
-                .section-desc {
-                    color: var(--color-text-muted);
-                    font-size: 1.2rem;
-                }
-
-
-                .rental-banner-wrapper {
-                    max-width: 1000px;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-                .rental-banner {
-                    background: linear-gradient(135deg, rgba(20,20,20,0.9), rgba(5,5,5,0.95));
-                    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-                }
-                .rental-banner::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    height: 1px;
-                    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
-                    opacity: 0.5;
-                }
-                
-                .btn-glow {
-                     position: relative;
-                     border-radius: 2px;
-                     overflow: hidden;
-                }
-                .btn-glow:hover {
-                    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-                }
-                
-                .border-gold {
-                    border: 1px solid rgba(212, 175, 55, 0.15);
-                }
-                .rental-banner:hover {
-                    border-color: rgba(212, 175, 55, 0.3);
-                }
-
-                .btn-outline {
-                    display: inline-block;
-                    border: 1px solid var(--color-primary);
-                    color: var(--color-primary);
-                    padding: 0.75rem 2rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.1em;
-                    border-radius: 4px;
-                    transition: all 0.3s;
-                }
-                .btn-outline:hover {
-                    background: var(--color-primary);
-                    color: #000;
-                }
-             `}</style>
+            `}</style>
         </div>
     );
 }

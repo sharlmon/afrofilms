@@ -13,6 +13,7 @@ export default function Home() {
 
 
     // Funders / Clients
+    // darkCard: true = white/light logo → needs black card background
     const funders = [
         { src: "/uploads/2020/08/british-council.png", name: "British Council" },
         { id: "1415", name: "HIAS" },
@@ -20,37 +21,57 @@ export default function Home() {
         { id: "1424", name: "Standard Chartered" },
         { id: "1443", name: "Safaricom" },
         { id: "1441", name: "TBWA" },
-        { id: "1414", name: "Cocolili" },
-        { id: "1418", name: "mLab" },
-        { id: "1439", name: "Talking Film" },
-        { id: "1449", name: "Radio Film" },
         { id: "1433", name: "Action Horizons" },
         { id: "1423", name: "Six Toes" },
         { id: "1427", name: "TFI" },
         { id: "1431", name: "USS" },
         { id: "1445", name: "Tope Mall Africa" },
+        { src: "/uploads/new_clients/ford_justfilms_white.png", name: "Ford Foundation JustFilms", darkCard: true },
+        { src: "/uploads/new_clients/hotdocs_fund_white.png", name: "Hot Docs Blue Ice Docs Fund", darkCard: true },
+        { src: "/uploads/new_clients/ida_white.jpg", name: "IDA", darkCard: true },
+        { src: "/uploads/new_clients/inmaat_white.svg", name: "Inmaat Foundation", darkCard: true },
+        { src: "/uploads/new_clients/sundance_white.svg", name: "Sundance Institute", darkCard: true },
+        { src: "/uploads/new_clients/sunnyside_white.png", name: "Sunnyside Global Pitch", darkCard: true },
+        { src: "/uploads/new_clients/bbc.jpeg", name: "BBC" },
+        { src: "/uploads/new_clients/facebook.png", name: "Facebook" },
+        { src: "/uploads/new_clients/google.png", name: "Google" },
+        { src: "/uploads/new_clients/jrs.png", name: "JRS" },
+        { src: "/uploads/new_clients/tusk.jpeg", name: "TUSK" },
+        { src: "/uploads/new_clients/universal.jpeg", name: "Universal Studios" },
+        { src: "/uploads/new_clients/state_department.jpeg", name: "US State Department" },
+        { src: "/uploads/new_clients/usaid.png", name: "USAID" },
+        { src: "/uploads/new_clients/vice.png", name: "Vice" },
+        { src: "/uploads/new_clients/olympic_channel.png", name: "Olympic Channel" },
     ];
 
     // Film Festival Laurels
+    // Most laurels are white-on-transparent → darkCard: true
     const festivals = [
-        { src: "/uploads/festivals/2025 HSDFF LAURELS -BLK.png", name: "Hot Springs Documentary Film Festival 2025" },
-        { src: "/uploads/festivals/Athena FilmFest-2018-logo-barnardlogo transparent.png", name: "Athena Film Festival" },
-        { src: "/uploads/festivals/DCDOX-Mini-Laurel-2025-Black.png", name: "DC/DOX Film Festival 2025" },
-        { src: "/uploads/festivals/HD25_OFF_SEL_BLACK.png", name: "Hot Docs 2025" },
-        { src: "/uploads/festivals/Laurel 2025.png", name: "Afrikanisches Filmfestival Hamburg 2025" },
-        { src: "/uploads/festivals/Laurel_AM-FM LAUREL 1.png", name: "African Movie Festival in Manitoba 2025" },
-        { src: "/uploads/festivals/Laurels - Black.png", name: "NBO Film Festival 2025" },
-        { src: "/uploads/festivals/SIFF_2025DocFest_Laurel_OfficialSelection_Black.png", name: "SIFF DocFest 2025" },
-        { src: "/uploads/festivals/ZIFF 2025_OFFICIAL SELECTION LAUREL 1.png", name: "ZIFF Official Selection 2025" },
+        { src: "/uploads/new_festivals/hsdff_2025_white.png", name: "Hot Springs Documentary Film Festival 2025", darkCard: true },
+        { src: "/uploads/festivals/Athena-FilmFest-2018-logo-barnardlogo-transparent.png", name: "Athena Film Festival" },
+        { src: "/uploads/new_festivals/dcdox_2025_white.png", name: "DC/DOX Film Festival 2025", darkCard: true },
+        { src: "/uploads/new_festivals/hd25_off_sel_white.png", name: "Hot Docs 2025", darkCard: true },
+        { src: "/uploads/new_festivals/hamburg_2025.png", name: "Afrikanisches Filmfestival Hamburg 2025", darkCard: true, cover: true },
+        { src: "/uploads/new_festivals/am_fm_2025.png", name: "African Movie Festival in Manitoba 2025" },
+        { src: "/uploads/new_festivals/nbo_white.png", name: "NBO Film Festival 2025", darkCard: true },
+        { src: "/uploads/new_festivals/siff_2025_white.svg", name: "SIFF DocFest 2025", darkCard: true },
+        { src: "/uploads/new_festivals/ziff_2025_4.png", name: "ZIFF Official Selection 2025" },
+        { src: "/uploads/new_festivals/sheffield_white.png", name: "Sheffield DocFest MeetMarket 2024", darkCard: true },
+        { src: "/uploads/new_festivals/aff_pitch_2024_v2.png", name: "AFF Pitch Program 2024" },
+        { src: "/uploads/new_festivals/tribeca_24.png", name: "Tribeca Film Festival 2024", darkCard: true },
+        { src: "/uploads/new_festivals/tribeca_25.svg", name: "Tribeca Film Festival 2025", darkCard: true },
     ];
 
     // Resolve image sources
-    const resolve = (list) => list
-        .map(p => ({
-            name: p.name,
-            src: p.src || (p.id && imageMap[p.id] ? `/uploads/${imageMap[p.id]}` : null),
-        }))
-        .filter(p => p.src);
+    const resolve = (list) =>
+        list
+            .map(p => ({
+                name: p.name,
+                src: p.src || (p.id && imageMap[p.id] ? `/uploads/${imageMap[p.id]}` : null),
+                darkCard: p.darkCard || false,
+                cover: p.cover || false,
+            }))
+            .filter(p => p.src);
 
     const resolvedFunders = resolve(funders);
     const resolvedFestivals = resolve(festivals);
@@ -69,16 +90,15 @@ export default function Home() {
                 {/* Hero Section */}
                 <section className="hero">
                     <HeroSlideshow />
-                    <div className="hero-content container">
+                    <div className="hero-content container" style={{ marginTop: '-18vh' }}>
                         <motion.div
                             initial={{ y: 50, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.5, duration: 0.8 }}
                         >
-                            <h1 className="hero-title" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)', lineHeight: '1.25', textTransform: 'uppercase', letterSpacing: '0.04em', maxWidth: '800px', margin: '0 auto' }}>
-                                A Film / TV Production Company<br />
-                                & Creative Collective<br />
-                                <span style={{ fontSize: '0.75em', fontWeight: '400', letterSpacing: '0.08em', display: 'block', marginTop: '0.4em' }}>Based in Nairobi & Kilifi, Kenya</span>
+                            <h1 className="hero-title" style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2.2rem)', lineHeight: '1.4', textTransform: 'uppercase', letterSpacing: '0.15em', maxWidth: '100%', margin: '0 auto', fontWeight: '400', whiteSpace: 'nowrap' }}>
+                                A FILM PRODUCTION COMPANY & COLLECTIVE<br />
+                                <span style={{ fontSize: '0.9em', fontWeight: '300', letterSpacing: '0.1em', display: 'block', marginTop: '0.8em', color: 'rgba(255,255,255,0.7)', whiteSpace: 'normal' }}>BASED IN NAIROBI & KILIFI, KENYA</span>
                             </h1>
                             <p className="hero-subtitle">Connect. Create. Captivate.</p>
                             <div className="hero-actions">
@@ -96,27 +116,39 @@ export default function Home() {
                 <section className="partners section-padding">
                     <div className="container">
                         <span className="partners-label">Trusted By</span>
-                        <h2 className="partners-heading">Our Clients & Partners</h2>
+                        <h2 className="partners-heading">Clients, Partners &amp; Festivals</h2>
 
-                        {/* Funders Row */}
-                        <h3 className="partners-row-label">Funders</h3>
-                        <div className="partners-grid">
-                            {resolvedFunders.map(({ src, name }, index) => (
-                                <div key={index} className="partner-card">
-                                    <img src={src} alt={name} />
+                        {/* Clients & Partners Strip — light-background logos */}
+                        <h3 className="partners-row-label">Clients &amp; Partners</h3>
+                        <div className="partners-grid partners-grid-sm">
+                        {resolvedFunders.filter(p => !p.darkCard).map(({ src, name, cover }, index) => (
+                                <div key={index} className="partner-card partner-card-sm">
+                                    <img
+                                        src={src}
+                                        alt={name}
+                                        style={cover ? { width: '100%', height: '100%', objectFit: 'cover', maxWidth: '100%', maxHeight: '100%' } : undefined}
+                                    />
                                 </div>
                             ))}
                         </div>
 
-                        {/* Festivals Row */}
-                        <h3 className="partners-row-label" style={{ marginTop: '2rem' }}>Festivals</h3>
-                        <div className="partners-grid">
-                            {resolvedFestivals.map(({ src, name }, index) => (
-                                <div key={index} className="partner-card">
-                                    <img src={src} alt={name} />
+                        {/* Festivals & Laurels Strip — all dark/transparent logos together */}
+                        <h3 className="partners-row-label" style={{ marginTop: '2rem' }}>Festivals &amp; Laurels</h3>
+                        <div className="partners-grid partners-grid-sm partners-grid-dark">
+                        {[
+                            ...resolvedFunders.filter(p => p.darkCard),
+                            ...resolvedFestivals
+                        ].map(({ src, name, cover }, index) => (
+                                <div key={index} className="partner-card partner-card-sm partner-card-dark">
+                                    <img
+                                        src={src}
+                                        alt={name}
+                                        style={cover ? { width: '100%', height: '100%', objectFit: 'cover', maxWidth: '100%', maxHeight: '100%' } : undefined}
+                                    />
                                 </div>
                             ))}
                         </div>
+
                     </div>
                 </section>
 
@@ -140,7 +172,7 @@ export default function Home() {
                             color: var(--color-primary);
                             letter-spacing: 0.35em;
                             text-transform: uppercase;
-                            font-size: 1.1rem;
+                            font-size: 1.4rem;
                             display: block;
                             margin-top: 1.25rem;
                             margin-bottom: 2rem;
@@ -258,28 +290,49 @@ export default function Home() {
                             position: relative;
                         }
                         .partners-grid {
-                            display: grid;
-                            grid-template-columns: repeat(8, 1fr);
-                            gap: 0.75rem;
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            gap: 0.5rem;
                             max-width: 1100px;
                             margin: 0 auto;
                             padding: 0 0.5rem;
+                        }
+                        .partners-grid-sm {
+                            gap: 0.45rem;
+                        }
+                        .partners-grid-dark {
+                            background: rgba(0,0,0,0.3);
+                            border-radius: 10px;
+                            padding: 0.75rem;
+                            border: 1px solid rgba(255,255,255,0.06);
                         }
                         .partner-card {
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            padding: 0.75rem 0.5rem;
-                            background: rgba(255,255,255, 0.95);
-                            border-radius: 6px;
-                            border: 1px solid rgba(255,255,255,0.1);
-                            transition: all 0.35s ease;
-                            aspect-ratio: 1;
+                            padding: 0.6rem 0.5rem;
+                            background: rgba(255,255,255,0.95);
+                            border-radius: 5px;
+                            border: 1px solid rgba(0,0,0,0.08);
+                            transition: all 0.3s ease;
+                            width: 90px;
+                            height: 60px;
+                            flex-shrink: 0;
+                        }
+                        .partner-card-sm {
+                            width: 82px;
+                            height: 54px;
+                            padding: 0.45rem;
+                        }
+                        .partner-card-dark {
+                            background: #000;
+                            border: 1px solid rgba(255,255,255,0.08);
                         }
                         .partner-card:hover {
-                            transform: translateY(-3px);
-                            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
-                            border-color: rgba(212, 175, 55, 0.3);
+                            transform: translateY(-2px);
+                            box-shadow: 0 5px 16px rgba(212, 175, 55, 0.18);
+                            border-color: rgba(212, 175, 55, 0.35);
                         }
                         .partner-card img {
                             max-width: 90%;
@@ -288,7 +341,7 @@ export default function Home() {
                             transition: transform 0.3s ease;
                         }
                         .partner-card:hover img {
-                            transform: scale(1.08);
+                            transform: scale(1.1);
                         }
                         .center-text {
                             text-align: center;
@@ -341,11 +394,11 @@ export default function Home() {
                                 margin-bottom: 1.5rem;
                             }
                             .partners-grid {
-                                grid-template-columns: repeat(4, 1fr);
-                                gap: 0.6rem;
+                                gap: 0.4rem;
                             }
-                            .partner-card {
-                                padding: 0.6rem 0.5rem;
+                            .partner-card, .partner-card-sm {
+                                width: 68px;
+                                height: 46px;
                             }
                             .partners-heading {
                                 margin-bottom: 2rem;
@@ -360,11 +413,11 @@ export default function Home() {
                                 font-size: 1.75rem !important;
                             }
                             .partners-grid {
-                                grid-template-columns: repeat(3, 1fr);
-                                gap: 0.5rem;
+                                gap: 0.35rem;
                             }
-                            .partner-card {
-                                padding: 0.5rem;
+                            .partner-card, .partner-card-sm {
+                                width: 58px;
+                                height: 40px;
                             }
                         }
                     `}</style>

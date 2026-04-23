@@ -1,448 +1,785 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { formatDate, extractFirstImage } from '../lib/utils';
-import imageMap from '../lib/image_map.json';
+import { useState } from 'react';
 import SEO from '../components/SEO';
 
-// Fallback images
-const FALLBACK_IMAGES = [
-    "/uploads/2022/11/ARTS-RESIDENCY-MASTER-PLAN.jpg",
-    "/uploads/2022/11/Main-Banner.jpg",
-    "/uploads/2022/11/TTR-10.jpg",
-    "/uploads/2022/11/river-album.jpg",
-    "/uploads/2022/11/music-saved-my-life.jpg",
-    "/uploads/2022/11/111.jpg"
+/* ══════════════════════════════════════════════
+   DATA — Feature Films
+   ══════════════════════════════════════════════ */
+const featureFilms = [
+    {
+        title: "Widow Champion",
+        image: "/uploads/champ.jpg",
+        synopsis: "Thrown off her land by her in-laws, a resilient kenyan widow transforms into a fierce advocate for women's land rights in a highly patriarchal community.",
+        trailer: "https://widowchampion.com/",
+        director: "Zippy Kimundu",
+        producers: "Heather Courtney, Zippy Kimundu",
+        coProduction: "Kenya/US",
+        year: "2025",
+        slug: "widow-champion"
+    },
+    {
+        title: "Our Land, Our Freedom",
+        image: "/uploads/our-land.jpg",
+        synopsis: "Two extraordinary Kenyan women — mother and daughter Mukami and Wanjugu Kimathi — share a mission to expose colonial atrocities and fight for land justice, uncovering buried histories of concentration camps and mass graves while building a grassroots movement.",
+        trailer: "https://ourlandourfreedom.com/about/",
+        director: "Meena Nanji, Zippy Kimundu",
+        producers: "Meena Nanji, Zippy Kimundu, Eliane Fereirra",
+        executiveProducer: "Mira Nair, Eliane Fereirra",
+        coProduction: "Kenya/US/Portugal/Germany",
+        year: "2023",
+        slug: "our-land-our-freedom"
+    }
 ];
 
-const CATEGORIES = {
-    'featured-documentaries': 'Feature Films',
-    'short-films': 'Short Films',
-    'commissioned-projects': 'Commissioned Projects'
-};
+/* ══════════════════════════════════════════════
+   DATA — Short Films
+   ══════════════════════════════════════════════ */
+const shortFilms = [
+    {
+        title: "A Fork, A Spoon & A Knight",
+        image: "/uploads/a-fork-a-spoon-a-knight.jpg",
+        writerDirector: "Mira Nair, Zippy Kimundu",
+        coProduction: "Tribeca Film Institute / Mont Blanc / Nelson Mandela Foundation / Maisha Film Lab",
+        trailer: "",
+        slug: "a-fork-a-spoon-a-knight"
+    },
+    {
+        title: "Burnt Forest",
+        image: "/uploads/burnt1.jpg",
+        director: "Zippy Kimundu",
+        coProduction: "Action Horisons / NYU Tisch",
+        trailer: "https://vimeo.com/64427789",
+        slug: "burnt-forest"
+    },
+    {
+        title: "Mother's Song",
+        image: "/uploads/mothers-song.jpg",
+        coProduction: "NYU Tisch",
+        trailer: "",
+        slug: "mothers-song"
+    },
+    {
+        title: "Mercy",
+        image: "/uploads/mercy.jpg",
+        writerDirector: "Mira Nair, Zippy Kimundu",
+        coProduction: "Intrigue Productions",
+        trailer: "",
+        slug: "mercy"
+    },
+    {
+        title: "In Shadows",
+        image: "/uploads/voicesfromtheinside.jpg",
+        director: "Zippy Kimundu",
+        producer: "Wanjiru Kimundu",
+        trailer: "",
+        slug: ""
+    }
+];
+
+/* ══════════════════════════════════════════════
+   DATA — Commissioned Projects (grouped by series)
+   ══════════════════════════════════════════════ */
+const commissionedSeries = [
+    {
+        id: 1,
+        title: "Champions of Change Series",
+        client: "USAID / US State Department",
+        films: [
+            { title: "Kilifi Conservation Women", image: "/uploads/kilifi-conservation-women.jpg", slug: "kilifi-conservation-women" },
+            { title: "Laurencia – Bird Expert", image: "/uploads/laurencia-bird-expert.jpg", slug: "laurencia-bird-expert" },
+            { title: "Tabitha – Ranger", image: "/uploads/tabitha-ranger.jpg", slug: "tabitha-ranger" },
+            { title: "Rosette", image: "/uploads/tabitha-ranger.jpg", slug: "rosette" }
+        ]
+    },
+    {
+        id: 2,
+        title: "Culture Grows Series",
+        client: "British Council East Africa",
+        subsections: [
+            {
+                label: "1 Minute",
+                films: [
+                    { title: "Rooted", link: "https://vimeo.com/408872905" },
+                    { title: "Bengatronics", link: "https://vimeo.com/408941986" },
+                    { title: "Too Early for Birds", link: "https://vimeo.com/408923696" },
+                    { title: "Peperuka", link: "https://vimeo.com/408915858" },
+                    { title: "Historia", link: "https://vimeo.com/408869094" },
+                    { title: "Heva", link: "https://vimeo.com/408975981" }
+                ]
+            },
+            {
+                label: "4-5 Minute",
+                films: [
+                    { title: "Rooted", link: "https://vimeo.com/377524351" },
+                    { title: "Bengatronics", link: "https://vimeo.com/408945524" },
+                    { title: "Too Early for Birds", link: "https://vimeo.com/408927451" },
+                    { title: "Peperuka", link: "https://vimeo.com/408900884" },
+                    { title: "Historia", link: "https://vimeo.com/408819364" },
+                    { title: "Heva", link: "https://vimeo.com/408960575" }
+                ]
+            }
+        ]
+    },
+    {
+        id: 3,
+        title: "Progressive Africa Series",
+        client: "Standard Chartered Bank Global",
+        films: [
+            { title: "Royal Garments", image: "/uploads/royal-garments.jpg", link: "https://vimeo.com/417107037", slug: "royal-garments" },
+            { title: "Shell", image: "/uploads/shell.jpg", link: "https://vimeo.com/417141063", slug: "shell" },
+            { title: "Mirema School", image: "/uploads/mirema-school.jpg", link: "https://vimeo.com/417122881", slug: "mirema-school" },
+            { title: "Grange Water", image: "/uploads/grange-water.jpg", link: "https://vimeo.com/417108370", slug: "grange-water" },
+            { title: "Karibu Travels", image: "/uploads/karibu-travels.jpg", link: "https://vimeo.com/417136588", slug: "karibu-travels" }
+        ]
+    },
+    {
+        id: 4,
+        title: "Lighting Africa Series",
+        client: "Standard Chartered Bank Global",
+        films: [
+            { title: "Tope, Mall for Africa", image: "/uploads/tope-mall-for-africa.jpg", link: "https://vimeo.com/219052283", slug: "tope-mall-for-africa" },
+            { title: "Point Blank", image: "/uploads/point-blank.jpg", link: "https://vimeo.com/219051125", slug: "point-blank" },
+            { title: "Furaha, CocoLili", image: "/uploads/furaha-cocolili.jpg", link: "https://vimeo.com/219050496", slug: "furaha-cocolili" },
+            { title: "Sheila, M:Lab", image: "/uploads/sheila-mlab.jpg", link: "https://vimeo.com/219051883", slug: "sheila-mlab" }
+        ]
+    },
+    {
+        id: 5,
+        title: "Business Banking Series",
+        client: "Standard Chartered Bank Kenya",
+        films: [
+            { title: "Tope, Mall for Africa", link: "https://vimeo.com/219052283" },
+            { title: "Point Blank", link: "https://vimeo.com/219051125" },
+            { title: "Furaha, CocoLili", link: "https://vimeo.com/219050496" },
+            { title: "Sheila, M:Lab", link: "https://vimeo.com/219051883" }
+        ]
+    },
+    {
+        id: 6,
+        title: "Educare TVC",
+        client: "",
+        films: [
+            { title: "Educare TVC", image: "/uploads/educare-tvc.jpg", link: "https://vimeo.com/416069550", slug: "educare-tvc" }
+        ]
+    },
+    {
+        id: 7,
+        title: "Tusk Awards Series 2022",
+        client: "",
+        films: [
+            { title: "Achilles", image: "/uploads/achilles.jpg", link: "https://www.youtube.com/watch?v=xOfKNyjvvQo", slug: "achilles" },
+            { title: "Dismas", image: "/uploads/dismas.jpg", link: "https://www.youtube.com/watch?v=vWQ2TXiEu_0", slug: "dismas" }
+        ]
+    },
+    {
+        id: 8,
+        title: "BBC Africa – 'Madams' Exposing Kenya's Child Sex Trade",
+        client: "Co-Director: Zippy Kimundu",
+        films: [
+            { title: "Madams", link: "https://www.youtube.com/watch?v=JHINoFq8GvE" }
+        ]
+    }
+];
+
+const TABS = [
+    { key: 'features', label: 'Feature Films' },
+    { key: 'shorts', label: 'Short Films' },
+    { key: 'commissioned', label: 'Commission Projects' }
+];
 
 export default function Works() {
-    const [works, setWorks] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [activeCategory, setActiveCategory] = useState(null);
+    const [activeTab, setActiveTab] = useState('features');
+    const [expandedSeries, setExpandedSeries] = useState(null);
 
-    useEffect(() => {
-        fetch('/content_manifest.json')
-            .then(res => res.json())
-            .then(async (manifest) => {
-                const workItems = manifest
-                    .filter(item => item.type === 'post')
-                    .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                const worksWithImages = await Promise.all(workItems.map(async (item, index) => {
-                    let image = null;
-                    try {
-                        const res = await fetch(item.path);
-                        const text = await res.text(); // Markdown content
-
-                        // Extract FIRST image from HTML/Markdown content
-                        // Matches <img src="..."> OR ![alt](src)
-                        const imgMatch = text.match(/<img[^>]+src="([^">]+)"/) || text.match(/!\[.*?\]\((.*?)\)/);
-
-                        if (imgMatch) {
-                            image = imgMatch[1];
-                        } else if (imageMap[item.id]) {
-                            image = `/uploads/${imageMap[item.id]}`;
-                        } else {
-                            image = FALLBACK_IMAGES[index % FALLBACK_IMAGES.length];
-                        }
-
-                    } catch (e) {
-                        image = FALLBACK_IMAGES[index % FALLBACK_IMAGES.length];
-                    }
-                    return { ...item, image };
-                }));
-
-                setWorks(worksWithImages);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error(err);
-                setLoading(false);
-            });
-    }, []);
-
-    if (loading) return (
-        <div className="center-loading">
-            <div className="loader"></div>
-            <style>{`
-                .center-loading { min-height: 100vh; display: flex; justify-content: center; align-items: center; background: #050505; }
-                .loader { width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.1); border-top-color: var(--color-primary); border-radius: 50%; animation: spin 1s infinite linear; }
-                @keyframes spin { to { transform: rotate(360deg); } }
-            `}</style>
-        </div>
-    );
-
-
-    // Group works by category
-    const groupedWorks = works.reduce((acc, work) => {
-        let category = work.category || 'featured-documentaries';
-
-        // Map old categories to new 'short-films' category
-        if (category === 'independent-fiction' || category === 'independent-non-fiction') {
-            category = 'short-films';
-        }
-
-        if (!acc[category]) acc[category] = [];
-        acc[category].push(work);
-        return acc;
-    }, {});
-
-    const categoriesList = Object.entries(CATEGORIES);
-
-    const handleCategoryClick = (categoryKey) => {
-        setActiveCategory(categoryKey);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    const toggleSeries = (id) => {
+        setExpandedSeries(prev => prev === id ? null : id);
     };
 
     return (
         <div className="works-page">
-            <SEO title="Portfolio" description="Explore our library of feature films, documentaries, and training initiatives." />
+            <SEO title="Portfolio" description="Afrofilms is a full-service film agency shaping powerful fiction and non-fiction stories from idea to screen." />
 
-            <header className="page-header container">
-                <div className="header-content animate-fade-in">
-                    <span className="section-subtitle text-gold">Our Portfolio</span>
-                    <h1 className="page-title">
-                        {activeCategory ? CATEGORIES[activeCategory] : <span className="text-stroke">Select Category</span>}
-                    </h1>
-                </div>
-            </header>
+            {/* Background */}
+            <div className="works-bg-container">
+                <div className="works-bg-image"></div>
+                <div className="works-bg-overlay"></div>
+            </div>
 
-            <div className="container min-h-[60vh]">
-                {/* Category Selection View */}
-                {!activeCategory && (
-                    <div className="category-selection-grid">
-                        {categoriesList.map(([key, label]) => {
-                            const items = groupedWorks[key];
-                            // Use the first item's image as the category cover, or a fallback
-                            const coverImage = items && items.length > 0 ? items[0].image : FALLBACK_IMAGES[0];
-
-                            if (!items || items.length === 0) return null;
-
-                            return (
-                                <div key={key} className="category-card group" onClick={() => handleCategoryClick(key)}>
-                                    <div className="img-wrapper category-img-wrapper">
-                                        <img src={coverImage} alt={label} className="work-img" />
-                                        <div className="img-overlay category-overlay">
-                                            <span className="view-btn">View</span>
-                                        </div>
-                                    </div>
-                                    <h2 className="category-card-title">{label}</h2>
-                                    <span className="project-count">{items.length} Projects</span>
-                                </div>
-                            );
-                        })}
+            <div className="works-content-wrapper">
+                {/* ── HERO ── */}
+                <section className="portfolio-hero">
+                    <div className="portfolio-hero-inner">
+                        <span className="portfolio-label">Portfolio</span>
+                        <h1 className="portfolio-hero-title">Our <span className="gold">Work.</span></h1>
+                        <p className="portfolio-hero-desc">
+                            Afrofilms is a full-service film agency shaping powerful fiction and non-fiction stories from idea to screen. From concept and scripting to production and post, we deliver independent and commissioned work with precision, creativity, and impact.
+                        </p>
+                        <a href="https://vimeo.com/236536113" target="_blank" rel="noopener noreferrer" className="portfolio-reel-btn">
+                            <span className="play-icon">▶</span> View Reel
+                        </a>
                     </div>
-                )}
+                </section>
 
-                {/* Projects Grid View */}
-                {activeCategory && (
-                    <div className="animate-fade-in">
-                        {/* Navigation Tabs */}
-                        <div className="category-tabs mb-12 flex flex-wrap gap-4 justify-center">
-                            <button
-                                className="back-btn"
-                                onClick={() => setActiveCategory(null)}
-                            >
-                                ← All Categories
-                            </button>
-                            {categoriesList.map(([key, label]) => {
-                                if (!groupedWorks[key]?.length) return null;
-                                return (
-                                    <button
-                                        key={key}
-                                        className={`tab-btn ${activeCategory === key ? 'active' : ''}`}
-                                        onClick={() => setActiveCategory(key)}
-                                    >
-                                        {label}
-                                    </button>
-                                );
-                            })}
-                        </div>
+                {/* ── CATEGORY TABS ── */}
+                <div className="portfolio-tabs-bar">
+                    {TABS.map(tab => (
+                        <button
+                            key={tab.key}
+                            className={`ptab ${activeTab === tab.key ? 'active' : ''}`}
+                            onClick={() => setActiveTab(tab.key)}
+                        >
+                            {tab.label}
+                        </button>
+                    ))}
+                </div>
 
-                        {/* Projects Grid */}
-                        <div className="works-grid">
-                            {groupedWorks[activeCategory]?.map((post, i) => (
-                                <WorkCard key={post.id} post={post} index={i} />
+                {/* ═══ FEATURE FILMS ═══ */}
+                {activeTab === 'features' && (
+                    <section className="portfolio-section">
+                        <div className="container">
+                            {featureFilms.map((film, i) => (
+                                <div key={i} className="feature-card">
+                                    <div className="feature-card-img">
+                                        <img src={film.image} alt={film.title} loading="lazy" />
+                                    </div>
+                                    <div className="feature-card-body">
+                                        <h2 className="feature-title">{film.title}</h2>
+                                        <p className="feature-synopsis">{film.synopsis}</p>
+
+                                        <div className="feature-details">
+                                            <div className="detail-row">
+                                                <span className="detail-label">{film.writerDirector ? 'Writer/Director' : 'Director'}</span>
+                                                <span className="detail-value">{film.writerDirector || film.director}</span>
+                                            </div>
+                                            <div className="detail-row">
+                                                <span className="detail-label">Producers</span>
+                                                <span className="detail-value">{film.producers}</span>
+                                            </div>
+                                            {film.executiveProducer && (
+                                                <div className="detail-row">
+                                                    <span className="detail-label">Executive Producers</span>
+                                                    <span className="detail-value">{film.executiveProducer}</span>
+                                                </div>
+                                            )}
+                                            <div className="detail-row">
+                                                <span className="detail-label">Co-Production</span>
+                                                <span className="detail-value">{film.coProduction}</span>
+                                            </div>
+                                            <div className="detail-row">
+                                                <span className="detail-label">Year</span>
+                                                <span className="detail-value">{film.year}</span>
+                                            </div>
+                                        </div>
+
+                                        {film.trailer && (
+                                            <a href={film.trailer} target="_blank" rel="noopener noreferrer" className="trailer-btn">
+                                                ▶ Watch Trailer
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
                             ))}
                         </div>
-                    </div>
+                    </section>
+                )}
+
+                {/* ═══ SHORT FILMS ═══ */}
+                {activeTab === 'shorts' && (
+                    <section className="portfolio-section">
+                        <div className="container">
+                            <div className="shorts-grid">
+                                {shortFilms.map((film, i) => (
+                                    <div key={i} className="short-card">
+                                        <div className="short-card-img">
+                                            <img src={film.image} alt={film.title} loading="lazy" />
+                                        </div>
+                                        <div className="short-card-body">
+                                            <h3 className="short-title">{film.title}</h3>
+                                            {(film.writerDirector || film.director) && (
+                                                <p className="short-meta">
+                                                    <strong>{film.writerDirector ? 'Writer/Director' : 'Director'}:</strong> {film.writerDirector || film.director}
+                                                </p>
+                                            )}
+                                            {film.producer && (
+                                                <p className="short-meta"><strong>Producer:</strong> {film.producer}</p>
+                                            )}
+                                            <p className="short-meta"><strong>Co-Prod:</strong> {film.coProduction}</p>
+                                            {film.trailer && (
+                                                <a href={film.trailer} target="_blank" rel="noopener noreferrer" className="short-trailer-link">
+                                                    ▶ Watch Trailer
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                )}
+
+                {/* ═══ COMMISSIONED PROJECTS ═══ */}
+                {activeTab === 'commissioned' && (
+                    <section className="portfolio-section">
+                        <div className="container">
+                            <div className="commissioned-list">
+                                {commissionedSeries.map((series) => (
+                                    <div key={series.id} className={`cs-block ${expandedSeries === series.id ? 'expanded' : ''}`}>
+                                        <button className="cs-header" onClick={() => toggleSeries(series.id)}>
+                                            <div>
+                                                <span className="cs-number">{String(series.id).padStart(2, '0')}</span>
+                                                <h3 className="cs-title">{series.title}</h3>
+                                                {series.client && <span className="cs-client">{series.client}</span>}
+                                            </div>
+                                            <span className="cs-toggle">{expandedSeries === series.id ? '−' : '+'}</span>
+                                        </button>
+
+                                        {expandedSeries === series.id && (
+                                            <div className="cs-body">
+                                                {/* Series with subsections (Culture Grows) */}
+                                                {series.subsections ? (
+                                                    series.subsections.map((sub, si) => (
+                                                        <div key={si} className="cs-subsection">
+                                                            <h4 className="cs-sub-label">{sub.label}</h4>
+                                                            <div className="cs-links-grid">
+                                                                {sub.films.map((f, fi) => (
+                                                                    <a key={fi} href={f.link} target="_blank" rel="noopener noreferrer" className="cs-link-card">
+                                                                        <span className="cs-link-title">{f.title}</span>
+                                                                        <span className="cs-link-arrow">▶</span>
+                                                                    </a>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    ))
+                                                ) : (
+                                                    /* Series with film cards */
+                                                    <div className="cs-films-grid">
+                                                        {series.films.map((f, fi) => (
+                                                            <div key={fi} className="cs-film-card">
+                                                                {f.image && (
+                                                                    <div className="cs-film-img">
+                                                                        <img src={f.image} alt={f.title} loading="lazy" />
+                                                                    </div>
+                                                                )}
+                                                                <div className="cs-film-info">
+                                                                    <span className="cs-film-title">{f.title}</span>
+                                                                    {(f.link || f.slug) && (
+                                                                        <a
+                                                                            href={f.link || `/${f.slug}`}
+                                                                            target={f.link ? "_blank" : "_self"}
+                                                                            rel={f.link ? "noopener noreferrer" : undefined}
+                                                                            className="cs-watch-link"
+                                                                        >
+                                                                            ▶ Watch
+                                                                        </a>
+                                                                    )}
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
                 )}
             </div>
 
-
-
             <style>{`
+                /* ══════════════ PAGE ══════════════ */
                 .works-page {
-                    padding-bottom: 0;
                     background: #050505;
                     min-height: 100vh;
-                }
-                .page-header {
-                    padding: 8rem 0 4rem;
-                    text-align: center;
-                }
-                .page-title {
-                    font-size: clamp(3rem, 6vw, 5rem);
-                    line-height: 0.9;
-                    font-family: var(--font-heading);
-                    text-transform: uppercase;
+                    position: relative;
+                    overflow: hidden;
                     color: #fff;
                 }
-                .text-stroke {
-                    -webkit-text-stroke: 1px #fff;
-                    color: transparent; 
+                .works-bg-container { position: absolute; inset: 0; z-index: 0; }
+                .works-bg-image {
+                    position: absolute; inset: -20px;
+                    background-image: url('/uploads/portfolioA.jpg');
+                    background-size: cover; background-position: center;
+                    filter: blur(3px);
                 }
-                .section-subtitle {
+                .works-bg-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); z-index: 1; }
+                .works-content-wrapper { position: relative; z-index: 10; }
+
+                .gold { color: var(--color-primary); }
+                .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+                /* ══════════════ HERO ══════════════ */
+                .portfolio-hero {
+                    padding: 10rem 1.5rem 5rem;
+                    text-align: center;
+                    max-width: 850px;
+                    margin: 0 auto;
+                }
+                .portfolio-label {
                     display: block;
-                    font-size: 0.9rem;
-                    letter-spacing: 0.25em;
                     text-transform: uppercase;
-                    margin-bottom: 1.5rem;
-                    color: var(--color-primary);
+                    letter-spacing: 0.2em;
+                    font-size: 0.85rem;
                     font-weight: 600;
-                }
-
-                /* Category Selection Styles */
-                .category-selection-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                    gap: 2rem;
-                    margin-bottom: 4rem;
-                }
-                .category-card {
-                    cursor: pointer;
-                    text-align: center;
-                }
-                .category-img-wrapper {
-                    aspect-ratio: 4/5; /* Portrait aspect for categories */
-                    margin-bottom: 1.5rem;
-                }
-                .category-card-title {
-                    font-family: var(--font-heading);
-                    font-size: 2rem;
-                    color: #fff;
-                    text-transform: uppercase;
-                    margin-bottom: 0.5rem;
-                    transition: color 0.3s;
-                }
-                .category-card:hover .category-card-title {
                     color: var(--color-primary);
+                    margin-bottom: 1rem;
                 }
-                .project-count {
-                    color: var(--color-text-muted);
-                    font-size: 0.9rem;
-                    letter-spacing: 0.1em;
+                .portfolio-hero-title {
+                    font-size: clamp(3rem, 7vw, 5.5rem);
+                    font-family: var(--font-heading);
+                    line-height: 1;
+                    margin-bottom: 2rem;
                     text-transform: uppercase;
                 }
-                .category-overlay {
-                    background: rgba(0,0,0,0.4);
+                .portfolio-hero-desc {
+                    font-size: 1.15rem;
+                    color: rgba(255,255,255,0.8);
+                    line-height: 1.8;
+                    margin-bottom: 2.5rem;
                 }
-                .category-card:hover .category-overlay {
-                    background: rgba(0,0,0,0.2);
+                .portfolio-reel-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    padding: 1rem 2.5rem;
+                    background: var(--color-primary);
+                    color: #000;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    font-size: 0.9rem;
+                    border-radius: 4px;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
                 }
+                .portfolio-reel-btn:hover {
+                    background: #fff;
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 30px rgba(212,175,55,0.35);
+                }
+                .play-icon { font-size: 0.75rem; }
 
-                /* Tabs */
-                .category-tabs {
+                /* ══════════════ TABS ══════════════ */
+                .portfolio-tabs-bar {
+                    display: flex;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    flex-wrap: wrap;
+                    padding: 0 1.5rem 3rem;
                     border-bottom: 1px solid rgba(255,255,255,0.1);
-                    padding-bottom: 2rem;
+                    margin-bottom: 3rem;
                 }
-                .tab-btn {
+                .ptab {
                     background: transparent;
                     border: 1px solid rgba(255,255,255,0.2);
                     color: #fff;
-                    padding: 0.75rem 1.5rem;
+                    padding: 0.8rem 2rem;
                     border-radius: 100px;
                     text-transform: uppercase;
                     font-size: 0.8rem;
-                    letter-spacing: 0.1em;
+                    letter-spacing: 0.12em;
+                    cursor: pointer;
                     transition: all 0.3s;
-                    cursor: pointer;
+                    font-weight: 500;
                 }
-                .tab-btn:hover {
-                    border-color: var(--color-primary);
-                    color: var(--color-primary);
-                }
-                .tab-btn.active {
+                .ptab:hover { border-color: var(--color-primary); color: var(--color-primary); }
+                .ptab.active {
                     background: var(--color-primary);
                     border-color: var(--color-primary);
                     color: #000;
-                    font-weight: 600;
-                }
-                .back-btn {
-                    background: transparent;
-                    border: none;
-                    color: var(--color-text-muted);
-                    text-transform: uppercase;
-                    font-size: 0.8rem;
-                    letter-spacing: 0.1em;
-                    padding: 0.75rem 1.5rem;
-                    cursor: pointer;
-                    transition: color 0.3s;
-                }
-                .back-btn:hover {
-                    color: #fff;
+                    font-weight: 700;
                 }
 
-                /* GRID LAYOUT */
-                .works-grid {
+                .portfolio-section { padding-bottom: 5rem; }
+
+                /* ══════════════ FEATURE FILMS ══════════════ */
+                .feature-card {
                     display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-                    gap: 3rem 2rem;
-                }
-                @media (max-width: 768px) {
-                    .works-grid {
-                        grid-template-columns: 1fr;
-                        gap: 3rem;
-                    }
-                    .page-title {
-                        font-size: 2.5rem;
-                    }
-                }
-
-                /* Work Card */
-                .work-card {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1.5rem;
-                }
-                .work-card-link {
-                    text-decoration: none;
-                    display: block;
-                }
-                
-                .img-wrapper {
-                    position: relative;
-                    width: 100%;
-                    aspect-ratio: 16/9;
+                    grid-template-columns: 1fr 1.2fr;
+                    gap: 3rem;
+                    margin-bottom: 5rem;
+                    background: rgba(255,255,255,0.03);
+                    border: 1px solid rgba(255,255,255,0.08);
+                    border-radius: 12px;
                     overflow: hidden;
-                    border-radius: 4px;
-                    border: 1px solid rgba(255,255,255,0.1);
-                    background: #111;
-                }
-                
-                .work-img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-                    filter: saturate(0.9);
-                }
-                .work-card-link:hover .work-img, .category-card:hover .work-img {
-                    transform: scale(1.05);
-                    filter: saturate(1.1);
-                }
-
-                /* Creative Overlay */
-                .img-overlay {
-                    position: absolute;
-                    inset: 0;
-                    background: rgba(0,0,0,0.2);
-                    transition: background 0.4s;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-                .work-card-link:hover .img-overlay {
-                    background: rgba(0,0,0,0);
-                }
-                
-                .view-btn {
-                    width: 60px;
-                    height: 60px;
-                    background: rgba(255,255,255,0.1);
-                    backdrop-filter: blur(5px);
-                    border: 1px solid rgba(255,255,255,0.3);
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #fff;
-                    opacity: 0;
-                    transform: scale(0.8);
-                    transition: all 0.4s ease;
-                }
-                .work-card-link:hover .view-btn, .category-card:hover .view-btn {
-                    opacity: 1;
-                    transform: scale(1);
-                    background: var(--color-primary);
-                    border-color: var(--color-primary);
-                    color: #000;
-                }
-
-                .card-info {
-                    border-top: 1px solid rgba(255,255,255,0.1);
-                    padding-top: 1rem;
                     transition: border-color 0.3s;
                 }
-                .work-card-link:hover .card-info {
-                    border-top-color: var(--color-primary);
+                .feature-card:hover { border-color: var(--color-primary); }
+                .feature-card-img { position: relative; overflow: hidden; min-height: 350px; }
+                .feature-card-img img {
+                    width: 100%; height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.6s ease;
+                }
+                .feature-card:hover .feature-card-img img { transform: scale(1.05); }
+                .feature-card-body { padding: 2.5rem 2.5rem 2.5rem 0; display: flex; flex-direction: column; justify-content: center; }
+                .feature-title {
+                    font-size: 2.2rem;
+                    font-family: var(--font-heading);
+                    text-transform: uppercase;
+                    margin-bottom: 1rem;
+                    color: #fff;
+                }
+                .feature-synopsis {
+                    color: rgba(255,255,255,0.75);
+                    line-height: 1.7;
+                    margin-bottom: 1.5rem;
+                    font-size: 1rem;
+                }
+                .feature-details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.6rem;
+                    margin-bottom: 2rem;
+                }
+                .detail-row { display: flex; gap: 0.75rem; font-size: 0.9rem; }
+                .detail-label {
+                    text-transform: uppercase;
+                    color: var(--color-primary);
+                    font-weight: 600;
+                    font-size: 0.75rem;
+                    letter-spacing: 0.05em;
+                    min-width: 140px;
+                    flex-shrink: 0;
+                }
+                .detail-value { color: rgba(255,255,255,0.85); }
+                .trailer-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    padding: 0.75rem 2rem;
+                    border: 1px solid var(--color-primary);
+                    color: var(--color-primary);
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    letter-spacing: 0.1em;
+                    border-radius: 4px;
+                    transition: all 0.3s ease;
+                    width: fit-content;
+                }
+                .trailer-btn:hover {
+                    background: var(--color-primary);
+                    color: #000;
                 }
 
-                .work-year {
-                    font-size: 0.75rem;
-                    color: var(--color-text-muted);
-                    font-weight: 500;
-                    letter-spacing: 0.1em;
-                    display: block;
-                    margin-bottom: 0.5rem;
+                @media (max-width: 768px) {
+                    .feature-card { grid-template-columns: 1fr; }
+                    .feature-card-img { min-height: 250px; }
+                    .feature-card-body { padding: 1.5rem; }
+                    .feature-title { font-size: 1.6rem; }
+                    .detail-row { flex-direction: column; gap: 0.2rem; }
+                    .detail-label { min-width: auto; }
                 }
-                .work-title {
-                    font-size: 1.5rem;
-                    line-height: 1.2;
+
+                /* ══════════════ SHORT FILMS ══════════════ */
+                .shorts-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                    gap: 2rem;
+                }
+                .short-card {
+                    background: rgba(255,255,255,0.03);
+                    border: 1px solid rgba(255,255,255,0.08);
+                    border-radius: 8px;
+                    overflow: hidden;
+                    transition: all 0.35s ease;
+                }
+                .short-card:hover {
+                    border-color: var(--color-primary);
+                    transform: translateY(-5px);
+                }
+                .short-card-img { aspect-ratio: 16/9; overflow: hidden; }
+                .short-card-img img {
+                    width: 100%; height: 100%; object-fit: contain;
+                    background: #111;
+                    transition: transform 0.5s ease;
+                }
+                .short-card:hover .short-card-img img {
+                    transform: scale(1.05); filter: saturate(1.1);
+                }
+                .short-card-body { padding: 1.25rem; }
+                .short-title {
+                    font-size: 1.2rem;
+                    font-family: var(--font-heading);
+                    text-transform: uppercase;
+                    margin-bottom: 0.75rem;
                     color: #fff;
+                }
+                .short-meta {
+                    font-size: 0.85rem;
+                    color: rgba(255,255,255,0.6);
+                    margin-bottom: 0.4rem;
+                    line-height: 1.5;
+                }
+                .short-meta strong { color: var(--color-primary); font-weight: 600; }
+                .short-trailer-link {
+                    display: inline-block;
+                    margin-top: 0.75rem;
+                    color: var(--color-primary);
+                    text-decoration: none;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    border-bottom: 1px solid transparent;
+                    transition: border-color 0.3s;
+                }
+                .short-trailer-link:hover { border-bottom-color: var(--color-primary); }
+
+                /* ══════════════ COMMISSIONED ══════════════ */
+                .commissioned-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                .cs-block {
+                    background: rgba(255,255,255,0.02);
+                    border: 1px solid rgba(255,255,255,0.08);
+                    border-radius: 8px;
+                    overflow: hidden;
+                    transition: border-color 0.3s;
+                }
+                .cs-block.expanded { border-color: var(--color-primary); }
+                .cs-header {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 1.5rem 2rem;
+                    background: transparent;
+                    border: none;
+                    color: #fff;
+                    cursor: pointer;
+                    text-align: left;
+                    transition: background 0.3s;
+                }
+                .cs-header:hover { background: rgba(255,255,255,0.03); }
+                .cs-number {
+                    display: inline-block;
+                    font-family: var(--font-heading);
+                    font-size: 1.5rem;
+                    color: rgba(255,255,255,0.15);
+                    margin-right: 1rem;
+                    vertical-align: middle;
+                }
+                .cs-title {
+                    display: inline;
+                    font-size: 1.2rem;
                     font-family: var(--font-heading);
                     text-transform: uppercase;
                 }
-                .work-card-link:hover .work-title {
+                .cs-client {
+                    display: block;
+                    font-size: 0.8rem;
                     color: var(--color-primary);
+                    margin-top: 0.3rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.08em;
+                }
+                .cs-toggle {
+                    font-size: 1.8rem;
+                    color: var(--color-primary);
+                    font-weight: 300;
+                    line-height: 1;
+                    flex-shrink: 0;
                 }
 
+                .cs-body { padding: 0 2rem 2rem; }
 
+                /* Subsection labels (Culture Grows) */
+                .cs-subsection { margin-bottom: 1.5rem; }
+                .cs-sub-label {
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.15em;
+                    color: var(--color-primary);
+                    margin-bottom: 0.75rem;
+                    display: block;
+                    font-weight: 600;
+                }
+                .cs-links-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                    gap: 0.5rem;
+                }
+                .cs-link-card {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0.75rem 1rem;
+                    background: rgba(255,255,255,0.03);
+                    border: 1px solid rgba(255,255,255,0.06);
+                    border-radius: 6px;
+                    color: #fff;
+                    text-decoration: none;
+                    transition: all 0.3s;
+                    font-size: 0.9rem;
+                }
+                .cs-link-card:hover {
+                    background: rgba(212,175,55,0.1);
+                    border-color: var(--color-primary);
+                }
+                .cs-link-title { font-weight: 500; }
+                .cs-link-arrow { color: var(--color-primary); font-size: 0.7rem; }
+
+                /* Film cards grid */
+                .cs-films-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                    gap: 1rem;
+                }
+                .cs-film-card {
+                    background: rgba(255,255,255,0.03);
+                    border: 1px solid rgba(255,255,255,0.06);
+                    border-radius: 6px;
+                    overflow: hidden;
+                    transition: all 0.3s;
+                }
+                .cs-film-card:hover {
+                    border-color: var(--color-primary);
+                    transform: translateY(-3px);
+                }
+                .cs-film-img { aspect-ratio: 4/3; overflow: hidden; }
+                .cs-film-img img {
+                    width: 100%; height: 100%; object-fit: cover;
+                    transition: transform 0.5s;
+                }
+                .cs-film-card:hover .cs-film-img img { transform: scale(1.05); }
+                .cs-film-info { padding: 0.75rem; }
+                .cs-film-title {
+                    display: block;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    margin-bottom: 0.4rem;
+                    color: #fff;
+                }
+                .cs-watch-link {
+                    font-size: 0.7rem;
+                    color: var(--color-primary);
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    font-weight: 600;
+                    transition: color 0.3s;
+                }
+                .cs-watch-link:hover { color: #fff; }
+
+                @media (max-width: 768px) {
+                    .portfolio-hero { padding: 7rem 1rem 3rem; }
+                    .portfolio-hero-title { font-size: 2.5rem; }
+                    .portfolio-tabs-bar { gap: 0.4rem; padding: 0 1rem 2rem; }
+                    .ptab { padding: 0.6rem 1.2rem; font-size: 0.7rem; }
+                    .shorts-grid { grid-template-columns: 1fr; }
+                    .cs-header { padding: 1rem 1.25rem; }
+                    .cs-title { font-size: 1rem; }
+                    .cs-body { padding: 0 1.25rem 1.5rem; }
+                    .cs-films-grid { grid-template-columns: repeat(2, 1fr); }
+                    .cs-links-grid { grid-template-columns: 1fr; }
+                }
             `}</style>
         </div>
-    );
-}
-
-function WorkCard({ post }) {
-    return (
-        <article className="work-card group">
-            <Link to={`/${post.slug}`} className="work-card-link">
-                <div className="img-wrapper">
-                    <img
-                        src={post.image}
-                        alt={post.title}
-                        className="work-img"
-                        style={{ objectFit: post.objectFit || 'cover' }}
-                        loading="lazy"
-                        onError={(e) => {
-                            if (!e.target.src.includes('Main-Banner.jpg')) {
-                                e.target.src = '/uploads/2022/11/Main-Banner.jpg';
-                            } else {
-                                e.target.style.display = 'none';
-                                e.target.parentNode.style.backgroundColor = '#1a1a1a';
-                            }
-                        }}
-                    />
-                    <div className="img-overlay">
-                        <div className="view-btn">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="17" y1="7" x2="7" y2="17"></line><polyline points="8 7 17 7 17 16"></polyline></svg>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="card-info">
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span className="work-year">{post.date ? new Date(post.date).getFullYear() : 'PROJECT'}</span>
-                        {post.genre && <span className="work-year" style={{ color: 'var(--color-primary)' }}>{post.genre}</span>}
-                    </div>
-                    <h2 className="work-title">{post.title}</h2>
-                </div>
-            </Link>
-        </article>
     );
 }

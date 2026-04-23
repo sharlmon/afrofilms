@@ -33,7 +33,9 @@ export default function Community() {
         {
             id: "04",
             title: "Prison Film Clubs",
-            desc: "A Pilot Project at the Nairobi West Prison in partnership with the Kenyan Prisons Services. Providing Creative and Technical Training for inmates to create pioneer ‘Film Clubs’."
+            desc: "A Pilot Project at the Nairobi West Prison in partnership with the Kenyan Prisons Services. Providing Creative and Technical Training for inmates to create pioneer ‘Film Clubs’.",
+            image: "/uploads/prison.jpg",
+            hoverImage: "/uploads/voicesfromtheinside.jpg"
         }
     ];
 

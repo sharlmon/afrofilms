@@ -7,7 +7,7 @@ const NAV_ITEMS = [
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'team', label: 'Team' },
   { id: 'collective', label: 'Collective' },
-  { id: 'press', label: 'Press' },
+  { id: 'gallery', label: 'Gallery' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -86,11 +86,25 @@ export default function MainLayout() {
           </div>
 
           <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-            {NAV_ITEMS.map(({ id, label }) => (
+            {NAV_ITEMS.map(({ id, label, route }) => (
               <button
                 key={id}
-                className={`nav-scroll-btn ${activeSection === id ? 'active-link' : ''}`}
-                onClick={() => scrollToSection(id)}
+                className={`nav-scroll-btn ${
+                  route
+                    ? location.pathname === route ? 'active-link' : ''
+                    : activeSection === id ? 'active-link' : ''
+                }`}
+                onClick={() => {
+                  setIsOpen(false);
+                  if (route) {
+                    navigate(route);
+                  } else if (id === 'home') {
+                    navigate('/');
+                    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+                  } else {
+                    scrollToSection(id);
+                  }
+                }}
               >
                 {label}
               </button>
@@ -99,14 +113,8 @@ export default function MainLayout() {
               <a href="https://www.facebook.com/people/Afro-Films-International-Ltd/100067548437631/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
               </a>
-              <a href="https://www.instagram.com/afrofilmsinternational/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href="https://www.instagram.com/theafrofilmsinternational?igsh=MWczMnN5NDA2a2d3bg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-              </a>
-              <a href="https://ke.linkedin.com/company/afrofilms" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              </a>
-              <a href="https://vimeo.com/user70440057" target="_blank" rel="noopener noreferrer" aria-label="Vimeo">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 13c1.5-2 3-5 5-6 1.5-.5 2.5 1 2.5 2.5 0 4-2 7.5-2 10.5 0 2.5 3 2 4.5 1.5 2.5-1 5.5-3.5 7-9.5 0-2.5-1-4-3-4-2 0-3 3-3.5 3.5-.5.5-1.5 2.5-2 2.5-1.5 0 .5-6-1-7S7 6 6 7.5c-1 1.5-3 5.5-3 5.5z"></path></svg>
               </a>
             </div>
           </div>
@@ -130,16 +138,13 @@ export default function MainLayout() {
             <h4>Contact</h4>
             <p>Bekim House, Level 1, Nairobi Kenya</p>
             <p><a href="mailto:admin@afrofilmsinternational.com">admin@afrofilmsinternational.com</a></p>
-            <p><a href="tel:+254720100167">+254 720100167</a></p>
           </div>
 
           <div className="footer-col">
             <h4>Follow Us</h4>
             <div className="social-links">
               <a href="https://www.facebook.com/people/Afro-Films-International-Ltd/100067548437631/" target="_blank" rel="noopener noreferrer">Facebook</a>
-              <a href="https://www.instagram.com/afrofilmsinternational/" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://ke.linkedin.com/company/afrofilms" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://vimeo.com/user70440057" target="_blank" rel="noopener noreferrer">Vimeo</a>
+              <a href="https://www.instagram.com/theafrofilmsinternational?igsh=MWczMnN5NDA2a2d3bg==" target="_blank" rel="noopener noreferrer">Instagram</a>
             </div>
           </div>
         </div>

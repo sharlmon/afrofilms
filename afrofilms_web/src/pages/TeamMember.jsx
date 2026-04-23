@@ -33,12 +33,12 @@ export default function TeamMember() {
         <div className="team-member-page">
             <SEO title={`${member.name} - AfroFilms Team`} description={`Learn more about ${member.name}, ${member.role} at AfroFilms International.`} />
 
-            <div className="container mx-auto px-6 py-32">
+            <div className="container team-member-container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="mb-12"
+                    className="back-nav-wrapper"
                 >
                     <button onClick={() => navigate(-1)} className="back-link group flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
                         <span className="text-2xl group-hover:-translate-x-1 transition-transform">←</span>
@@ -56,7 +56,7 @@ export default function TeamMember() {
                     >
                         <div className="image-wrapper glass-panel">
                             {member.image ? (
-                                <img src={`/uploads/${member.image}`} alt={member.name} className="w-full h-auto" />
+                                <img src={member.image.startsWith('/uploads/') ? member.image : `/uploads/${member.image}`} alt={member.name} className="w-full h-auto" />
                             ) : (
                                 <div className="w-full h-full bg-[#1a1a1a] flex items-center justify-center">
                                     <span className="text-6xl text-gray-700 font-heading">{member.name.charAt(0)}</span>
@@ -73,24 +73,24 @@ export default function TeamMember() {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="info-column"
                     >
-                        <h1 className="name-heading mb-2">
-                            <span className="block text-white font-medium">{firstName}</span>
-                            <span className="block text-gold font-light">{lastName}</span>
+                        <h1 className="name-heading">
+                            <span className="text-white font-medium">{firstName}</span>
+                            <span className="text-gold font-light">{lastName}</span>
                         </h1>
                         <div className="h-1 w-24 bg-gold mb-8"></div>
 
                         <h2 className="text-xl uppercase tracking-widest text-gray-400 mb-8">{member.role}</h2>
 
-                        <div className="bio-content text-lg text-gray-300 leading-relaxed space-y-6">
+                        <div className="bio-content">
                             {Array.isArray(member.bio) ? (
                                 member.bio.map((paragraph, index) => (
                                     <p key={index}>
                                         {paragraph.split(' ').map((word, i) => {
                                             if (word.startsWith('http') || word.startsWith('www')) {
                                                 const url = word.startsWith('www') ? `https://${word}` : word;
-                                                return <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">{word} </a>;
+                                                return <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="text-gold hover:underline break-all">{word} </a>;
                                             }
-                                            return word + ' ';
+                                            return <span key={i}>{word} </span>;
                                         })}
                                     </p>
                                 ))
@@ -167,8 +167,50 @@ export default function TeamMember() {
                 }
                 .name-heading {
                     font-family: var(--font-heading);
-                    font-size: clamp(3rem, 5vw, 5rem);
-                    line-height: 0.9;
+                    font-size: clamp(2.5rem, 5vw, 5rem);
+                    line-height: 1.1;
+                    word-break: break-word;
+                    hyphens: auto;
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 1.5rem;
+                }
+                .name-heading span {
+                    display: block;
+                }
+                .text-white { color: #fff; }
+                .text-gold { color: var(--color-primary); }
+                .font-medium { font-weight: 500; }
+                .font-light { font-weight: 300; }
+                
+                .bio-content p {
+                    margin-bottom: 1.5rem;
+                    font-size: 1.125rem;
+                    color: #d1d5db;
+                    line-height: 1.7;
+                }
+                .bio-content p:last-child {
+                    margin-bottom: 0;
+                }
+                .team-member-container {
+                    padding-top: 150px;
+                    padding-bottom: 80px;
+                }
+                .back-nav-wrapper {
+                    margin-bottom: 3rem;
+                }
+                .back-link {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: #9ca3af;
+                    font-weight: 600;
+                    font-size: 0.875rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                }
+                .back-link:hover {
+                    color: #fff;
                 }
                 .glass-panel {
                     background: rgba(255,255,255,0.02);

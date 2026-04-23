@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Film Reel Circle -->
+  <circle cx="42" cy="45" r="38" fill="black"/>
+  <!-- Center hole -->
+  <circle cx="42" cy="45" r="5" fill="white"/>
+  <!-- Top hole -->
+  <ellipse cx="42" cy="22" rx="7" ry="8" fill="white" transform="rotate(-5, 42, 22)"/>
+  <!-- Bottom hole -->
+  <ellipse cx="42" cy="68" rx="7" ry="8" fill="white" transform="rotate(5, 42, 68)"/>
+  <!-- Left hole -->
+  <ellipse cx="19" cy="45" rx="8" ry="7" fill="white" transform="rotate(-5, 19, 45)"/>
+  <!-- Right hole -->
+  <ellipse cx="65" cy="45" rx="8" ry="7" fill="white" transform="rotate(5, 65, 45)"/>
+  <!-- Top-left hole -->
+  <ellipse cx="25" cy="28" rx="6" ry="6" fill="white"/>
+  <!-- Top-right hole -->
+  <ellipse cx="59" cy="28" rx="6" ry="6" fill="white"/>
+  <!-- Bottom-left hole -->
+  <ellipse cx="25" cy="62" rx="6" ry="6" fill="white"/>
+  <!-- Bottom-right hole -->
+  <ellipse cx="59" cy="62" rx="6" ry="6" fill="white"/>
+  <!-- Film strip tail -->
+  <path d="M 72 30 C 80 25, 90 30, 88 45 C 86 60, 80 70, 75 80 C 72 86, 68 90, 65 92" 
+        stroke="black" stroke-width="8" fill="none" stroke-linecap="round"/>
+</svg>

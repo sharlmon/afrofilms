@@ -7,35 +7,44 @@ export default function Team() {
     return (
         <div className="team-page">
             <SEO title="Our Team" description="Meet the creative visionaries behind AfroFilms International." />
-            <div className="container pt-24 pb-20">
-                <div className="section-header center mb-16 text-center">
-                    <h1 className="page-title text-5xl md:text-7xl font-heading mb-4 text-white">TEAM</h1>
-                </div>
 
-                <div className="team-grid">
-                    {team.map(member => (
-                        <Link to={`/team/${member.id}`} key={member.id}>
-                            <motion.div
-                                className="team-card glass group"
-                                layoutId={`card-${member.id}`}
-                                whileHover={{ y: -10 }}
-                            >
-                                <div className="member-image-wrapper">
-                                    <motion.div className="member-image" layoutId={`image-${member.id}`}>
-                                        {member.image ? (
-                                            <img src={`/uploads/${member.image}`} alt={member.name} loading="lazy" decoding="async" width="180" height="180" />
-                                        ) : (
-                                            <div className="placeholder-avatar"></div>
-                                        )}
-                                    </motion.div>
-                                </div>
-                                <div className="member-info">
-                                    <motion.h3 className="text-2xl text-white font-medium mb-2" layoutId={`name-${member.id}`}>{member.name}</motion.h3>
-                                    <motion.span className="member-role text-gold tracking-widest text-sm uppercase font-bold" layoutId={`role-${member.id}`}>{member.role}</motion.span>
-                                </div>
-                            </motion.div>
-                        </Link>
-                    ))}
+            {/* Background Image */}
+            <div className="team-bg-container">
+                <div className="team-bg-image"></div>
+                <div className="team-bg-overlay"></div>
+            </div>
+
+            <div className="team-content-wrapper">
+                <div className="container pt-24 pb-20">
+                    <div className="section-header center mb-16 text-center">
+                        <h1 className="page-title text-5xl md:text-7xl font-heading mb-4 text-white">TEAM</h1>
+                    </div>
+
+                    <div className="team-grid">
+                        {team.map(member => (
+                            <Link to={`/team/${member.id}`} key={member.id}>
+                                <motion.div
+                                    className="team-card glass group"
+                                    layoutId={`card-${member.id}`}
+                                    whileHover={{ y: -10 }}
+                                >
+                                    <div className="member-image-wrapper">
+                                        <motion.div className="member-image" layoutId={`image-${member.id}`}>
+                                            {member.image ? (
+                                                <img src={member.image.startsWith('/uploads/') ? member.image : `/uploads/${member.image}`} alt={member.name} loading="lazy" decoding="async" width="180" height="180" style={{ objectPosition: member.name === 'Steve Ruiyi' ? 'top center' : 'center' }} />
+                                            ) : (
+                                                <div className="placeholder-avatar"></div>
+                                            )}
+                                        </motion.div>
+                                    </div>
+                                    <div className="member-info">
+                                        <motion.h3 className="text-2xl text-white font-medium mb-2" layoutId={`name-${member.id}`}>{member.name}</motion.h3>
+                                        <motion.span className="member-role text-gold tracking-widest text-sm uppercase font-bold" layoutId={`role-${member.id}`}>{member.role}</motion.span>
+                                    </div>
+                                </motion.div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -43,15 +52,51 @@ export default function Team() {
                 .team-page {
                     min-height: 100vh;
                     background: #000;
-                    background-image: radial-gradient(circle at top right, #1a1a1a 0%, #000 40%);
+                    position: relative;
+                    overflow: hidden;
+                }
+                .team-bg-container {
+                    position: absolute;
+                    inset: 0;
+                    z-index: 0;
+                }
+                .team-bg-image {
+                    position: absolute;
+                    inset: -20px;
+                    background-image: url('/uploads/teamA.jpg');
+                    background-size: cover;
+                    background-position: center;
+                    filter: blur(3px);
+                }
+                .team-bg-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: rgba(0, 0, 0, 0.55);
+                    z-index: 1;
+                }
+                .team-content-wrapper {
+                    position: relative;
+                    z-index: 10;
                 }
                 
                 .team-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                    grid-template-columns: repeat(3, 1fr);
                     gap: 2.5rem;
                     max-width: 1200px;
                     margin: 0 auto;
+                }
+                
+                @media (max-width: 900px) {
+                    .team-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+                
+                @media (max-width: 600px) {
+                    .team-grid {
+                        grid-template-columns: 1fr;
+                    }
                 }
                 
                 .team-card {

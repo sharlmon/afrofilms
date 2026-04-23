@@ -7,8 +7,10 @@ export const team = [
         role: "Producer / Director",
         image: "kimundu.jpg",
         bio: [
-            "Zippy Kimundu is an award-winning Kenyan Filmmaker who has been working in the global industry for nearly two decades. She holds a Masters in Fine Arts from New York University and has worked globally in over 20 countries. She co-directed a short Documentary, ‘a fork, a spoon & a KNIGHT’ with renowned Director Mira Nair, was the Assistant Editor on the Disney Film ‘Queen of Katwe’ and her short film 'Mercy' leads the 'Think Twice Movement'. Her award winning Feature Documentary ‘Our Land, Our Freedom’ premiered at IDFA/Sheffield in 2023 and her 2025 release ‘Widow Champion’ premiered at Hotdocs/Tribeca and continues to create global impact.",
-            "Zippy is a Sundance, Chicken & Egg, Logan Elevate/IDA, IDFA, Hotdocs, World Cinema Fund/ACP and FORD FOUNDATION fellow, who has worked with numerous organisations including Universal studios, Nelson Mandela Foundation, Mastercard Foundation, UN, World Bank, US State Department, British council, BBC, Google, British Red Cross, among others. She is the Community Lead at https://www.terracekilifi.com, a Film Educator at https://www.illtellyoumystory.com and Founder at  www.afrofilmsinternational.com, a creative collective working to ignite socio-political consciousness and action, across continents."
+            "Zippy Kimundu is an award-winning Kenyan Filmmaker who has been working in the global industry for nearly two decades. She holds a Masters in Fine Arts from New York University and has worked globally in over 20 countries. She co-directed a short Documentary, ‘a fork, a spoon & a KNIGHT’ with renowned Director Mira Nair, was the Assistant Editor on the Disney Film ‘Queen of Katwe’ and her short film 'Mercy' leads the 'Think Twice Movement'.",
+            "Her award winning Feature Documentary ‘Our Land, Our Freedom’ premiered at IDFA/Sheffield in 2023 and her 2025 release ‘Widow Champion’ premiered at Hotdocs/Tribeca and continues to create global impact.",
+            "Zippy is a Sundance, Chicken & Egg, Logan Elevate/IDA, IDFA, Hotdocs, World Cinema Fund/ACP and Ford Foundation fellow, who has worked with numerous organisations including Universal studios, Nelson Mandela Foundation, Mastercard Foundation, UN, World Bank, US State Department, British council, BBC, Google, British Red Cross, among others.",
+            "She is the Creative Director, a Film Educator at https://www.illtellyoumystory.com, the co-founder at www.terracekilifi.com and Founder at www.afrofilmsinternational.com, a creative collective working to ignite socio-political consciousness and action, across continents."
         ]
     },
     {
@@ -81,5 +83,12 @@ export const team = [
         role: "Social Media",
         image: "hazel.jpg",
         bio: ["I’m a social media storyteller with a passion for film and visual narratives. I love bringing untold stories to life, giving them a voice, and creating spaces where powerful stories can be seen, felt, and heard."]
+    },
+    {
+        id: "new-4",
+        name: "Naomi Molilybo",
+        role: "Collective Co-ordinator",
+        image: "naomi.jpg",
+        bio: ["Naomi Molilybo Ernst grew up in Berlin, where she studied Publicity and Communication Science. Her work across journalism, film, and communications is guided by a strong love for people and their stories. Naomi was part of the first Kilifi Creek Festival and joined Afrofilms in 2025 after completing an internship."]
     }
 ];

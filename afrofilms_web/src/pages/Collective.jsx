@@ -35,8 +35,7 @@ const initiatives = [
         desc: "A Film and Arts festival across 7 venues along the Kilifi Creek. Celebrating African storytelling and culture through cinema, music, and art.",
         link: "https://www.kilificreekfestival.com",
         linkText: "Visit Festival",
-        image: "/uploads/festival.jpg",
-        hoverImage: "/uploads/festival1.jpg"
+        image: "/uploads/festival.jpg"
     },
     {
         id: "03",
@@ -44,12 +43,7 @@ const initiatives = [
         desc: "A storytelling Workshop for teenage refugee girls. As partners of 'I'll Tell You My Story', we focus on giving them the tools to tell their own stories with dignity and power.",
         link: "https://www.illtellyoumystory.com",
         linkText: "Visit Initiative",
-        image: "/uploads/mystory.jpg"
-    },
-    {
-        id: "04",
-        title: "Prison Film Clubs",
-        desc: "A Pilot Project at the Nairobi West Prison in partnership with the Kenyan Prisons Services. Providing Creative and Technical Training for inmates to create pioneer 'Film Clubs'."
+        image: "/uploads/refugee.jpg"
     }
 ];
 
@@ -61,109 +55,115 @@ export default function Collective() {
                 description="AfroFilms International — a collective of storytellers. Our expertise in production, community initiatives, and creative partnerships driving African storytelling."
             />
 
-            {/* ─── HERO ─── */}
-            <section className="coll-hero">
-                <div className="coll-hero-bg" style={{ backgroundImage: `url(${HERO_IMAGE})` }}></div>
-                <div className="coll-hero-overlay"></div>
-                <div className="container coll-hero-inner">
-                    <span className="coll-label">Who We Are</span>
-                    <h1 className="coll-hero-title">
-                        The <span className="gold">Collective.</span>
-                    </h1>
-                    <p className="coll-hero-lead">
-                        AfroFilms International is more than a production company; we are a collective of passionate individuals with a shared vision. Specializing in both independent and commissioned productions, our portfolio spans fiction, non-fiction, commercial, and corporate content.
-                    </p>
-                </div>
-            </section>
-
-            {/* ─── SERVICES ─── */}
-            <section className="coll-services">
-                <div className="container">
-                    <div className="coll-section-head">
-                        <span className="coll-label">Our Expertise</span>
-                        <h2 className="coll-section-title">What We <span className="gold">Do.</span></h2>
-                    </div>
-
-                    <div className="coll-cards">
-                        {services.map((svc, i) => (
-                            <div key={i} className="coll-card" style={{ animationDelay: `${i * 0.12}s` }}>
-                                <div className="coll-card-icon">{svc.icon}</div>
-                                <h3 className="coll-card-title">{svc.title}</h3>
-                                <ul className="coll-card-list">
-                                    {svc.items.map((item, j) => (
-                                        <li key={j}>{item}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* ─── DIVIDER ─── */}
-            <div className="coll-divider">
-                <div className="container">
-                    <div className="coll-divider-line"></div>
-                </div>
+            {/* ─── Full-page Background Image ─── */}
+            <div className="coll-page-bg-container">
+                <div className="coll-page-bg-image"></div>
+                <div className="coll-page-bg-overlay"></div>
             </div>
 
-            {/* ─── COMMUNITY ─── */}
-            <section className="coll-community">
-                <div className="container">
-                    <div className="coll-section-head">
-                        <span className="coll-label">Giving Back</span>
-                        <h2 className="coll-section-title">Community &amp; <span className="gold">Industry.</span></h2>
-                        <p className="coll-section-desc">
-                            Afrofilms engages in various community and industry projects including an Arts Space and Residency, a Film Festival and a refugee girls training program.
+            <div className="coll-content-wrapper">
+                {/* ─── HERO ─── */}
+                <section className="coll-hero">
+                    <div className="container coll-hero-inner">
+                        <span className="coll-label">Who We Are</span>
+                        <h1 className="coll-hero-title">
+                            The <span className="gold">Collective.</span>
+                        </h1>
+                        <p className="coll-hero-lead">
+                            Afrofilms extends beyond production. We build community and strengthen the industry through bold, long-term initiatives. From training and mentorship to creating spaces for artists to develop and collaborate, we invest in people as much as projects - expanding access, opportunity, <br className="hidden md:block" /> and sustainable creative growth.
                         </p>
                     </div>
+                </section>
 
-                    <div className="coll-timeline">
-                        <div className="coll-timeline-line"></div>
+                {/* ─── COMMUNITY ─── */}
+                <section className="coll-community">
+                    <div className="container">
+                        <div className="coll-section-head">
+                            <span className="coll-label">Giving Back</span>
+                            <h2 className="coll-section-title">Community &amp; <span className="gold">Industry.</span></h2>
+                            <p className="coll-section-desc">
+                                Afrofilms engages in various community and industry projects including an Arts Space and Residency, a Film Festival and a refugee girls training program.
+                            </p>
+                        </div>
 
-                        {initiatives.map((item, index) => (
-                            <div key={index} className={`coll-tl-item ${index % 2 === 1 ? 'reverse' : ''}`}>
-                                <div className="coll-tl-number">{item.id}</div>
+                        <div className="coll-timeline">
+                            <div className="coll-timeline-line"></div>
 
-                                <div className="coll-tl-content">
-                                    <span className="coll-label">Initiative {item.id}</span>
-                                    <h3 className="coll-tl-title">{item.title}</h3>
-                                    <p className="coll-tl-desc">{item.desc}</p>
-                                    {item.link && (
-                                        <a href={item.link} target="_blank" rel="noopener noreferrer" className="coll-tl-link">
-                                            {item.linkText} <span className="arrow">→</span>
-                                        </a>
-                                    )}
+                            {initiatives.map((item, index) => (
+                                <div key={index} className={`coll-tl-item ${index % 2 === 1 ? 'reverse' : ''}`}>
+                                    <div className="coll-tl-number">{item.id}</div>
+
+                                    <div className="coll-tl-content">
+                                        <span className="coll-label">Initiative {item.id}</span>
+                                        <h3 className="coll-tl-title">{item.title}</h3>
+                                        <p className="coll-tl-desc">{item.desc}</p>
+                                        {item.link && (
+                                            <a href={item.link} target="_blank" rel="noopener noreferrer" className="coll-tl-link">
+                                                {item.linkText} <span className="arrow">→</span>
+                                            </a>
+                                        )}
+                                    </div>
+
+                                    <div className="coll-tl-img-wrap">
+                                        {item.image ? (
+                                            <>
+                                                <div className="coll-tl-img" style={{ backgroundImage: `url(${item.image})` }}></div>
+                                                {item.hoverImage && (
+                                                    <div className="coll-tl-img coll-tl-img-hover" style={{ backgroundImage: `url(${item.hoverImage})` }}></div>
+                                                )}
+                                                <div className="coll-tl-img-overlay"></div>
+                                            </>
+                                        ) : (
+                                            <div className="coll-tl-img-placeholder">
+                                                <span>🎬</span>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
 
-                                <div className="coll-tl-img-wrap">
-                                    {item.image ? (
-                                        <>
-                                            <div className="coll-tl-img" style={{ backgroundImage: `url(${item.image})` }}></div>
-                                            {item.hoverImage && (
-                                                <div className="coll-tl-img coll-tl-img-hover" style={{ backgroundImage: `url(${item.hoverImage})` }}></div>
-                                            )}
-                                            <div className="coll-tl-img-overlay"></div>
-                                        </>
-                                    ) : (
-                                        <div className="coll-tl-img-placeholder">
-                                            <span>🎬</span>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        ))}
+                {/* ─── DIVIDER ─── */}
+                <div className="coll-divider">
+                    <div className="container">
+                        <div className="coll-divider-line"></div>
                     </div>
                 </div>
-            </section>
 
-            {/* ─── CTA ─── */}
-            <section className="coll-cta">
-                <div className="container coll-cta-inner">
-                    <h3 className="coll-cta-title">Be Part of the Story.</h3>
-                    <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="coll-cta-btn">Get Involved</button>
-                </div>
-            </section>
+                {/* ─── SERVICES ─── */}
+                <section className="coll-services">
+                    <div className="container">
+                        <div className="coll-section-head">
+                            <span className="coll-label">Our Expertise</span>
+                            <h2 className="coll-section-title">What We <span className="gold">Do.</span></h2>
+                        </div>
+
+                        <div className="coll-cards">
+                            {services.map((svc, i) => (
+                                <div key={i} className="coll-card" style={{ animationDelay: `${i * 0.12}s` }}>
+                                    <div className="coll-card-icon">{svc.icon}</div>
+                                    <h3 className="coll-card-title">{svc.title}</h3>
+                                    <ul className="coll-card-list">
+                                        {svc.items.map((item, j) => (
+                                            <li key={j}>{item}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* ─── CTA ─── */}
+                <section className="coll-cta">
+                    <div className="container coll-cta-inner">
+                        <h3 className="coll-cta-title">Be Part of the Story.</h3>
+                        <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="coll-cta-btn">Get Involved</button>
+                    </div>
+                </section>
+            </div>
 
             <style>{`
                 /* ══════════════════════════════
@@ -173,6 +173,32 @@ export default function Collective() {
                     background: #050505;
                     color: #fff;
                     min-height: 100vh;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .coll-page-bg-container {
+                    position: absolute;
+                    inset: 0;
+                    z-index: 0;
+                }
+                .coll-page-bg-image {
+                    position: absolute;
+                    inset: -20px;
+                    background-image: url('/uploads/collectiveA.jpg');
+                    background-size: cover;
+                    background-position: center;
+                    filter: blur(3px);
+                }
+                .coll-page-bg-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: rgba(0, 0, 0, 0.55);
+                    z-index: 1;
+                }
+                .coll-content-wrapper {
+                    position: relative;
+                    z-index: 10;
                 }
 
                 .gold { color: var(--color-primary); }
@@ -197,20 +223,6 @@ export default function Collective() {
                     justify-content: center;
                     overflow: hidden;
                     padding: 8rem 0 6rem;
-                }
-                .coll-hero-bg {
-                    position: absolute;
-                    inset: 0;
-                    background-size: cover;
-                    background-position: center;
-                    opacity: 0.2;
-                    filter: blur(6px) grayscale(60%);
-                    transform: scale(1.08);
-                }
-                .coll-hero-overlay {
-                    position: absolute;
-                    inset: 0;
-                    background: linear-gradient(180deg, rgba(5,5,5,0.5) 0%, #050505 100%);
                 }
                 .coll-hero-inner {
                     position: relative;

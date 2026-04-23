@@ -10,6 +10,11 @@ const SinglePage = lazy(() => import('./pages/SinglePage'));
 const TeamMember = lazy(() => import('./pages/TeamMember'));
 const Content = lazy(() => import('./pages/Content'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const About = lazy(() => import('./pages/About'));
+const Works = lazy(() => import('./pages/Works'));
+const Team = lazy(() => import('./pages/Team'));
+const Collective = lazy(() => import('./pages/Collective'));
+const Gallery = lazy(() => import('./pages/Gallery'));
 
 // Loading Fallback
 const PageLoader = () => (
@@ -32,6 +37,11 @@ export default function App() {
           <Routes>
             <Route path="/" element={<MainLayout />}>
               <Route index element={<SinglePage />} />
+              <Route path="about" element={<About />} />
+              <Route path="portfolio" element={<Works />} />
+              <Route path="team" element={<Team />} />
+              <Route path="collective" element={<Collective />} />
+              <Route path="gallery" element={<Gallery />} />
               <Route path="team/:id" element={<TeamMember />} />
               <Route path="404" element={<NotFound />} />
               {/* Default catch-all for dynamic slugs */}

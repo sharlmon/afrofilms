@@ -6,7 +6,7 @@ type: post
 slug: widow-champion
 ---
 
-<img src="/uploads/widow-champion.jpg" alt="Widow Champion" style="width:100%; display:block; margin-bottom: 2rem;" />
+<img src="/uploads/champ.jpg" alt="Widow Champion" style="width:100%; display:block; margin-bottom: 2rem;" />
 
 <!-- wp:heading -->
 <h2>Synopsis</h2>
