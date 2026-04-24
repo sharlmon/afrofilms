@@ -18,16 +18,9 @@ const galleryImages = [
     { src: "/uploads/homepage.jpg", caption: "Behind the Lens", category: "Action" },
     { src: "/uploads/2020/08/benatronics-studio.jpeg", caption: "Studio Session Action", category: "Action" },
 
-    // Festival Panels
-    { src: "/uploads/2021/05/Training-Arts-Residence-2.jpg", caption: "Film Impact & Policy Panel", category: "Festival Panels" },
-    { src: "/uploads/2021/05/Training-Arts-Residence-3.jpg", caption: "Industry Mentorship Session", category: "Festival Panels" },
-    { src: "/uploads/2021/05/Training-Arts-Residence-4.jpg", caption: "Creative Dialogue at the Festival", category: "Festival Panels" },
-    { src: "/uploads/2021/12/PHOTO-2021-12-20-18-16-30.jpg", caption: "Festival Networking Event", category: "Festival Panels" },
-    { src: "/uploads/2021/12/PHOTO-2021-12-20-08-59-21.jpg", caption: "Creative Industry Panel", category: "Festival Panels" },
-    { src: "/uploads/2021/12/PHOTO-2021-12-20-09-01-35.jpg", caption: "Documentary Storytelling Q&A", category: "Festival Panels" },
 ];
 
-const categories = ["All", "On Set", "Action", "Festival Panels"];
+const categories = ["All", "On Set", "Action"];
 
 export default function Gallery() {
     const [activeCategory, setActiveCategory] = useState("All");
